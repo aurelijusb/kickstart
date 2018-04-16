@@ -19,6 +19,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "*",
+        "symfony/debug-bundle": "^4.0",
         "symfony/profiler-pack": "^1.0"
     },
     "config": {
