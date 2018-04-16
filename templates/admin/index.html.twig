@@ -8,4 +8,12 @@
     User:
     {{ dump(app.user) }}
 
+    Hello {{ app.user.username }}
+    {% if 'ROLE_ADMIN' in app.user.roles %}
+        <button class="btn btn-primary">Edit</button>
+    {% endif %}
+    {% if 'ROLE_MENTORIUS' in app.user.roles %}
+        <button class="btn btn-info">Comment</button>
+    {% endif %}
+
 {% endblock %}
