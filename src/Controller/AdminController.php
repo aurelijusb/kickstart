@@ -12,8 +12,12 @@ class AdminController extends Controller
     /**
      * @Route("/admin", name="admin")
      */
-    public function index()
+    public function index(UserInterface $user = null)
     {
+        if (!$user) {
+            return $this->redirectToRoute('fos_user_security_login');
+        }
+
         return $this->render('admin/index.html.twig');
     }
 
