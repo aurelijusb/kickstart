@@ -10,3 +10,8 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+
+    # https://symfony.com/doc/current/bundles/FOSUserBundle/configuration_reference.html
+    registration:
+        form:
+            type: App\Form\MyRegistrationFormType
