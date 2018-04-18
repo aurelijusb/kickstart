@@ -21,11 +21,19 @@
     <h1>Validate! ✅</h1>
 
     <div>
-      Name: <input type="text" id="name"/><br/>
-      <span id="validation-result"></span>
-      Team: <input type="text" id="group"/>
-      <span id="validation-result"></span>
+      Name: <input type="text" id="name"/>
+      <span id="validation-result-name" data-path="{{ path('validateStudent', {'element': 'name'}) }}"></span>
+
+    </div>
+    <div>
+      Team: <input type="text" id="team"/>
+      <span id="validation-result-team" data-path="{{ path('validateStudent', {'element': 'team'}) }}"></span>
     </div>
 
   </div>
+{% endblock %}
+
+{% block javascripts %}
+  <script src="{{ asset('build/js/validateStudent.js') }}"></script>
+  {{ parent() }}
 {% endblock %}
