@@ -23,7 +23,7 @@ class AdminController extends Controller
     public function review(UserInterface $user = null)
     {
         if (!$user) {
-            throw new AccessDeniedException('Your user is not authorised');
+            $this->redirectToRoute('fos_user_security_login');
         }
         if (in_array('ROLE_MENTORIUS', $user->getRoles())) {
             return $this->render('admin/review.html.twig');
