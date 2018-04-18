@@ -88,6 +88,11 @@ docker exec -it php.symfony bash
   ```
   composer install
   ```
+  * Pirmą kartą paleidus (paruošiame duomenų bazę):
+  ```
+  bin/console doctrine:database:create
+  bin/console doctrine:migrations:migrate
+  ```
   * Jei pakeitimai neatsinaujina:
   ```
   bin/console cache:clear
