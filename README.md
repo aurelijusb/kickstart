@@ -93,6 +93,10 @@ docker exec -it php.symfony bash
   bin/console doctrine:database:create
   bin/console doctrine:migrations:migrate
   ```
+  * Pasikeisti naudotojo rolę:
+  ```
+  bin/console fos:user:promote
+  ```
   * Jei pakeitimai neatsinaujina:
   ```
   bin/console cache:clear
