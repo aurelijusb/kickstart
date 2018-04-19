@@ -22,7 +22,7 @@ class StudentController extends Controller
     }
 
     /**
-     * @Route("/validate/{element}", name="validateStudent")
+     * @Route("/validate23/{element}", name="validateStudent")
      * @Method({"POST"})
      * @param Request $request
      * @param $element
@@ -31,19 +31,19 @@ class StudentController extends Controller
     public function validate(Request $request, $element)
     {
         try {
-            $input = json_decode($request->getContent(), true)['input'];
+            $input = json_decode($request->getContent(), true)['input'];     //['input'] - key in array
         } catch (\Exception $e) {
-            return new JsonResponse(['error' => 'Invalid method', Response::HTTP_BAD_REQUEST]);
+            return new JsonResponse(['error' => 'Invalid data', Response::HTTP_BAD_REQUEST]);
         }
 
-        $students[] = $this->getStudents();
-        switch($element) {
+        $students = $this->getStudents();     // $students = ['students' => $students, 'teams' => $teams];
+        switch ($element) {
             case 'name':
-                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+                return new JsonResponse(['valid' => in_array(strtolower($input), $students['students'])]);
                 break;
 
             case 'team':
-                return new JsonResponse(['valid' => true]);
+                return new JsonResponse(['valid' => in_array(strtolower($input), $students['teams'])]);
                 break;
         }
         return new JsonResponse(['error' => 'Invalid method', Response::HTTP_BAD_REQUEST]);
@@ -99,14 +99,19 @@ class StudentController extends Controller
         }';
     }
 
-    private function getStudents() {
+    private function getStudents()
+    {
         $students = [];
+        $teams = [];
         $data = json_decode($this->getJsonData(), true);
-        foreach ($data as $teamData) {
+        foreach ($data as $key => $teamData) {
+            $teams[] = strtolower($key);
             foreach ($teamData['members'] as $student) {
                 $students[] = strtolower($student);
             }
         }
+        return ['students' => $students, 'teams' => $teams];
     }
+
 
 }

@@ -23,10 +23,10 @@ function validateName() {
 
 function validateTeam() {
     validationResultTeam.innerText = '...';
-  axios.post(validationResultTeam.dataset.path, {input: team.value})
+    axios.post(validationResultTeam.dataset.path, {input: team.value})
       .then(function(response) {
           if (response.data.valid) {
-              validationResultTeam.innerHTML = ':(';
+              validationResultTeam.innerText = ':)';
           } else {
               validationResultTeam.innerText = ':(';
           }
