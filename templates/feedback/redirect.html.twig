@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="acte-feedback-results">
+        Redirecting...
+        <script type="text/javascript">
+            document.location = '{{ url }}'
+        </script>
+        <noscript>
+            <a class="acte-redirect" href="{{ url }}">Go now</a>
+        </noscript>
+    </div>
+{% endblock %}
