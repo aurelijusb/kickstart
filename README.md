@@ -1,7 +1,9 @@
 ![](https://avatars0.githubusercontent.com/u/4995607?v=3&s=100)
 
-NFQ Akademija
-============
+Mokomoji medžiaga NFQ akademijos paskaitai
+==========================================
+
+Paskaitos medžiaga
 
 # Intro
 
@@ -174,6 +176,47 @@ Slaptažodžiui naudoti `p9iijKcfgENjBWDYgSH7`
 * Įsitikinkite, kad reikalingos bibliotekos įrašytos į operacinę sistemą. Žr. pavyzdį [php/Dockerfile](.docker/php/Dockerfile)
 * Įsitikinkite, kad `APP_ENV` yra `prod` (tiek naudojant `bin/console`, tiek ateinantis per `nginx` į `index.php`) 
 
+
+### Kaip pasiruošti End-to-end testavimui
+
+* Paleiskite Selenium serverį su `docker-compose up -d`
+  Turėtų rodyti, kad sukuria ir `selenium.symfony` konteinerį.
+  Konteineris bus pasiekiamas:
+    * `127.0.1.1:4444` jūsų kompiuteryje
+    * `selenium.symfony:4444` iš PHP/JavaScript konteinerių vidaus.
+
+* `selenium.symfony` viduje bus įdiegta `Chrome` naršyklė.
+  Savo projektą iš naršyklės pasieksite adresu:
+    * `http://nginx.symfony:8000`
+    
+* Norint matyti vaizdą, ką naršyklė veikia, prie konteinerio galima prisijungti naudojant `VNC` protokolą
+    * Per (Real VNC Viewer)[https://www.realvnc.com/en/connect/download/viewer/]
+        * VNC Server: `127.0.0.1`
+        * Unencrypted connection: _Continue_
+        * Password: `secret`
+    * Per (kitus)[https://github.com/SeleniumHQ/docker-selenium#debugging] VNC klientus:
+        * Host: `127.0.0.1:5900`
+        * Protocol: `VNC`
+        * Password: `secret`
+
+* Paleidžiame testus iš `php.symfony` konteinerio.
+Pasiruošiame aplinką:
+    ```
+    docker exec -it php.symfony bash
+    ```
+    ```
+    cd acceptance-tests/
+    composer install
+    ```
+    
+    Pats testų paleidimas:
+    ```
+    vendor/bin/codecept run --debug
+    ```
+
+Kadangi testus leidžiame per _docker_'į, tai reikėtų nesumaišyti:
+    * kur paleidiama tiesiog iš savo kompiuterio (adresai `127.0.0.1`),
+    * kur iš konteinerių vidaus (tada adresai yra kitų konteinerių pavadinimai)
 
 ### Troubleshooting'as
 
