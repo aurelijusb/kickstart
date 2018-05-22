@@ -10,10 +10,10 @@
             margin: 0;
             padding: 0;
             font-weight: 100;
-            font-family: 'Lato';
         }
 
         .title {
+            font-family: 'Lato', serif;
             margin: 20px auto;
             text-align: center;
             font-size: 96px;
@@ -23,4 +23,11 @@
 
 {% block body %}
     <div class="title">NFQ Akademija</div>
+
+    <div id="feedback-form">
+        {{ render(controller(
+            'App\\Controller\\FeedbackController::form',
+            { 'request': app.request }
+        )) }}
+    </div>
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block body %}
+    <div class="feedback-results">
+        <div class="question">
+            {{ feedback }}
+        </div>
+
+        <div class="answer">
+            {% if topic == 'topic_buy' %}
+                <div class="topic-buy">
+                    Thank you for your feedback. Call our sales <b>+370 37 793 515</b> and get the best deal.
+                </div>
+            {% elseif topic == 'topic_angry' %}
+                <div class="topic-angry">
+                    We understand how you feel and will try to go back to you as soon as possible
+                </div>
+            {% elseif topic == 'topic_question' %}
+                <div class="topic-question">
+                    Thank you for your input. Do not forget to leave your contact details and we will answer all your questions.
+                </div>
+            {% else %}
+                <div class="topic-general">
+                    Thank you for your feedback.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="{{ path('home') }}">&larr; Home page</a>
+    </div>
+{% endblock %}
