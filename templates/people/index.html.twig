@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<div id="root">Loading...</div>
+<div>
+    Versija <b id="version">...</b>
+</div>
+
+    <input type="text" id="name"/>
+    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var needVersion = true;
+        var needReact = true;
+    </script>
+    <script src="{{ asset('build/js/validation.js') }}"></script>
+    {{ parent() }}
+{% endblock %}

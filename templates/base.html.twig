@@ -11,6 +11,12 @@
         {% block canonical_meta %}{% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-primary">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('home') }}">Pagrindinis</a></li>
+                <li><a href="{{ path('people') }}">Žmonės</a></li>
+            </ul>
+        </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('build/js/app.js') }}"></script>
