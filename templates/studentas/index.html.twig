@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name|default('testas')|upper }}!{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('build/css/studentai.css') }}">
+{% endblock %}
+
+{% block body %}
+Čia kažkur bus sąrašas
+
+    <div class="jumbotron">
+    Iš url: {{ isUrl }}
+    </div>
+
+    <div>
+    Klausimu: {{ klausimu }}
+    </div>
+    {% for elementas in sudetingas %}
+        <li><a href="/#elementas-{{ elementas|url_encode }}">{{ elementas }}</a></li>
+    {% endfor %}
+
+
+{% endblock %}

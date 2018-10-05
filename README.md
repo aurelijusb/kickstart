@@ -1,5 +1,10 @@
 ﻿![](https://avatars0.githubusercontent.com/u/4995607?v=3&s=100)
 
+Symfony 1 užrašai
+=================
+
+php -S 127.0.0.1 `-t public`
+
 NFQ Akademija
 ============
 

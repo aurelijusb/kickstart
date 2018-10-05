@@ -22,5 +22,12 @@
 {% endblock %}
 
 {% block body %}
+    Pirmas pakeitimas
     <div class="title">NFQ Akademija</div>
+
+    {% block navigation %}
+    [
+        {{ parent() }}
+    ]
+    {% endblock %}
 {% endblock %}
