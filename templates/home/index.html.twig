@@ -15,7 +15,7 @@
         {% for key,team in data %}
             {% for student in team.students %}
                 <li class="list-group-item">
-                    <a class="list__link" href="{{ path('home',{name:student,project:key}) }}">{{ student }}</a>
+                    <a class="list__link" href="{{ path('home',{name:student,project:key})|url_encode }}">{{ student }}</a>
                     <span>( <em class="bold">
                             {{ team.mentors|length >1?'Mentoriai':'Mentorius' }}</em> {{ team.mentors|join(', ') }}
                         )</span>
@@ -38,21 +38,23 @@
         <li class="list-group-item list-group-item-info">
             Projektai
         </li>
-        <li class="list-group-item">
-            <h3>Knygu mainai</h3>
-            <div class="text-container">
-                <div>
-                    <a href="">github.com/nfqakademija/mapsportas</a>
-                    <em class="bold">GitHub</em>
-                </div>
-                <div>
-                    <a href="">mapsportas.projektai.nfqakademija.lt/ </a>
-                    <em class="bold">Web</em>
-                </div>
+        {% for key,team in data %}
+            <li class="list-group-item">
+                <h3>{{ team.name }}</h3>
+                <div class="text-container">
+                    <div>
+                        <a href="https://github.com/nfqakademija/{{ key }}">github.com/nfqakademija/{{ key }}</a>
+                        <em class="bold">GitHub</em>
+                    </div>
+                    <div>
+                        <a href="https://{{ key }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/ </a>
+                        <em class="bold">Web</em>
+                    </div>
 
-                <p>ssh mapsportas@deploy.nfqakademija.lt -p 2222</p>
-            </div>
-        </li>
+                    <p>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</p>
+                </div>
+            </li>
+        {% endfor %}
     </ul>
 
     <div class="m-4">
