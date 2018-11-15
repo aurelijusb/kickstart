@@ -12,10 +12,16 @@
         <li class="list-group-item list-group-item-info">
             Studentai
         </li>
-        <li class="list-group-item">
-            <a class="list__link" href="#">Vardenis pavardenis</a>
-            <span>( <em class="bold">Mentorius</em> Mentor Name )</span>
-        </li>
+        {% for key,team in data %}
+            {% for student in team.students %}
+                <li class="list-group-item">
+                    <a class="list__link" href="{{ path('home',{name:student,project:key}) }}">{{ student }}</a>
+                    <span>( <em class="bold">
+                            {{ team.mentors|length >1?'Mentoriai':'Mentorius' }}</em> {{ team.mentors|join(', ') }}
+                        )</span>
+                </li>
+            {% endfor %}
+        {% endfor %}
     </ul>
 
     <form class="m-4" method="get" action="">

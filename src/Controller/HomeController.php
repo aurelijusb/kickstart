@@ -15,8 +15,9 @@ class HomeController extends Controller
         $url = "http://realus.website/students.json";
         $json = file_get_contents($url);
         $data = json_decode($json, true);
+        var_dump($data);
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'data' => $data,
         ]);
     }
 }
