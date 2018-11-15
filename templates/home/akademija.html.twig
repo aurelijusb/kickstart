@@ -3,5 +3,9 @@
 {% block nfq %}
     {{ parent() }}
 
-    Akademijoje
+    {% for elementai in kintamasis %}
+        {% for vidiniai in elementai %}
+            {{ vidiniai }}
+        {% endfor %}
+    {% endfor %}
 {% endblock %}

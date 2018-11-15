@@ -17,6 +17,11 @@ class HomeController extends Controller
 
         return $this->render('home/akademija.html.twig', [
             'studentas' => $kazkas,
+            'kintamasis' => ['labai' => [
+                'sudėtingą',
+                'mažą',
+                'daiktą'
+            ]]
         ]);
     }
 }
