@@ -4,8 +4,6 @@
     {{ parent() }}
 
     {% for elementai in kintamasis %}
-        {% for vidiniai in elementai %}
-            {{ vidiniai }}
-        {% endfor %}
+        {{ elementai|join(', ') }}
     {% endfor %}
 {% endblock %}
