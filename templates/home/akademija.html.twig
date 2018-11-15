@@ -6,4 +6,7 @@
     {% for elementai in kintamasis %}
         {{ elementai|join(', ') }}
     {% endfor %}
+
+    <a href="{{ path('vakaras') }}">Vakaras</a>
+    {#<a href="/vakaras">Vakaras</a>#} {# Naudok path funcija#}
 {% endblock %}
