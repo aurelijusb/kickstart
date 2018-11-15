@@ -15,7 +15,7 @@
         {% for key,team in data %}
             {% for student in team.students %}
                 <li class="list-group-item">
-                    <a class="list__link" href="{{ path('home',{name:student,project:key})|url_encode }}">{{ student }}</a>
+                    <a class="list__link" href="{{ path('student',{name:student, project:key}) }}">{{ student }}</a>
                     <span>( <em class="bold">
                             {{ team.mentors|length >1?'Mentoriai':'Mentorius' }}</em> {{ team.mentors|join(', ') }}
                         )</span>
@@ -24,7 +24,7 @@
         {% endfor %}
     </ul>
 
-    <form class="m-4" method="get" action="">
+    <form class="m-4" method="get" action="{{ path('student') }}">
         <div class="input-group">
             <input type="text" name="name" class="form-control" placeholder="Studentas"/>
         </div>
@@ -43,11 +43,11 @@
                 <h3>{{ team.name }}</h3>
                 <div class="text-container">
                     <div>
-                        <a href="https://github.com/nfqakademija/{{ key }}">github.com/nfqakademija/{{ key }}</a>
+                        <a href="https://github.com/nfqakademija/{{ key |url_encode}}">github.com/nfqakademija/{{ key }}</a>
                         <em class="bold">GitHub</em>
                     </div>
                     <div>
-                        <a href="https://{{ key }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/ </a>
+                        <a href="//{{ key }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/ </a>
                         <em class="bold">Web</em>
                     </div>
 
