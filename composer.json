@@ -11,13 +11,13 @@
         "symfony/dotenv": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
+        "symfony/maker-bundle": "^1.9",
         "symfony/twig-bundle": "*",
         "symfony/webpack-encore-pack": "^1.0",
         "symfony/yaml": "*"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.3",
-        "symfony/maker-bundle": "^1.7"
+        "squizlabs/php_codesniffer": "^3.3"
     },
     "config": {
         "preferred-install": {
