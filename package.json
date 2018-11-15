@@ -15,5 +15,8 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production"
+    },
+    "dependencies": {
+        "normalize.css": "^8.0.1"
     }
 }
