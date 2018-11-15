@@ -8,4 +8,48 @@
 {% endblock %}
 
 {% block body %}
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">
+            Studentai
+        </li>
+        <li class="list-group-item">
+            <a class="list__link" href="#">Vardenis pavardenis</a>
+            <span>( <em class="bold">Mentorius</em> Mentor Name )</span>
+        </li>
+    </ul>
+
+    <form class="m-4" method="get" action="">
+        <div class="input-group">
+            <input type="text" name="name" class="form-control" placeholder="Studentas"/>
+        </div>
+        <div class="input-group">
+            <input type="text" name="project" class="form-control" placeholder="Projektas"/>
+        </div>
+        <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+    </form>
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">
+            Projektai
+        </li>
+        <li class="list-group-item">
+            <h3>Knygu mainai</h3>
+            <div class="text-container">
+                <div>
+                    <a href="">github.com/nfqakademija/mapsportas</a>
+                    <em class="bold">GitHub</em>
+                </div>
+                <div>
+                    <a href="">mapsportas.projektai.nfqakademija.lt/ </a>
+                    <em class="bold">Web</em>
+                </div>
+
+                <p>ssh mapsportas@deploy.nfqakademija.lt -p 2222</p>
+            </div>
+        </li>
+    </ul>
+
+    <div class="m-4">
+        <a href="" class="text-light">Duomenų failas</a>
+    </div>
 {% endblock %}

@@ -1,13 +1,14 @@
 /*
 Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.
-        on line 2 of app.scss
+        on line 3 of app.scss
 
 1: @import "theme";
-2: @import "~bootstrap/scss/bootstrap";
-3: @import "~normalize.css";
+2: @import "~normalize.css";
+3: @import "~bootstrap/scss/bootstrap";
+4: @import "index";
 
 Backtrace:
-app.scss:2
+app.scss:3
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:67:in `rescue in import'
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:44:in `import'
 C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -50,4 +51,4 @@ C:/Ruby25-x64/bin/scss:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.\A         on line 2 of app.scss\A \A 1: @import \"theme\";\A 2: @import \"~bootstrap/scss/bootstrap\";\A 3: @import \"~normalize.css\";"; }
+  content: "Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.\A         on line 3 of app.scss\A \A 1: @import \"theme\";\A 2: @import \"~normalize.css\";\A 3: @import \"~bootstrap/scss/bootstrap\";\A 4: @import \"index\";"; }
