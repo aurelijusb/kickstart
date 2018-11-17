@@ -1,4 +1,12 @@
-@import "theme";
+$body-bg: #FF6B00;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: 100;
+  font-family: 'Lato';
+}
+
 @import "~normalize.css";
 @import "~bootstrap/scss/bootstrap";
 @import "index";
