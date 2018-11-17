@@ -12,8 +12,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $url = "http://realus.website/students.json";
-        $json = file_get_contents($url);
+        $json = file_get_contents(__DIR__ . '/../../public/students.json', FILE_USE_INCLUDE_PATH);
         $data = json_decode($json, true);
 
         return $this->render('home/index.html.twig', [
