@@ -16,6 +16,9 @@ class HomeController extends Controller
      */
     public function index(ProjectsData $projects)
     {
+        $webPath = $this->get('kernel')->getProjectDir() . '/public/';
+        $projects->setDataFile($webPath.'students.json');
+        
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'projects' => $projects->getData(),
