@@ -10,12 +10,12 @@
                 <li class="list-group-item">
                     <a href="{{ path('student') }}?name={{ student|e('url') }}&amp;project={{ project_key|e('url') }}">{{ student|e }}</a>
                     (
-                        {% if project.mentors|length == 1 %}
+                    {% if project.mentors|length == 1 %}
                         <span class="badge">Mentorius</span>
-                        {% else %}
+                    {% else %}
                         <span class="badge">Mentoriai</span>
-                        {% endif %}
-                        {{ project.mentors|join(', ')|e }}
+                    {% endif %}
+                    {{ project.mentors|join(', ')|e }}
                     )
                 </li>
             {% endfor %}
@@ -45,7 +45,9 @@
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ project_key|e('url') }}.projektai.nfqakademija.lt/">{{ project_key|e }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank"
+                           href="http://{{ project_key|e('url') }}.projektai.nfqakademija.lt/">{{ project_key|e }}
+                            .projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>

@@ -10,11 +10,11 @@ class ProjectsData
     public function getData()
     {
         $data = file_get_contents($this->dataFile);
-        if($data === false){
+        if ($data === false) {
             return false;
         }
-    
-        return \json_decode($data, true);
+        
+        return json_decode($data, true);
     }
     
     /**
