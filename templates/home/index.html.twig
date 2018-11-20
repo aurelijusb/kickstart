@@ -8,7 +8,7 @@
         {% for project_key, project in projects %}
             {% for student in project.students %}
                 <li class="list-group-item">
-                    <a href="{{ path('student') }}?name={{ student|e('url') }}&amp;project={{ project_key|e('url') }}">{{ student|e }}</a>
+                    <a href="{{ path('student', {name: student, project: project_key}) }}">{{ student|e }}</a>
                     (
                     {% if project.mentors|length == 1 %}
                         <span class="badge">Mentorius</span>
@@ -59,7 +59,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="{{ path('home') }}students.json">Duomenų failas</a>
+        <a class="text-light" href="{{ absolute_url('/students.json') }}">Duomenų failas</a>
     </div>
 
 {% endblock %}
