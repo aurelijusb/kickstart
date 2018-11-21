@@ -1,21 +1,29 @@
 const axios = require('axios');
 
-let name = document.getElementById('name');
-let validationResult = document.getElementById('validation-result');
-const validateName = function () {
-    validationResult.innerText = '...';
-    axios.post(validationResult.dataset.path, {input: name.value})
-        .then(function(response) {
-            if (response.data.valid) {
-                validationResult.innerHTML = ":)";
-            } else {
-                validationResult.innerHTML = ":(";
-            }
-        })
-        .catch(function (error) {
-            validationResult.innerText = 'Error: ' + error;
-        });
-};
+function validate(element) {
+    let field = document.getElementById(element);
+    let validationResult = document.getElementById(element + '-validation-result');
+    const validateElement = function () {
+        validationResult.innerText = '...';
+        axios.post(validationResult.dataset.path, {input: field.value})
+            .then(function (response) {
+                if (response.data.valid) {
+                    validationResult.innerHTML = ":)";
+                } else {
+                    validationResult.innerHTML = ":(";
+                }
+            })
+            .catch(function (error) {
+                validationResult.innerText = 'Error: ' + error;
+            });
+    };
 
-name.onkeyup = validateName;
-name.onchange = validateName;
+    field.onkeyup = validateElement;
+    field.onchange = validateElement;
+    if (field.value !== '') {
+        field.onchange();
+    }
+}
+
+validate('name');
+validate('project');

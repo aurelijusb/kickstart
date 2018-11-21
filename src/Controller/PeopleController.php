@@ -20,9 +20,9 @@ class PeopleController extends AbstractController
             'controller_name' => 'PeopleController',
         ]);
     }
-
+    
     /**
-     * @Route("/validate/{element}", name="validatePerson")
+     * @Route("/validate/{element}", name="validateElement")
      * @Method({"POST"})
      */
     public function validate(Request $request, $element)
@@ -32,20 +32,55 @@ class PeopleController extends AbstractController
         } catch (\Exception $e) {
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
-
-        $students = $this->getStudents();
+        
         switch ($element) {
             case 'name':
-                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+                $students = $this->getStudents();
+                return new JsonResponse(['valid' => in_array($this->stringToLower($input), $students)]);
+            
+            case 'project':
+                $projects = $this->getProjects();
+                return new JsonResponse(['valid' => in_array($this->stringToLower($input), $projects)]);
         }
-
+        
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
     }
-
+    
+    private function getStudents(): array
+    {
+        $students = [];
+        $storage = json_decode($this->getStorage(), true);
+        if ($storage === false) {
+            $storage = [];
+        }
+        foreach ($storage as $teamData) {
+            foreach ($teamData['students'] as $student) {
+                $name = $this->stringToLower($student);
+                $students[] = $name;
+            }
+        }
+        return $students;
+    }
+    
+    private function getProjects(): array
+    {
+        $storage = json_decode($this->getStorage(), true);
+        if ($storage === false) {
+            $storage = [];
+        }
+        $projects = array_map([$this, 'stringToLower'], array_keys($storage));
+        return $projects;
+    }
+    
+    private function stringToLower($value)
+    {
+        return mb_strtolower($value, 'UTF-8');
+    }
+    
     private function getStorage()
     {
         return /** @lang json */
-        '{
+            '{
           "knygnesiai": {
             "name": "Knygų mainai",
             "mentors": [
@@ -108,17 +143,6 @@ class PeopleController extends AbstractController
             ]
           }
         }';
-    }
-
-    private function getStudents(): array {
-        $students = [];
-        $storage = json_decode($this->getStorage(), true);
-        foreach ($storage as $teamData) {
-            foreach ($teamData['students'] as $student) {
-                $students[] = strtolower($student);
-            }
-        }
-        return $students;
     }
 }
 

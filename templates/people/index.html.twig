@@ -3,14 +3,27 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<div id="root">Loading...</div>
-<noscript>To use this app, enable JavaScript</noscript>
-<div>
-    Versijuojamas JavaScript failas: <b id="versionedFile">...</b>
-</div>
+    <div id="root">Loading...</div>
+    <noscript>To use this app, enable JavaScript</noscript>
+    <div>
+        Versijuojamas JavaScript failas: <b id="versionedFile">...</b>
+    </div>
 
-    <input type="text" id="name"/>
-    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    <div>
+        <label>
+            Vardas:
+            <input type="text" id="name"/>
+        </label>
+        <span id="name-validation-result" data-path="{{ path('validateElement', {'element': 'name'}) }}"></span>
+    </div>
+    <div>
+        <label>
+            Komanda:
+            <input type="text" id="project"/>
+        </label>
+        <span id="project-validation-result" data-path="{{ path('validateElement', {'element': 'project'}) }}"></span>
+    </div>
+
 {% endblock %}
 
 {% block javascripts %}
