@@ -13,9 +13,9 @@
         {% for key,team in data %}
             {% for student in team.students %}
                 <li class="list-group-item">
-                    <a href="">{{ student }}</a>
+                    <a class="list__link" href="{{ path('student' , {name:student, project:key}) }}">{{ student }}</a>
                     <span class="badge">
-                        {{ team.mentors|join(', ') }}
+                        ({{ team.mentors|join(', ') }})
                     </span>
                 </li>
             {% endfor %}
