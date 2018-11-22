@@ -4,4 +4,8 @@
 
 {% block body %}
     <div class="title">NFQ Akademija</div>
+
+    {% for key,team in data %}
+        {{ team.name }}
+    {% endfor %}
 {% endblock %}

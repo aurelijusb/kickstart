@@ -12,8 +12,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $students = file_get_contents('./students.json');
+        $data = json_decode($students, true);
+
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'data' => $data,
         ]);
     }
 }
