@@ -17,12 +17,12 @@
 
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-    {% for project in data %}
+    {% for key,project in data %}
         {% for student in project.students %}
             <li class="list-group-item">
                 <p>
 
-                    <a href="{{ path('student', { 'name': student , 'project': project.name }) }}">{{ student }}</a>
+                    <a href="{{ path('student', { 'name': student , 'project': key }) }}">{{ student }}</a>
                     (<span class="badge">
                         {{ project.mentors|join(', ') }}
                     )</span>
@@ -69,7 +69,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="students.json">Duomenų failas</a>
+        <a class="text-light" href="data.json">Duomenų failas</a>
     </div>
 
 {% endblock %}
