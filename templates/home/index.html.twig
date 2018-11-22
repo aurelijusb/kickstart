@@ -3,9 +3,33 @@
 {% block title %}Homepage - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <div class="title">NFQ Akademija</div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
 
-    {% for key,team in data %}
-        {{ team.name }}
-    {% endfor %}
+    </ul>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+        {% for key,project in data %}
+            <li class="list-group-item">
+                <h3>{{ project.name }}</h3>
+                <div class="panel panel-default">
+                    <div>
+                        <a href="https://githubcom/nfqakademija/{{ key |url_encode }}">github/nfqakademija/{{ key|url_encode }}</a>
+                        <span class="badge">GitHub</span>
+                    </div>
+                    <div>
+                        <a href="https://{{ key |url_encode }}.projektai.nfqakademija.lt/">{{ key|url_encode }}
+                            .projektai.nfqakademija.lt</a>
+                        <span class="badge">Web</span>
+                    </div>
+                    <div>
+                        <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 222</pre>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="m-4">
+        <a class="text-light" href="students.json">Duomenų failas</a>
+    </div>
 {% endblock %}
