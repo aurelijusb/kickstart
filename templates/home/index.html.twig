@@ -13,16 +13,22 @@
         {% for key,teams in data %}
             {% for student in teams.students %}
                 <li class="list-group-item">
-                    <a class="list__link" href="{{ path('student' , {name:student, project:key}) }}">{{ student }}</a>
+                    <a class="list__link" href="{{ path('student' , {project:key, name:student}) }}">{{ student }}</a>
                     <span class="badge">
-                        ({{ teams.mentors|join(', ') }})
+                        {% if teams.mentors|length > 1 %}
+                            Mentoriai
+                            ({{ teams.mentors|join(', ') }})
+                        {% else %}
+                            Mentorius
+                            ({{ teams.mentors|join(', ') }})
+                        {% endif %}
                     </span>
                 </li>
             {% endfor %}
         {% endfor %}
     </ul>
     <div class="m-4">
-        <form action="/student" method="get" action="{{ path('student')}}">
+        <form method="get" action="{{ path('student') }}">
             <div class="input-group">
                 <div class="input-group">
                     <input name="name" type="text" class="form-control" placeholder="Studentas">
