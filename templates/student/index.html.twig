@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vertinimas{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="bg-light m-4">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Projektas</th>
+                <th>Studentas</th>
+            </tr>
+            <tr>
+                <td>
+
+                    {% if project  %}
+                        {{ project }}
+                    {% else %}
+                        Nenurodytas
+                    {% endif %}
+
+                </td>
+                <td>
+
+                    {% if name %}
+                        {{ name }}
+                    {% else %}
+                        Nenurodytas
+                    {% endif %}
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        {% if name |lower == "matas kazanavičius" %}
+
+        <div class="alert alert-success">
+            Dešimt balų
+        </div>
+
+        {% else %}
+
+            <div class="alert alert-alert">
+                Gal pasiseks kitą kartą
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="m-4">
+
+        <a href="{{ path('home') }}" class="text-light">Visi studentai</a>
+    </div>
+
+
+{% endblock %}
