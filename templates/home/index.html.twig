@@ -21,7 +21,8 @@
         {% for student in project.students %}
             <li class="list-group-item">
                 <p>
-                    <a href="#">{{ student }}</a>
+
+                    <a href="{{ path('student', { 'name': student , 'project': project.name }) }}">{{ student }}</a>
                     (<span class="badge">
                         {{ project.mentors|join(', ') }}
                     )</span>
@@ -34,7 +35,7 @@
 
 
         <div class="m-4">
-            <form action="/student" method="get">
+            <form action="{{ path('student') }}" method="get">
                 <div class="form-group">
                     <input type="text" class="form-control" id="name" placeholder="Studentas">
                 </div>
