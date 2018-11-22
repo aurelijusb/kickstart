@@ -11,7 +11,12 @@
         {% block canonical_meta %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <div class="container">
+        {% block body %}
+        <H2>HihiHaha</H2>
+        {% endblock %}
+    </div>
+
         {% block javascripts %}
             <script src="{{ asset('build/js/app.js') }}"></script>
         {% endblock %}

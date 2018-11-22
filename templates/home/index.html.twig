@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Homepage - {{ parent() }}{% endblock %}
+{% block title %}Projektai{% endblock %}
 
 {% block stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -11,5 +11,64 @@
 {% endblock %}
 
 {% block body %}
-   
+
+
+
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+    {% for project in data %}
+        {% for student in project.students %}
+            <li class="list-group-item">
+                <p>
+                    <a href="#">{{ student }}</a>
+                    (<span class="badge">
+                        {{ project.mentors|join(', ') }}
+                    )</span>
+                </p>
+            </li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+
+
+
+        <div class="m-4">
+            <form action="/student" method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Studentas">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="project" placeholder="Projektas">
+                </div>
+                <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+            </form>
+        </div>
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+        {% for key,project in data %}
+        <li class="list-group-item">
+            <h3>{{ project.name }}</h3>
+            <div class="panel panel-default">
+                <div>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{ key|url_encode }}">github.com/nfqakademija/{{ key }}</a>
+                    <span class="badge">GitHub</span>
+                </div>
+                <div>
+                    <a target="_blank" href="http://{{ key|url_encode }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/</a>
+                    <span class="badge">Web</span>
+                </div>
+                <div>
+                    <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</pre>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="m-4">
+        <a class="text-light" href="students.json">Duomenų failas</a>
+    </div>
+
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vertinimas{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    {{ parent() }}
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="bg-light m-4">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Projektas</th>
+                <th>Studentas</th>
+            </tr>
+          <tr>
+              <td>carbooking</td>
+              <td>Matas Kazanaučius</td>
+          </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-warning">
+            Gal pasiseks kitą kartą
+        </div>
+        <div class="m4">
+            <a href="" class="text-light">
+                Visi studentai
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}
