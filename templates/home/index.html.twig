@@ -2,10 +2,24 @@
 
 {% block title %}Homepage - {{ parent() }}{% endblock %}
 
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-
+        {% for key,team in data %}
+            {% for student in team.students %}
+                <li class="list-group-item">
+                    <a href="">{{ student }}</a>
+                    <span class="badge">
+                        {{ team.mentors|join(', ') }}
+                    </span>
+                </li>
+            {% endfor %}
+        {% endfor %}
     </ul>
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Projektai</li>
