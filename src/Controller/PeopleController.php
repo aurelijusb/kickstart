@@ -127,12 +127,9 @@ class PeopleController extends AbstractController
 
     private function getProjects(): array
     {
-        $projects = [];
         $storage = json_decode($this->getStorage(), true);
-        foreach ($storage as $key => $value) {
-            $projects[] = $key;
-        }
-        return $projects;
+
+        return array_keys($storage);
     }
 }
 
