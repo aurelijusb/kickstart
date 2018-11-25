@@ -49,3 +49,7 @@ npm-debug.log
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
+###> Upload example ###
+public/uploads
+###< Upload example ###
