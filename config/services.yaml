@@ -33,5 +33,10 @@ services:
       tags:
         - { name: kernel.event_subscriber }
 
+    my.custom.service:
+      class: App\Services\MyAnotherService # We can easily switch implementation to MyService
+
+    App\Services\MyServiceInterface: "@my.custom.service"
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

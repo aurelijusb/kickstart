@@ -3,6 +3,8 @@
 {% block title %}Homepage - {{ parent() }}{% endblock %}
 
 {% block body %}
+    {{ sum }}
+
     <div class="title">NFQ Akademija</div>
     <div class="jumbotron">
         <a class="btn btn-secondary btn-lg" href="{{ path('fos_user_security_login') }}">Login</a>
