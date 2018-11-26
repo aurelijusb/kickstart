@@ -18,6 +18,9 @@ set -e
 # Installing dependencies
 echo "Preparing PHP dependencies..."
 $SCRIPT_DIR/backend.sh composer install
+echo "Setting up database..."
+$SCRIPT_DIR/backend.sh bin/console doctrine:database:create
+$SCRIPT_DIR/backend.sh bin/console doctrine:migrations:migrate --no-interaction
 echo ""
 echo "Preparing JavaScript/CSS dependencies..."
 echo ""
