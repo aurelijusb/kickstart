@@ -30,13 +30,20 @@ class PeopleController extends AbstractController
         try {
             $input = json_decode($request->getContent(), true)['input'];
         } catch (\Exception $e) {
-            return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
+            try {
+                $team = json_decode($request->getContent(), true)['team'];
+            } catch (\Exception $e) {
+                return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
+            }
         }
 
         $students = $this->getStudents();
+        $teams = $this->getTeams();
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                return new JsonResponse(['valid' => in_array(strtolower($team), $teams)]);
         }
 
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
@@ -119,6 +126,16 @@ class PeopleController extends AbstractController
             }
         }
         return $students;
+    }
+
+    private function getTeams(): array
+    {
+        $teams = [];
+        $storage = json_decode($this->getStorage(), true);
+        foreach (array_keys($storage) as $teamTitle) {
+                $teams[] = strtolower($teamTitle);
+        }
+        return $teams;
     }
 }
 

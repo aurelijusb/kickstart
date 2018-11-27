@@ -17,5 +17,24 @@ const validateName = function () {
         });
 };
 
+let team = document.getElementById('team');
+let validationTeamResult = document.getElementById('validation-team-result');
+const validateTeam = function () {
+    validationTeamResult.innerText = '...';
+    axios.post(validationTeamResult.dataset.path, {team: team.value})
+        .then(function(response) {
+            if (response.data.valid) {
+                validationTeamResult.innerHTML = ":)";
+            } else {
+                validationTeamResult.innerHTML = ":(";
+            }
+        })
+        .catch(function (error) {
+            validationTeamResult.innerText = 'Error: ' + error;
+        });
+};
+
 name.onkeyup = validateName;
 name.onchange = validateName;
+team.onkeyup = validateTeam;
+team.onchange = validateTeam;
