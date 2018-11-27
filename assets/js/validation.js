@@ -15,7 +15,6 @@ const validateTeam = function (){
     result.team.innerText = '...';
     axios.post(result.team.dataset.path, {input: team.value})
         .then(function(response) {
-            console.log(response);
             if (response.data.valid) {
                 result.team.innerHTML = ":)";
             } else {
