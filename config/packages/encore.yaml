@@ -1,0 +1,3 @@
+webpack_encore:
+  # the "default" build
+  output_path: "%kernel.root_dir%/../public/build/"
