@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+    <div class="m4 jumbotron">
+        <div class="lead">
+            Hello, {{ app.user.username }}
+            {% if 'ROLE_ADMIN' in app.user.roles %}
+                <button class="btn btn-primary">Edit</button>
+            {% endif %}
+            {% if 'ROLE_MENTORIUS' in app.user.roles %}
+                <button class="btn btn-info">Comment</button>
+            {% endif %}
+        </div>
+        {% if app.user.website %}
+            <div class="p2">
+                <a href="{{ app.user.website }}">{{ app.user.website }}</a>
+                <span class="badge badge-secondary">WebSite</span>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="jumbotron">
+        <a class="btn btn-info btn-lg" href="{{ path('home') }}">My home</a>
+    </div>
+{% endblock %}

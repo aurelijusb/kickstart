@@ -1,5 +1,7 @@
 ﻿![](https://avatars0.githubusercontent.com/u/4995607?v=3&s=100)
 
+Pavydžiai Symfony 3 paskaitai
+
 NFQ Akademija
 ============
 
@@ -70,6 +72,11 @@ scripts/stop.sh
 scripts/install-dev.sh
 ```
 
+* Pasikeisti naudotojo teises:
+```bash
+scripts/backend.sh bin/console fos:user:promote
+```
+
 * Jei norite pridėti PHP biblioteką arba dirbti su Symfony karkasu per komandinę eilutę:
 ```bash
 scripts/backend.sh
@@ -109,6 +116,11 @@ Plačiau žr. [MySql GUI dokumentacijoje](https://github.com/nfqakademija/docker
 * **Kaip pasileisti xDebug?**
 Trumpai: `./scripts/backend.sh /enable_xdebug.sh <TAVO_KOMPO_IP_ADRESAS>`
 Plačiau žr. [xDebug dokumentacijoje](https://github.com/nfqakademija/docker/blob/master/docs/setup-xdebug.md)
+
+* **Kaip pratestuoti el. pašto siuntimą**
+Savo `.env` faile nurodykite `MAILER_URL=smtp:://mailcacher.symfony:25?encryption=&auth_mode=`
+Kai Symfony išsiųs el. laišką, jį matysite atsidare [127.0.0.1:1080](http://127.0.0.1:1080)  
+
 
 * **Turių daugiau techninių klausimų?**
 Google ir StackOverflow yra geriausi tavo draugai.
