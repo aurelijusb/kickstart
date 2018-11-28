@@ -2,25 +2,6 @@
 
 {% block title %}Homepage - {{ parent() }}{% endblock %}
 
-{% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    {{ parent() }}
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
-
-        .title {
-            margin: 20px auto;
-            text-align: center;
-            font-size: 96px;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
-    <div class="title">NFQ Akademija</div>
+    Pasinkite dalyvį pvz. <a href="{{ path('member', {member: "Vardenis Pavardenis"}) }}">Vardenis Pavardenis</a>
 {% endblock %}
