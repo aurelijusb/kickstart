@@ -3,14 +3,27 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<div id="root">Loading...</div>
-<noscript>To use this app, enable JavaScript</noscript>
-<div>
-    Versijuojamas JavaScript failas: <b id="versionedFile">...</b>
-</div>
-
-    <input type="text" id="name"/>
-    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    <div id="root">Loading...</div>
+    <noscript>To use this app, enable JavaScript</noscript>
+    <div>
+        Versijuojamas JavaScript failas: <b id="versionedFile">...</b>
+    </div>
+    <div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name"/>
+                <span id="validation-result-name" data-path="{{ path('validate', {'element': 'name'}) }}"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <label for="team">Team</label>
+                <input class="form-control" type="text" id="team"/>
+                <span id="validation-result-team" data-path="{{ path('validate', {'element': 'team'}) }}"></span>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

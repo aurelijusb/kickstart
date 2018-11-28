@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\DataProvider;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,6 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PeopleController extends AbstractController
 {
+    private $dataProvider;
+
+    public function __construct(DataProvider $dataProvider)
+    {
+        $this->dataProvider = $dataProvider;
+    }
+
     /**
      * @Route("/people", name="people")
      */
@@ -22,103 +30,26 @@ class PeopleController extends AbstractController
     }
 
     /**
-     * @Route("/validate/{element}", name="validatePerson")
+     * @Route("/validate/{element}", name="validate")
      * @Method({"POST"})
      */
-    public function validate(Request $request, $element)
+    public function validatePerson(Request $request, $element)
     {
         try {
-            $input = json_decode($request->getContent(), true)['input'];
+            $input = json_decode($request->getContent(), true)[$element];
         } catch (\Exception $e) {
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
-        $students = $this->getStudents();
         switch ($element) {
             case 'name':
+                $students = $this->dataProvider->getStudents();
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                $teams = $this->dataProvider->getTeams();
+                return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
 
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
-    }
-
-    private function getStorage()
-    {
-        return /** @lang json */
-            '{
-              "knygnesiai": {
-                "name": "Knygų mainai",
-                "mentors": [
-                  "Karolis"
-                ],
-                "students": [
-                  "Mindaugas",
-                  "Tadas"
-                ]
-              },
-              "carbooking": {
-                "name": "Car booking",
-                "mentors": [
-                  "Monika",
-                  "Tomas"
-                ],
-                "students": [
-                  "Matas",
-                  "Adomas",
-                  "Aidas"
-                ]
-              },
-              "academyui": {
-                "name": "NFQ Akademijos puslapis",
-                "mentors": [
-                  "Tomas"
-                ],
-                "students": [
-                  "Indrė"
-                ]
-              },
-              "buhalteriui": {
-                "name": "Pagalba buhalteriui",
-                "mentors": [
-                  "Aistis"
-                ],
-                "students": [
-                  "Geraldas",
-                  "Matas"
-                ]
-              },
-              "mapsportas": {
-                "name": "Sporto draugas",
-                "mentors": [
-                  "Agnis"
-                ],
-                "students": [
-                  "Mantas",
-                  "Pijus"
-                ]
-              },
-              "trainme": {
-                "name": "Asmeninio trenerio puslapis",
-                "mentors": [
-                  "Laurynas"
-                ],
-                "students": [
-                  "Ignas",
-                  "Gintautas"
-                ]
-              }
-            }';
-    }
-
-    private function getStudents(): array
-    {
-        $students = [];
-        $storage = json_decode($this->getStorage(), true);
-        foreach ($storage as $teamData) {
-            foreach ($teamData['students'] as $student) {
-                $students[] = strtolower($student);
-            }
-        }
-        return $students;
     }
 }
