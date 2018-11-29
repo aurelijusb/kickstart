@@ -3,9 +3,14 @@
 namespace App\Service;
 
 
-class ProjectsData
+class ProjectsData implements ProjectsDataInterface
 {
-    private $dataFile = 'students.json';
+    private $dataFile;
+    
+    public function __construct(string $dataFile)
+    {
+        $this->setDataFile($dataFile);
+    }
     
     public function getData()
     {
@@ -27,9 +32,9 @@ class ProjectsData
     
     /**
      * @param string $dataFile
-     * @return ProjectsData
+     * @return ProjectsDataInterface
      */
-    public function setDataFile(string $dataFile): ProjectsData
+    public function setDataFile(string $dataFile): ProjectsDataInterface
     {
         $this->dataFile = $dataFile;
         return $this;
