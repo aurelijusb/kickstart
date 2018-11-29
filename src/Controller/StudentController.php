@@ -23,7 +23,6 @@ class StudentController extends AbstractController
         $graduated = ($this->studentName === $studentName);
         
         return $this->render('student/index.html.twig', [
-            'controller_name' => 'StudentController',
             'project_key' => $projectKey,
             'student_name' => $studentName,
             'graduated' => $graduated,
