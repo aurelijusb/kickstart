@@ -18,21 +18,11 @@
             </tr>
             <tr>
                 <td>
-
-                    {% if project  %}
                         {{ project }}
-                    {% else %}
-                        Nenurodytas
-                    {% endif %}
 
                 </td>
                 <td>
-
-                    {% if name %}
                         {{ name }}
-                    {% else %}
-                        Nenurodytas
-                    {% endif %}
 
                 </td>
             </tr>
@@ -54,9 +44,7 @@
         {% endif %}
 
     </div>
-
     <div class="m-4">
-
         <a href="{{ path('home') }}" class="text-light">Visi studentai</a>
     </div>
 

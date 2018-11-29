@@ -2,16 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}{{ "My project" }}{% endblock %}</title>
+        <title>{% block title %}{{ "Projektai" }}{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
-            <style>
-                {# veikia tik cia :)#}
-                body {
-                    background-color: #E9967A;
-                }
-
-            </style>
         {% endblock %}
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico')}}">
@@ -20,7 +13,6 @@
     <body>
     <div class="container">
         {% block body %}
-        <H2>HihiHaha</H2>
         {% endblock %}
     </div>
 

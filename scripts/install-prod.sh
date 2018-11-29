@@ -17,14 +17,14 @@ set -e
 
 # Installing dependencies
 echo "Preparing PHP dependencies..."
-sh $SCRIPT_DIR/backend.sh composer install
+. $SCRIPT_DIR/backend.sh composer install
 echo ""
 echo "Preparing JavaScript/CSS dependencies..."
 echo ""
-sh $SCRIPT_DIR/frontend.sh yarn
+. $SCRIPT_DIR/frontend.sh yarn
 echo ""
 echo "Preparing JavaScript/CSS dependencies..."
 echo ""
-sh $SCRIPT_DIR/frontend.sh yarn run encore production
+. $SCRIPT_DIR/frontend.sh yarn run encore production
 
 echo "Open your browser at http://127.0.0.1:8000"

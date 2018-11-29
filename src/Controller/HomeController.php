@@ -10,15 +10,13 @@ class HomeController extends Controller
 
 {
 
-    protected $data = "Matas Kazanavicius";
-
 
     /**
      * @Route("/", name="home")
      */
     public function index()
     {
-        $data = file_get_contents('./data.json');
+        $data = file_get_contents('./students.json');
         $students = json_decode($data, true);
 
         return $this->render('home/index.html.twig', [

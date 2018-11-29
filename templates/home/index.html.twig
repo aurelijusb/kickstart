@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Projektai{% endblock %}
+{% block title %}{{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -69,7 +69,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="data.json">Duomenų failas</a>
+        <a class="text-light" href="students.json">Duomenų failas</a>
     </div>
 
 {% endblock %}
