@@ -11,16 +11,14 @@ class HomeController extends Controller
     /**
      * @Route("/", name="home")
      *
-     * @param ProjectsData $projects
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(ProjectsData $projects)
+    public function index()
     {
         $webPath = $this->get('kernel')->getProjectDir() . '/public/';
-        $projects->setDataFile($webPath.'students.json');
+        $projects = new ProjectsData($webPath.'students.json');
         
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
             'projects' => $projects->getData(),
         ]);
     }
