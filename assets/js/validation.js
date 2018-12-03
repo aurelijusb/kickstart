@@ -21,7 +21,7 @@ let team = document.getElementById('team');
 let validationTeamResult = document.getElementById('validation-team-result');
 const validateTeam = function () {
     validationTeamResult.innerText = '...';
-    axios.post(validationTeamResult.dataset.path, {team: team.value})
+    axios.post(validationTeamResult.dataset.path, {input: team.value})
         .then(function(response) {
             if (response.data.valid) {
                 validationTeamResult.innerHTML = ":)";
