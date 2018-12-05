@@ -50,7 +50,7 @@ class PeopleController extends AbstractController
     {
         $students = [];
         $storage = json_decode($this->getStorage(), true);
-        if ($storage === false) {
+        if ($storage === null) {
             $storage = [];
         }
         foreach ($storage as $teamData) {
@@ -65,7 +65,7 @@ class PeopleController extends AbstractController
     private function getProjects(): array
     {
         $storage = json_decode($this->getStorage(), true);
-        if ($storage === false) {
+        if ($storage === null) {
             $storage = [];
         }
         $projects = array_map([$this, 'stringToLower'], array_keys($storage));
