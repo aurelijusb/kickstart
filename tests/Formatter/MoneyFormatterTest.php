@@ -9,51 +9,85 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 class MoneyFormatterTest extends TestCase
 {
+    //[expected, input]
+    public function dataProviderFormatEur()
+    {
+        return [
+          ['2.84M €', '2.84M'],
+          ['1.00M €', '1.00M'],
+          ['535K €', '535K'],
+          ['100K €', '100K'],
+          ['27 534 €', '27 534'],
+          ['533.10 €', '533.10'],
+          ['66.67 €', '66.67'],
+          ['12 €', '12'],
+          ['12.01 €', '12.01'],
+          ['-2.84M €', '-2.84M'],
+          ['-1.00M €', '-1.00M'],
+          ['-535K €', '-535K'],
+          ['-100K €', '-100K'],
+          ['-27 534 €', '-27 534'],
+          ['-533.10 €', '-533.10'],
+          ['-66.67 €', '-66.67'],
+          ['-12 €', '-12'],
+          ['-12.01 €', '-12.01'],
+          ['0 €', '0'],
+        ];
+    }
 
-    public function testFormatEur()
+    //[expected, input]
+    public function dataProviderFormatUsd()
+    {
+        return [
+          ['$2.84M', '2.84M'],
+          ['$1.00M', '1.00M'],
+          ['$535K', '535K'],
+          ['$100K', '100K'],
+          ['$27 534', '27 534'],
+          ['$533.10', '533.10'],
+          ['$66.67', '66.67'],
+          ['$12', '12'],
+          ['$12.01', '12.01'],
+          ['$-2.84M', '-2.84M'],
+          ['$-1.00M', '-1.00M'],
+          ['$-535K', '-535K'],
+          ['$-100K', '-100K'],
+          ['$-27 534', '-27 534'],
+          ['$-533.10', '-533.10'],
+          ['$-66.67', '-66.67'],
+          ['$-12', '-12'],
+          ['$-12.01', '-12.01'],
+          ['$0', '0'],
+          ['$', ''],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderFormatEur
+     */
+    public function testFormatEur($expected, $input)
     {
         /** @var MockObject $numberFormatter */
         
-        $numberFormatter1 = $this->createMock(NumberFormatter::class);
+        $numberFormatter = $this->createMock(NumberFormatter::class);
         
-        $numberFormatter1->method('floatToString')->willReturn('2.84M');
-        $moneyFormatter = new MoneyFormatter($numberFormatter1);
-        $this->assertEquals('2.84M €', $moneyFormatter->formatEur());
-
-        $numberFormatter2 = $this->createMock(NumberFormatter::class);
-        
-        $numberFormatter2->method('floatToString')->willReturn('535K');
-        $moneyFormatter = new MoneyFormatter($numberFormatter2);
-        $this->assertEquals('535K €', $moneyFormatter->formatEur());
-
-        $numberFormatter3 = $this->createMock(NumberFormatter::class);
-        
-        $numberFormatter3->method('floatToString')->willReturn('-2.84M');
-        $moneyFormatter = new MoneyFormatter($numberFormatter3);
-        $this->assertEquals('-2.84M €', $moneyFormatter->formatEur());
+        $numberFormatter->method('floatToString')->willReturn($input);
+        $moneyFormatter = new MoneyFormatter($numberFormatter);
+        $this->assertEquals($expected, $moneyFormatter->formatEur());
     }
 
 
-    public function testFormatUsd()
+    /**
+     * @dataProvider dataProviderFormatUsd
+     */
+    public function testFormatUsd($expected, $input)
     {
         /** @var MockObject $numberFormatter */
 
-        $numberFormatter1 = $this->createMock(NumberFormatter::class);
+        $numberFormatter = $this->createMock(NumberFormatter::class);
 
-        $numberFormatter1->method('floatToString')->willReturn('2.84M');
-        $moneyFormatter = new MoneyFormatter($numberFormatter1);
-        $this->assertEquals('$2.84M', $moneyFormatter->formatUsd());
-
-        $numberFormatter2 = $this->createMock(NumberFormatter::class);
-
-        $numberFormatter2->method('floatToString')->willReturn('535K');
-        $moneyFormatter = new MoneyFormatter($numberFormatter2);
-        $this->assertEquals('$535K', $moneyFormatter->formatUsd());
-
-        $numberFormatter3 = $this->createMock(NumberFormatter::class);
-
-        $numberFormatter3->method('floatToString')->willReturn('-2.84M');
-        $moneyFormatter = new MoneyFormatter($numberFormatter3);
-        $this->assertEquals('$-2.84M', $moneyFormatter->formatUsd());
+        $numberFormatter->method('floatToString')->willReturn($input);
+        $moneyFormatter = new MoneyFormatter($numberFormatter);
+        $this->assertEquals($expected, $moneyFormatter->formatUsd());
     }
 }
