@@ -24,6 +24,12 @@ class User extends BaseUser implements UserInterface
      */
     private $website;
 
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $linkedIn;
+
     public function getId()
     {
         return $this->id;
@@ -43,5 +49,25 @@ class User extends BaseUser implements UserInterface
     public function setWebsite($website): void
     {
         $this->website = $website;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkedIn()
+    {
+        return $this->linkedIn;
+    }
+
+    /**
+     * @param string $linkedIn
+     *
+     * @return $this
+     */
+    public function setLinkedIn(string $linkedIn)
+    {
+        $this->linkedIn = $linkedIn;
+
+        return $this;
     }
 }
