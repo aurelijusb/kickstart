@@ -20,7 +20,7 @@ class DataProvider
 
     public function getTeams(): array
     {
-        return array_keys(json_decode($this->getStorage(), true));
+        return array_map('strtolower', array_keys(json_decode($this->getStorage(), true)));
     }
 
     private function getStorage()
