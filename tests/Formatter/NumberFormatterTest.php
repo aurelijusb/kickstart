@@ -7,34 +7,39 @@ use PHPUnit\Framework\TestCase;
 
 class NumberFormatterTest extends TestCase
 {
-    public function testFloatToString()
+
+    public function dataProviderFloatToString()
+    {
+        return [
+            ['2.84M', 2835779],
+            ['1.00M', 999500],
+            ['535K', 535216],
+            ['100K', 99950],
+            ['27 534', 27533.78],
+            ['533.10', 533.1],
+            ['66.67', 66.6666],
+            ['12', 12.00],
+            ['12.01', 12.01],
+            ['-2.84M', -2835779],
+            ['-1.00M', -999500],
+            ['-535K', -535216],
+            ['-100K', -99950],
+            ['-27 534', -27533.78],
+            ['-533.10', -533.1],
+            ['-66.67', -66.6666],
+            ['-12', -12.00],
+            ['-12.01', -12.01],
+            ['0', 0],
+        ];
+    }
+
+
+    /**
+     * @dataProvider dataProviderFloatToString
+     */
+    public function testFloatToString($expected, $input)
     {
         $numberFormatter = new NumberFormatter();
-        $this->assertEquals('2.84M', $numberFormatter->floatToString(2835779));
-        $this->assertEquals('1.00M', $numberFormatter->floatToString(999500));
-
-        $this->assertEquals('535K', $numberFormatter->floatToString(535216));
-        $this->assertEquals('100K', $numberFormatter->floatToString(99950));
-
-        $this->assertEquals('27 534', $numberFormatter->floatToString(27533.78));
-
-        $this->assertEquals('533.10', $numberFormatter->floatToString(533.1));
-        $this->assertEquals('66.67', $numberFormatter->floatToString(66.6666));
-        $this->assertEquals('12', $numberFormatter->floatToString(12.00));
-        $this->assertEquals('12.01', $numberFormatter->floatToString(12.01));
-
-
-        $this->assertEquals('-2.84M', $numberFormatter->floatToString(-2835779));
-        $this->assertEquals('-1.00M', $numberFormatter->floatToString(-999500));
-
-        $this->assertEquals('-535K', $numberFormatter->floatToString(-535216));
-        $this->assertEquals('-100K', $numberFormatter->floatToString(-99950));
-
-        $this->assertEquals('-27 534', $numberFormatter->floatToString(-27533.78));
-
-        $this->assertEquals('-533.10', $numberFormatter->floatToString(-533.1));
-        $this->assertEquals('-66.67', $numberFormatter->floatToString(-66.6666));
-        $this->assertEquals('-12', $numberFormatter->floatToString(-12.00));
-        $this->assertEquals('-12.01', $numberFormatter->floatToString(-12.01));
+        $this->assertEquals($expected, $numberFormatter->floatToString($input));
     }
 }

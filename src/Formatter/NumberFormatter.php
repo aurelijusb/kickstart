@@ -6,7 +6,7 @@ namespace App\Formatter;
 class NumberFormatter
 {
 
-    public function floatToString(float $number) :?string
+    public function floatToString(float $number) :string
     {
         $result = '';
         $numberAbs = abs($number);
