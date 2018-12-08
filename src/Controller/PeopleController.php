@@ -136,4 +136,3 @@ class PeopleController extends AbstractController
         return $projects;
     }
 }
-
