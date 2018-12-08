@@ -129,7 +129,11 @@ class PeopleController extends AbstractController
     {
         $storage = json_decode($this->getStorage(), true);
 
-        return array_keys($storage);
+        $projects = array_map(function ($item) {
+            return strtolower($item);
+        }, array_keys($storage));
+
+        return $projects;
     }
 }
 
