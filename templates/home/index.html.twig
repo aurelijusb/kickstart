@@ -7,7 +7,6 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for key, value in data %}
-            {{ key }}
             {% for student in value.students %}
                 <li class="list-group-item">
                     <a href="/student?name={{ student }}&project={{ key|escape }}">{{ student }}</a>
