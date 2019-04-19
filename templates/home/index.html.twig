@@ -4,4 +4,26 @@
 
 {% block body %}
     <div class="nfq-academy">{{ someVariable }}</div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Students</li>
+        {% for key, value in data %}
+            {% for student in value.students %}
+                <li class="list-group-item">
+                    <a href="/student?name={{ student }}&project={{ key }}">{{ student }}</a>
+                    (<span class="badge">Mentorius</span> {{ value.mentors.0 }})
+                </li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    <div class="m-4">
+        <form action="/student" method="get">
+            <div class="input-group">
+                <input name="name" type="text" class="form-control" placeholder="Studentas"/>
+            </div>
+            <div class="input-group">
+                <input name="project" type="text" class="form-control" placeholder="Projektas"/>
+            </div>
+            <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+        </form>
+    </div>
 {% endblock %}
