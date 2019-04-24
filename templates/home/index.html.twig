@@ -28,5 +28,17 @@
         </form>
     </div>
 
+    <ul class = "list-group m-4">
+        <li class = "list-group-item list-group-item-info">Projektai</li>
+        {% for students in students %}
+            <li class = "list-group-item">
+                <h3>{{ students.name }}</h3>
+                <div class ="panel panel-default">
+                    <a target="_blank" href="https://github.com/nfqakademija/nedarykpats">https://github.com/nfqakademija/nedarykpats</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
     <a href= {{ path('home') }}>Duomenų failas</a>
 {% endblock %}
