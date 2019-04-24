@@ -8,7 +8,6 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div>
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
         <li class="list-group-item"><a href="/student?name=Martyna&project=nedarykpats">Martyna</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
@@ -26,5 +25,17 @@
         <li class="list-group-item"><a href="/student?name=Aurelijus Banelis&project=savanoryste">Aurelijus Banelis</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
         <li class="list-group-item"><a href="/student?name=Darius&project=savanoryste"></a>Last</li>
     </ul>
-</div>
+
+    <div class="m-4">
+        <form action="/student" method="get" _lpchecked="1">
+            <div class="input-group">
+                <input name="name" type="text" class="form-control" placeholder="Studentas">
+            </div>
+            <div class="input-group">
+                <input name="project" type="text" class="form-control" placeholder="Projektas">
+            </div>
+            <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+        </form>
+    </div>
+
 {% endblock %}
