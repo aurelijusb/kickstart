@@ -17,9 +17,16 @@
             </tr>
             </tbody>
         </table>
+
+        {% if name == "Ignas" %}
+        <div class="alert alert-success" role="alert">
+            Dešimt balų
+        </div>
+        {% else %}
         <div class="alert alert-warning" role="alert">
             Gal pasiseks kitą kartą
         </div>
+        {% endif %}
     </div>
 
 {% endblock %}
