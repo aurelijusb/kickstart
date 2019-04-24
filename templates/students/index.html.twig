@@ -3,26 +3,61 @@
 {% block title %}Projektai{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
 
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-        <li class="list-group-item"><a href="/student?name=Martyna&project=nedarykpats">Martyna</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Aurimas&project=nedarykpats">Aurimas</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Vilius&project=nedarykpats">Vilius</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Ignas&project=savanoryste">Ignas</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Dovydas&project=savanoryste">Dovydas</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Darius&project=savanoryste">Darius</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Roman&project=curlybrackets">Roman</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Marijus&project=curlybrackets">Marijus</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Angelika&project=curlybrackets">Angelika</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Miroslav&project=hobby">Miroslav</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Viktoras&project=hobby">Viktoras</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Lukas&project=hobby">Lukas</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
-        <li class="list-group-item"><a href="/student?name=Aurelijus Banelis&project=savanoryste">Aurelijus Banelis</a>   (   <span class="badge">Mentorius</span> Laurynas   )</li>
+        <li class="list-group-item"><a href="/student?name=Martyna&project=nedarykpats">Martyna</a> ( <span
+                    class="badge">Mentorius</span> Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Aurimas&project=nedarykpats">Aurimas</a> ( <span
+                    class="badge">Mentorius</span> Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Vilius&project=nedarykpats">Vilius</a> ( <span class="badge">Mentorius</span>
+            Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Ignas&project=savanoryste">Ignas</a> ( <span class="badge">Mentorius</span>
+            Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Dovydas&project=savanoryste">Dovydas</a> ( <span
+                    class="badge">Mentorius</span> Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Darius&project=savanoryste">Darius</a> ( <span class="badge">Mentorius</span>
+            Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Roman&project=curlybrackets">Roman</a> ( <span class="badge">Mentorius</span>
+            Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Marijus&project=curlybrackets">Marijus</a> ( <span
+                    class="badge">Mentorius</span> Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Angelika&project=curlybrackets">Angelika</a> ( <span
+                    class="badge">Mentorius</span> Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Miroslav&project=hobby">Miroslav</a> ( <span class="badge">Mentorius</span>
+            Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Viktoras&project=hobby">Viktoras</a> ( <span class="badge">Mentorius</span>
+            Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Lukas&project=hobby">Lukas</a> ( <span class="badge">Mentorius</span>
+            Laurynas )
+        </li>
+        <li class="list-group-item"><a href="/student?name=Aurelijus Banelis&project=savanoryste">Aurelijus Banelis</a>
+            ( <span class="badge">Mentorius</span> Laurynas )
+        </li>
         <li class="list-group-item"><a href="/student?name=Darius&project=savanoryste"></a>Last</li>
     </ul>
 
