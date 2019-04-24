@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ND{% endblock %}
+
+{% block body %}
+    <div class="bg-light m-4">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">Projektas</th>
+                <th scope="row">Studentas</th>
+            </tr>
+            <tr>
+                <td>{{ dataSet.project }}</td>
+                <td>{{ dataSet.name }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-{{ dataSet.success ? 'success' : 'warning' }}" role="alert">
+            {{ dataSet.evaluation }}
+        </div>
+    </div>
+    <div class="m-4">
+        <a class="text-light" href="/">Visi studentai</a>
+    </div>
+{% endblock %}

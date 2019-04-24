@@ -12,8 +12,10 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+
+        $dataSet = json_decode(file_get_contents("https://nfq190418.realus.website/students.json"), true);
         return $this->render('home/index.html.twig', [
-            'someVariable' => 'NFQ Akademija',
+            'dataSet' => $dataSet,
         ]);
     }
 }

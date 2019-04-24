@@ -1,7 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}ND{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+        {% for dataKey in dataSet|keys %}
+            {% for name in dataSet[dataKey].students %}
+            <li class="list-group-item">
+                <a href="{{ path('student') }}?name={{ name | url_encode }}&project={{ dataKey | url_encode }}">{{ name }}</a>
+                (
+                <span class="badge">Mentorius</span>
+                {{ dataSet[dataKey].mentors[0]  }}
+                )
+            </li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    <div class="m-4">
+        <form action="{{ path('student') }}" method="get">
+            <div class="input-group">
+                <input name="name" type="text" class="form-control" placeholder="Studentas">
+            </div>
+            <div class="input-group">
+                <input name="project" type="text" class="form-control" placeholder="Projektas">
+            </div>
+            <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+        </form>
+    </div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+        {% for dataKey in dataSet|keys %}
+        <li class="list-group-item">
+            <h3>{{ dataSet[dataKey].name }}</h3>
+            <div class="panel panel-default">
+                <div>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{ dataKey | url_encode }}">github.com/nfqakademija/{{ dataKey }}</a>
+                    <span class="badge">GitHub</span>
+                </div>
+                <div>
+                    <a target="_blank" href="http://{{ dataKey | url_encode }}.projektai.nfqakademija.lt/">{{ dataKey }}.projektai.nfqakademija.lt/</a>
+                    <span class="badge">Web</span>
+                </div>
+                <div>
+                    <pre>ssh {{ dataKey }}@deploy.nfqakademija.lt -p 2222</pre>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="m-4">
+        <a class="text-light" href="https://nfq190418.realus.website/students.json">Duomenų failas</a>
+    </div>
 {% endblock %}
