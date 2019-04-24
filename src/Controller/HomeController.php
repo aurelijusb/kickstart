@@ -15,7 +15,6 @@ class HomeController extends AbstractController
         $studentsJson = file_get_contents('students.json');
         $students = json_decode($studentsJson, true);
 
-
         return $this->render('home/index.html.twig', [
             'students' => $students,
         ]);

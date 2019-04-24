@@ -7,10 +7,10 @@
         <table class = "table">
             <tbody>
             <tr>
-                <th scope = "row">Projektai</th>
+                <th scope = "row">Projektas</th>
                 <th scope = "row">Studentas</th>
             </tr>
-                <td>{{ project }}</td>
+                <td>{{ project | escape }}</td>
                 <td>{{ name }}</td>
             </tbody>
         </table>

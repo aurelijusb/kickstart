@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Projektai{% endblock %}
+
 {% block body %}
     <ul class = "list-group m-4">
         <li class = "list-group-item list-group-item-info">Studentai</li>
-            {% for students in students %}
+            {% for key,students in students %}
                 {% for name in students.students  %}
                     <li class = "list-group-item">
-                        <a href = {{ path('student', {name: name, project: students.name}) }}>{{ name }}</a>
-                        (<span class = "badge">Mentorius</span>
+                        <a href = {{ path('student', {name: name, project: key}) }}>{{ name }}</a>
+                        ( <span class = "badge">Mentorius</span>
                         {% for mentors in students.mentors %}
                             {{ mentors }} )
                         {% endfor %}
@@ -30,15 +32,26 @@
 
     <ul class = "list-group m-4">
         <li class = "list-group-item list-group-item-info">Projektai</li>
-        {% for students in students %}
+        {% for key,students in students %}
             <li class = "list-group-item">
                 <h3>{{ students.name }}</h3>
                 <div class ="panel panel-default">
-                    <a target="_blank" href="https://github.com/nfqakademija/nedarykpats">https://github.com/nfqakademija/nedarykpats</a>
+                    <div>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ key }}">github.com/nfqakademija/{{ key }} </a><span class = "badge"> GitHub</span>
+                    </div>
+                    <div>
+                        <a target="_blank" href="{{ key }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/ </a><span class = "badge"> Web</span>
+                    </div>
+                    <div>
+                        <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</pre>
+                    </div>
                 </div>
             </li>
         {% endfor %}
     </ul>
 
-    <a href= {{ path('home') }}>Duomenų failas</a>
+    <div class = "m-4">
+        <a class = "text-light" href= "/students.json">Duomenų failas</a>
+    </div>
+
 {% endblock %}
