@@ -7,13 +7,14 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
         <li class="list-group-item">
-
-            <a href="/student?name=Martyna&amp;project=nedarykpats">Martyna</a>
-            (
-            <span class="badge">Mentorius</span> Laurynas
-            )
-        </li>
+            {% for key, data in projects %}
+                {% for student in data.students %}
         <li class="list-group-item">
+            <a href="/student?name={{ student }}&amp;&project={{ key|url_encode }}">{{ student }}</a>
+            (<span class="badge">Mentorius</span> {{ data.mentors.0 }})
+        </li>
+                {% endfor %}
+            {% endfor %}
     </ul>
 
     <div class="m-4">
@@ -115,7 +116,9 @@
     <div class="m-4">
         <a class="text-light" href="students.json">Duomenų failas</a>
     </div>
-    <script src="/build/runtime.js"></script><script src="/build/vendors~app.js"></script><script src="/build/app.js"></script>
+    <script src="/build/runtime.js">
+    </script><script src="/build/vendors~app.js">
+    </script><script src="/build/app.js"></script>
 
 
     </body>
