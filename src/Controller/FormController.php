@@ -14,7 +14,8 @@ class FormController extends AbstractController
     public function index(Request $request)
     {
         return $this->render('form/index.html.twig', [
-            'data' => $request->get('data'),
+            'project' => $request->get('project'),
+            'name' => $request->get('name'),
         ]);
     }
 }
