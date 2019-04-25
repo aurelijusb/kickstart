@@ -3,18 +3,29 @@
 {% block title %}Hello StudentController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <body data-gr-c-s-loaded="true">
+    <div class="bg-light m-4">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">Projektas</th>
+                <th scope="row">Studentas</th>
+            </tr>
+            <tr>
+                <td>{{ project }}</td>
+                <td>{{ name }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-warning" role="alert">
+            Gal pasiseks kitą kartą
+        </div>
+    </div>
+    <div class="m-4">
+        <a class="text-light" href="/">Visi studentai</a>
+    </div>
+    <script src="/build/runtime.js">
+    </script><script src="/build/vendors~app.js">
+    </script><script src="/build/app.js"></script>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/code/src/Controller/StudentController.php'|file_link(0) }}">src/Controller/StudentController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/code/templates/student/index.html.twig'|file_link(0) }}">templates/student/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
