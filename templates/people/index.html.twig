@@ -9,8 +9,11 @@
         Versijuojamas JavaScript failas: <b id="versionedFile">...</b>
     </div>
 
-    <input type="text" id="name"/>
-    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    <label for="name">Vardas: </label><input type="text" id="name"/>
+    <span id="name-validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    <br>
+    <label for="project">Komanda: </label><input type="text" id="project"/>
+    <span id="project-validation-result" data-path="{{ path('validatePerson', {'element': 'project'}) }}"></span>
 {% endblock %}
 
 {% block javascripts %}
