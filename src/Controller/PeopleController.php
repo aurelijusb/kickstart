@@ -32,17 +32,26 @@ class PeopleController extends AbstractController
     {
         try {
             $input = json_decode($request->getContent(), true)['input'];
+            $input = htmlspecialchars($input,ENT_QUOTES, 'UTF-8');
         } catch (Exception $e) {
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
-        $students = $this->getStudents();
         switch ($element) {
             case 'name':
-                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+                $students = $this->getStudents();
+                return new JsonResponse(['valid' => $this->hasArray($input, $students)]);
+            case 'project':
+                $projects = $this->getProjects();
+                return new JsonResponse(['valid' => $this->hasArray($input, $projects)]);
         }
 
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
+    }
+
+    private function hasArray(string $value, array $arr):bool
+    {
+        return in_array(strtolower($value), $arr);
     }
 
     private function getStorage()
@@ -116,5 +125,15 @@ class PeopleController extends AbstractController
             }
         }
         return $students;
+    }
+
+    private function getProjects(): array
+    {
+        $projects = [];
+        $storage = json_decode($this->getStorage(), true);
+        foreach( $storage as $teamData ){
+            $projects[] = strtolower($teamData['name']);
+        }
+        return $projects;
     }
 }
