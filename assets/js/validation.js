@@ -19,3 +19,23 @@ const validateName = function () {
 
 name.onkeyup = validateName;
 name.onchange = validateName;
+
+let command = document.getElementById('command');
+let validationCommandResult = document.getElementById('validation-command-result');
+const validateCommandName = function () {
+    validationCommandResult.innerText = '...';
+    axios.post(validationCommandResult.dataset.path, {input: command.value})
+        .then(function(response) {
+            if (response.data.valid) {
+                validationCommandResult.innerHTML = ":)";
+            } else {
+                validationCommandResult.innerHTML = ":(";
+            }
+        })
+        .catch(function (error) {
+            validationCommandResult.innerText = 'Error: ' + error;
+        });
+};
+
+command.onkeyup = validateCommandName;
+command.onchange = validateCommandName;

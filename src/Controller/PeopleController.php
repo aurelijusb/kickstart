@@ -40,10 +40,14 @@ class PeopleController extends AbstractController
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'command':
+                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
         }
 
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
     }
+
+
 
     private function getStorage()
     {
