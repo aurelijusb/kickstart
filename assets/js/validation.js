@@ -23,7 +23,6 @@ name.onkeyup = validateName;
 name.onchange = validateName;
 
 const validateTeam = function () {
-    console.log(team.value);
     validationResultTeam.innerText = '...';
     axios.post(validationResultTeam.dataset.path, {input: team.value})
         .then(function(response) {
