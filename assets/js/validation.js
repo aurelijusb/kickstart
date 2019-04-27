@@ -20,22 +20,22 @@ const validateName = function () {
 name.onkeyup = validateName;
 name.onchange = validateName;
 
-let command = document.getElementById('command');
-let validationCommandResult = document.getElementById('validation-command-result');
-const validateCommandName = function () {
-    validationCommandResult.innerText = '...';
-    axios.post(validationCommandResult.dataset.path, {input: command.value})
+let team = document.getElementById('team');
+let validationTeamResult = document.getElementById('validation-team-result');
+const validateTeamName = function () {
+    validationTeamResult.innerText = '...';
+    axios.post(validationTeamResult.dataset.path, {input: team.value})
         .then(function(response) {
             if (response.data.valid) {
-                validationCommandResult.innerHTML = ":)";
+                validationTeamResult.innerHTML = ":)";
             } else {
-                validationCommandResult.innerHTML = ":(";
+                validationTeamResult.innerHTML = ":(";
             }
         })
         .catch(function (error) {
-            validationCommandResult.innerText = 'Error: ' + error;
+            validationTeamResult.innerText = 'Error: ' + error;
         });
 };
 
-command.onkeyup = validateCommandName;
-command.onchange = validateCommandName;
+team.onkeyup = validateTeamName;
+team.onchange = validateTeamName;

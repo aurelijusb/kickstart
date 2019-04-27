@@ -42,7 +42,7 @@ class PeopleController extends AbstractController
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
-            case 'command':
+            case 'team':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $team)]);
         }
 
