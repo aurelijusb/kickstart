@@ -5,10 +5,10 @@ let team = document.getElementById('team');
 let validationName = document.getElementById('validation-name-result');
 let validationTeam = document.getElementById('validation-team-result');
 
-const validate = function (validationType, validationResult) {
-     validationName.innerText = '...';
+const validate = (validationType, validationResult) => {
+    validationResult.innerText = '...';
     axios.post(validationResult.dataset.path, {input: validationType.value})
-        .then(function(response) {
+        .then(function (response) {
             if (response.data.valid) {
                 validationResult.innerHTML = ":)";
             } else {
@@ -20,8 +20,9 @@ const validate = function (validationType, validationResult) {
         });
 };
 
-name.onkeyup = validate(name, validationName);
-name.onchange = validate(name, validationName);
+name.onkeyup = () => validate(name, validationName);
+name.onchange = () => validate(name, validationName);
 
-team.onkeyup = validate(team, validationTeam);
-team.onchange = validate(team, validationTeam);
+
+team.onkeyup = () => validate(team, validationTeam);
+team.onchange = () => validate(team, validationTeam);
