@@ -24,7 +24,7 @@ class PeopleController extends AbstractController
     /**
      * @Route(
      *     "/validate/{element}",
-     *     name="validatePerson",
+     *     name="validate",
      *     requirements={"POST"}
      * )
      */
