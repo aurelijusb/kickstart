@@ -10,7 +10,7 @@
     </div>
 
     <input type="text" id="name"/>
-    <span id="validation-result" ></span>
+    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
 
 {% endblock %}
 
