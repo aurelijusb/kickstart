@@ -10,7 +10,6 @@
             {% for student in value.students %}
                 <li class="list-group-item">
                     <a href="{{ path('student', {'name': student, 'project': key }) }}">{{ student }}</a>
-                    {#<a href="/student?name={{ student }}&project={{ key|url_encode }}">{{ student }}</a>#}
                     (<span class="badge">Mentorius</span> {{ value.mentors.0 }})
                 </li>
             {% endfor %}
