@@ -52,63 +52,9 @@ class HomeworkController extends AbstractController
 
     private function getStorage()
     {
-        return /** @lang json */
-            '{
-	          "nedarykpats": {
-	            "name": "Nedaryk pats",
-	            "mentors": [
-	              "Laurynas"
-	            ],
-	            "students": [
-	              "Martyna",
-	              "Aurimas",
-	              "Vilius"
-	            ]
-	          },
-	          "savanoryste": {
-	            "name": "Car booking",
-	            "mentors": [
-	              "Tomas"
-	            ],
-	            "students": [
-	              "Ignas",
-	              "Dovydas",
-	              "Darius"
-	            ]
-	          },
-	          "curlybrackets": {
-	            "name": "Maisto dalinimosi sistema",
-	            "mentors": [
-	              "Paulius"
-	            ],
-	            "students": [
-	              "Roman",
-	              "Marijus",
-	              "Angelika"
-	            ]
-	          },
-	          "hobby": {
-	            "name": "Hobby",
-	            "mentors": [
-	              "Ieva"
-	            ],
-	            "students": [
-	              "Miroslav",
-	              "Viktoras",
-	              "Lukas"
-	            ]
-	          },
-	          "hack<b>er</b>\'is po .mySubdomain &project=123": {
-	            "name": "\' OR 1 -- DROP DATABASE",
-	            "mentors": [
-	              "<b>Ponas</b> Programišius"
-	            ],
-	            "students": [
-	              "Aurelijus Banelis",
-	              "<b>Ir</b> jo \"geras\" draug\'as"
-	            ]
-	          }
-	        }';
+        $jsonPath = __DIR__.'/../../public/students.json';
+        $json = file_get_contents($jsonPath);
+        return $json;
     }
 
     private function getStudents(): array
@@ -127,7 +73,7 @@ class HomeworkController extends AbstractController
     {
         $projects = [];
         $storage = json_decode($this->getStorage(), true);
-        foreach ($storage as $project) {
+        foreach ($storage as $project => $value) {
             $projects[] = strtolower($project);
         }
         return $projects;

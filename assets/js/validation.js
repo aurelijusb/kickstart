@@ -3,13 +3,11 @@ const axios = require('axios');
 let nameInput = document.querySelector('#name');
 let projectInput = document.querySelector('#project');
 let nameSpan = document.querySelector('#name-result');
-let projectSpan =document.querySelector('#project-result');
+let projectSpan = document.querySelector('#project-result');
 
-console.log('Validation running')
 
 const validateName = function(){
-    console.log('name run');
-    nameSpan.innerText='No entry';
+    nameSpan.innerText='...';
     axios.post(nameSpan.dataset.path, {input: nameInput.value})
         .then(response => {
             if (response.data.valid) {
@@ -22,8 +20,7 @@ const validateName = function(){
 };
 
 const validateProject = function(){
-    console.log('project run');
-    projectSpan.innerText='No entry';
+    projectSpan.innerText='...';
     axios.post(projectSpan.dataset.path, {input: projectInput.value})
         .then(response => {
             if (response.data.valid) {

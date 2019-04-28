@@ -6,17 +6,16 @@
     <div class="nfq-academy">{{ title }}</div>
 
     <div>
-        <input type="text" id="name">
+        <input type="text" id="name" placeholder="Students name">
         <span id="name-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
     </div>
     <div>
-        <input type="text" id="project">
-        <span id="project-result" data-path="{{ path('validatePerson', {'element': 'project'}) }}></span>
+        <input type="text" id="project" placeholder="Projects title">
+        <span id="project-result" data-path="{{ path('validatePerson', {'element': 'project'}) }}"></span>
     </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ encore_entry_script_tags('validation') }}
-    {#{{ encore_entry_js_files('validation') }}#}
-    {#{{ parent() }}#}
+    {{ parent() }}
 {% endblock %}
