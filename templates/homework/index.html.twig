@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="nfq-academy">{{ title }}</div>
+
+    <div>
+        <input type="text" id="name">
+        <span id="name-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    </div>
+    <div>
+        <input type="text" id="project">
+        <span id="project-result" data-path="{{ path('validatePerson', {'element': 'project'}) }}></span>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('validation') }}
+    {#{{ encore_entry_js_files('validation') }}#}
+    {#{{ parent() }}#}
+{% endblock %}
