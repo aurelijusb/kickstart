@@ -3,13 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">#}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
         <title>{% block title %}Symfony homework{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-primary">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('home') }}">Main page</a></li>
+                <li><a href="{{ path('homework') }}">Second Homework</a></li>
+            </ul>
+        </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
