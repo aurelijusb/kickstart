@@ -10,11 +10,10 @@
     </div>
 
     <input type="text" id="name"/>
-    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    <span id="validation-result-name" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
     <br/>
     <input type="text" id="project"/>
-    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'project'}) }}"></span>
-
+    <span id="validation-result-project" data-path="{{ path('validateProject', {'element': 'project'}) }}"></span>
 {% endblock %}
 
 {% block javascripts %}
