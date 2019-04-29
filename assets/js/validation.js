@@ -21,9 +21,6 @@ const validateName = function () {
 name.onkeyup = validateName;
 name.onchange = validateName;
 
-
-
-
 let project = document.getElementById('project');
 let validationResultProject = document.getElementById('validation-result-project');
 
