@@ -11,6 +11,10 @@
 
     <input type="text" id="name"/>
     <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    <br/>
+    <input type="text" id="project"/>
+    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'project'}) }}"></span>
+
 {% endblock %}
 
 {% block javascripts %}
