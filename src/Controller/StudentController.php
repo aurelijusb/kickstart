@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class StudentController extends AbstractController
 {
     /**
-     * @Route("/student", name="student")
+     * @Route("/student/", name="student")
      *
      * @var Request
      * @return Response
