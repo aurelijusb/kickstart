@@ -25,5 +25,10 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
-###PhpStorm folder
+###> PHPStorm folder  ###
 /.idea
+###< PHPStorm folder  ###
+
+###> Mac .DS_Store  ###
+.DS_Store
+###< Mac .DS_Store  ###

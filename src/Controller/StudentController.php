@@ -15,19 +15,10 @@ class StudentController extends AbstractController
     {
         $name = $request->query->get('name');
         $project = $request->query->get('project');
-        $evaluation = 'Gal pasiseks kitą kartą';
-        $success = false;
-        if ($name === 'Aurimas' && $project === 'nedarykpats')
-        {
-            $evaluation = 'Dešimt balų';
-            $success = true;
-        }
 
         return $this->render('student/index.html.twig', [
             'dataSet' => ['name' => $name,
-                'project' => $project,
-                'evaluation' => $evaluation,
-                'success' => $success],
+                'project' => $project]
         ]);
     }
 }

@@ -16,11 +16,17 @@
             </tr>
             </tbody>
         </table>
-        <div class="alert alert-{{ dataSet.success ? 'success' : 'warning' }}" role="alert">
-            {{ dataSet.evaluation }}
-        </div>
+        {% if dataSet.name == 'Aurimas' and dataSet.project == 'nedarykpats' %}
+            <div class="alert alert-success" role="alert">
+                Dešimt balų!
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                Gal pasiseks kitą kartą
+            </div>
+        {% endif %}
     </div>
     <div class="m-4">
-        <a class="text-light" href="/">Visi studentai</a>
+        <a class="text-light" href="{{ path('home') }}">Visi studentai</a>
     </div>
 {% endblock %}
