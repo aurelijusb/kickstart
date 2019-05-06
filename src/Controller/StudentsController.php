@@ -12,7 +12,7 @@ class StudentsController extends AbstractController
      */
     public function index()
     {
-        $studentsJson = file_get_contents('/code/src/Resources/students.json');
+        $studentsJson = file_get_contents('students.json');
         $students = json_decode($studentsJson, true);
 
         return $this->render('students/index.html.twig', [
