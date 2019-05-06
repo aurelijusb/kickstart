@@ -3,4 +3,18 @@ easy_admin:
         # List the entity class name you want to manage
 #        - App\Entity\Product
 #        - App\Entity\Category
-        - App\Entity\User
+        User:
+            class: App\Entity\User
+            list:  # <-- 'form' is applied to both 'new' and 'edit' views
+                fields:
+                    - 'username'
+                    - { property: 'roles', template: 'admin/user/roles-type-read.html.twig' }
+                    - { property: 'password', label: 'Password hash' }
+            form:
+                fields:
+                    - { property: 'email', type: 'email' }
+                    - { property: 'roles', type: 'collection' }
+                    - { property: 'plainPassword', type: 'password' }
+
+    user:
+        name_property_path: "email"
