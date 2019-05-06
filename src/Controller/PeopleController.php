@@ -128,7 +128,7 @@ class PeopleController extends AbstractController
     {
         $team = [];
         $storage = json_decode($this->getStorage(), true);
-        foreach ($storage as $key => $t) {
+        foreach (array_keys($storage) as $key) {
 
             $team[] = strtolower($key);
         }
