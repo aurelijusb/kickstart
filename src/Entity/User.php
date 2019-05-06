@@ -59,7 +59,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -79,6 +79,19 @@ class User implements UserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    /** Virtual method for EasyAdminBundle */
+    public function getPlainPassword(): string
+    {
+        return ''; // We store passwords hashed, it is impossible to regenerate back
+    }
+
+    /** Virtual method for EasyAdminBundle */
+    public function setPlainPassword(string $password): self
+    {
+        $hash = password_hash($password, PASSWORD_ARGON2I);
+        return $this->setPassword($hash);
     }
 
     /**
