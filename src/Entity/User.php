@@ -36,6 +36,15 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @var null|\DateTime When password was changed
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $passwordChanged = null;
+
+    /** @var bool Does plain password was entered */
+    private $passwordWasChanged = false;
+
+    /**
      * @var null|string Link to Personal Website
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -100,8 +109,17 @@ class User implements UserInterface
             return $this; // For usability: Empty password means do not change password
         }
 
+        $this->passwordWasChanged = true;
         $hash = password_hash($password, PASSWORD_ARGON2I);
         return $this->setPassword($hash);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPasswordWasChanged(): bool
+    {
+        return $this->passwordWasChanged;
     }
 
     /**
@@ -134,6 +152,22 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getPasswordChanged(): ?\DateTime
+    {
+        return $this->passwordChanged;
+    }
+
+    /**
+     * @param \DateTime|null $passwordChanged
+     */
+    public function setPasswordChanged(?\DateTime $passwordChanged): void
+    {
+        $this->passwordChanged = $passwordChanged;
     }
 
     /**
