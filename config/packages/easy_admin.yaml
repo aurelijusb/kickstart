@@ -9,12 +9,14 @@ easy_admin:
                 fields:
                     - 'username'
                     - { property: 'roles', template: 'admin/user/roles-type-read.html.twig' }
+                    - { property: 'homepage', type: 'url' }
                     - { property: 'password', label: 'Password hash' }
             form:
                 fields:
                     - { property: 'email', type: 'email' }
                     - { property: 'roles', type: 'collection' }
                     - { property: 'plainPassword', type: 'password' }
+                    - { property: 'homepage', type: 'url' }
 
     user:
         name_property_path: "email"
