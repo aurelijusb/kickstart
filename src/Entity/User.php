@@ -94,8 +94,12 @@ class User implements UserInterface
     }
 
     /** Virtual method for EasyAdminBundle */
-    public function setPlainPassword(string $password): self
+    public function setPlainPassword($password): self
     {
+        if (!$password) {
+            return $this; // For usability: Empty password means do not change password
+        }
+
         $hash = password_hash($password, PASSWORD_ARGON2I);
         return $this->setPassword($hash);
     }
