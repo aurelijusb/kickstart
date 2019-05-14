@@ -35,6 +35,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('homepage', UrlType::class, ['required' => false])
+            ->add('linkedIn', UrlType::class, ['required' => false, 'label' => 'Linkedin'])
         ;
     }
 

@@ -55,16 +55,26 @@ class User implements UserInterface
      */
     private $linkedIn;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return User
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -94,6 +104,10 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array $roles
+     * @return User
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -135,6 +149,10 @@ class User implements UserInterface
         return (string)$this->password;
     }
 
+    /**
+     * @param string $password
+     * @return User
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -169,6 +187,7 @@ class User implements UserInterface
 
     /**
      * @param \DateTime|null $passwordChanged
+     * @return User
      */
     public function setPasswordChanged(?\DateTime $passwordChanged): self
     {
@@ -187,6 +206,7 @@ class User implements UserInterface
 
     /**
      * @param string|null $homepage
+     * @return User
      */
     public function setHomepage(?string $homepage): self
     {
@@ -195,11 +215,18 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLinkedIn(): ?string
     {
         return $this->linkedIn;
     }
 
+    /**
+     * @param string|null $linkedIn
+     * @return User
+     */
     public function setLinkedIn(?string $linkedIn): self
     {
         $this->linkedIn = $linkedIn;
