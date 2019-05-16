@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}Pagrindinis{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    Pasinkite dalyvį pvz. <a href="{{ path('member', {member: "Vardenis Pavardenis"}) }}">Vardenis Pavardenis</a>
 {% endblock %}
