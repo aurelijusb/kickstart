@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use function Sodium\add;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -35,6 +34,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('homepage', UrlType::class, ['required' => false])
+            ->add('linkedin', UrlType::class, ['required' => false])
         ;
     }
 
