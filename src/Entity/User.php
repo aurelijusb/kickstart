@@ -52,9 +52,9 @@ class User implements UserInterface
 
     /**
      * @var null|string Link to linkedin page
-     * @ORM\Column(type="string", length=255, nullable=true, options={"default":""})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $linkedin;
+    private $linkedin = "";
 
     /**
      * @return int|null
@@ -226,7 +226,7 @@ class User implements UserInterface
      * @param string $linkedin
      * @return User
      */
-    public function setLinkedin(string $linkedin): self
+    public function setLinkedin(?string $linkedin): self
     {
         $this->linkedin = $linkedin;
 
