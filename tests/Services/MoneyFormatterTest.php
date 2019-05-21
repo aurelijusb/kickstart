@@ -49,8 +49,8 @@ class MoneyFormatterTest extends TestCase
      */
     public function testFormatEur(string $expectedFormat, float $numberToFormat)
     {
-        /** @var NumberFormatter|MockObject $numberFormatter */
         try {
+            /** @var NumberFormatter|MockObject $numberFormatter */
             $numberFormatter = $this->createMock(NumberFormatter::class);
             $numberFormatter->expects($this->exactly(1))
                 ->method('format')
@@ -69,8 +69,8 @@ class MoneyFormatterTest extends TestCase
      */
     public function testFormatUsd(string $expectedFormat, float $numberToFormat)
     {
-        /** @var NumberFormatter|MockObject $numberFormatter */
         try {
+            /** @var NumberFormatter|MockObject $numberFormatter */
             $numberFormatter = $this->createMock(NumberFormatter::class);
             $numberFormatter->expects($this->exactly(1))
                 ->method('format')
