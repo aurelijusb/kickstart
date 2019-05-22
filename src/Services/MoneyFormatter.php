@@ -5,11 +5,11 @@ namespace App\Services;
 class MoneyFormatter
 {
     /**
-     * @var NumberFormatterIntercafe
+     * @var NumberFormatterInterface
      */
     private $numberFormatter;
 
-    public function __construct(NumberFormatterIntercafe $numberFormatter)
+    public function __construct(NumberFormatterInterface $numberFormatter)
     {
         $this->numberFormatter = $numberFormatter;
     }

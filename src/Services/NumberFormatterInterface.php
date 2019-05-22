@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-interface NumberFormatterIntercafe
+interface NumberFormatterInterface
 {
     /**
      * @param float $number
