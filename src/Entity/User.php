@@ -28,7 +28,6 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
-//    private $roles = ['ROLE_ADMIN'];
 
     /**
      * @var string The hashed password
@@ -53,9 +52,10 @@ class User implements UserInterface
 
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=180, unique=true, nullable=true)
      */
     private $linkedin;
+
 
     public function getId(): ?int
     {
