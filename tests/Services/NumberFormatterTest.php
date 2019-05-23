@@ -19,7 +19,6 @@ class NumberFormatterTest extends TestCase
      */
     public function testNumberFormatter(float $number, string $expectedNumber): void
     {
-//        $this->assertIsFloat($this->number->formatNumbers($number));
         $this->assertEquals($this->number->formatNumbers($number), $expectedNumber);
     }
 
