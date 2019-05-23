@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-
 /**
  * Class MoneyFormatter
  * @package App\Services
  */
-class MoneyFormatter{
+class MoneyFormatter
+{
 
     private $numberFormatter = null;
 
@@ -24,7 +24,8 @@ class MoneyFormatter{
      * @param float $numb
      * @return string
      */
-    public function formatEur(float $numb) :string{
+    public function formatEur(float $numb) :string
+    {
         return $this->numberFormatter->formatNumber($numb) . ' €';
     }
 
@@ -32,8 +33,8 @@ class MoneyFormatter{
      * @param float $numb
      * @return string
      */
-    public function formatUsd(float $numb) :string{
+    public function formatUsd(float $numb) :string
+    {
         return '$' . $this->numberFormatter->formatNumber($numb);
     }
-
 }
