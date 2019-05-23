@@ -17,7 +17,7 @@ class MoneyFormatter
     {
         $formattedNumber = $this->numberFormatter->formatCurrency($number);
 
-        return $formattedNumber . '€';
+        return $formattedNumber . ' €';
     }
 
     public function formatUsd($number): string
