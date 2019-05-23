@@ -20,6 +20,7 @@ class NumberFormatterTest extends TestCase
             ['533.10', 533.1],
             ['66.67', 66.6666],
             ['12', 12],
+            ['0', 0],
             //Neigiami skaičiai
             ['-2.84M', -2835779],
             ['-1.00M', -999500],

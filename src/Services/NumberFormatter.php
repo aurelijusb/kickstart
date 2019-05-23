@@ -8,21 +8,18 @@ class NumberFormatter
 {
     public function formatCurrency(float $number): string
     {
-        //Panaikinam nereikalingus simbolius
-        $stripped_number = (0+str_replace(",","", $number));
-
-        //Tikrinam, ar paduotas skaičius
-        if(!is_numeric($stripped_number)) return false;
-
-        switch ($stripped_number) {
-            case $stripped_number >= 999500 || $stripped_number <= -999500:
-                return number_format($stripped_number/1000000, 2) . 'M';
-            case $stripped_number >= 99950 || $stripped_number <= -99950:
-                return round($stripped_number/1000) . 'K';
-            case $stripped_number >= 1000 || $stripped_number <= -1000:
-                return number_format($stripped_number, 0, '', ' ');
+        switch ($number) {
+            case (round($number,0) === 0):
+                return '0';
+            case (($number >= 999500 || $number <= -999500)):
+                echo $number . '<br>' ;
+                return number_format($number/1000000, 2) . 'M';
+            case ($number >= 99950 && $number <= 999500) || ($number <= -99950 && $number >= -999500):
+                return round($number/1000) . 'K';
+            case $number >= 1000 || $number <= -1000:
+                return number_format($number, 0, '', ' ');
             default:
-                return str_replace(".00", "", number_format ($stripped_number, 2, ".", ""));
+                return str_replace(".00", "", number_format ($number, 2, ".", " "));
 
         }
 
