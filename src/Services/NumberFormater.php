@@ -1,10 +1,11 @@
-<?php namespace App\Services;
+<?php
 
+namespace App\Services;
 
-class NumberFormatter implements NumberFormatterInterface
+class NumberFormater implements NumberFormatterInterface
 {
     /**
-     * @param float
+     * @param float $number
      * @return string
      */
     public function formatNumber(float $number) :string
@@ -22,7 +23,6 @@ class NumberFormatter implements NumberFormatterInterface
             case $absValue >= 1000 && $absValue < 99950:
                 $formattedNumber = number_format($number, 0, '', ' ');
                 break;
-
             default:
                 $fraction  = $absValue - (int) $absValue;
                 if ($fraction !=0) {

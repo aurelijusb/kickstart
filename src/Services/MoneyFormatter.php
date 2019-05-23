@@ -1,33 +1,31 @@
-<?php namespace App\Services;
+<?php
+
+namespace App\Services;
 
 class MoneyFormatter
 {
-
-    private $numberFormatter;
+    private $numberFormater;
     /**
-     * @param NumberFormatterInterface $numberFormatter
+     * @param $numberFormater
      */
-
-    public function __construct(NumberFormatterInterface $numberFormatter)
+    public function __construct(NumberFormater $numberFormater)
     {
-        $this->numberFormatter = $numberFormatter;
+        $this->numberFormater = $numberFormater;
     }
-
     /**
      * @param float
      * @return string
      */
     public function formatEur(float $number) :string
     {
-        return $this->numberFormatter->formatNumber($number). ' €';
+        return $this->numberFormater->formatNumber($number). ' €';
     }
-
     /**
      * @param float
      * @return string
      */
     public function formatUsd(float $number) :string
     {
-        return '$'. $this->numberFormatter->formatNumber($number);
+        return '$'. $this->numberFormater->formatNumber($number);
     }
 }
