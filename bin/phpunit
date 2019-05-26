@@ -10,4 +10,8 @@ if (false === getenv('SYMFONY_PHPUNIT_DIR')) {
     putenv('SYMFONY_PHPUNIT_DIR='.__DIR__.'/.phpunit');
 }
 
+if (false === getenv('SYMFONY_PHPUNIT_VERSION')) {
+    putenv('SYMFONY_PHPUNIT_VERSION=8.1');
+}
+
 require dirname(__DIR__).'/vendor/symfony/phpunit-bridge/bin/simple-phpunit';
