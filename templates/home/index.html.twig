@@ -1,7 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}Symfony 3{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    {% if user %}
+        Prisjungęs: {{ user.username }}
+    {% else %}
+        Anonimas
+    {% endif %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <hr/>
+        <p>Email: {{ app.user.email }}</p>
+
+        <pre>
+            {{ dump(app.user) }}
+        </pre>
+    {% endif %}
 {% endblock %}
