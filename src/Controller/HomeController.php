@@ -24,7 +24,8 @@ class HomeController extends AbstractController
         ]);
     }
 
-    private function groupByStudents(array $projects) {
+    private function groupByStudents(array $projects)
+    {
         $result = [];
         foreach ($projects as $projectName => $project) {
             foreach ($project['students'] as $student) {
