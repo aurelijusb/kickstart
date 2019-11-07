@@ -19,7 +19,7 @@ fi
 # Entering into PHP container (simulating SSH/terminal)
 if [ "$ARGS" != "" ]; then
     echo "Executing in PHP container: $ARGS"
-    docker exec ${TTY} php.symfony bash -c "$ARGS"
+    docker exec ${TTY} php.symfony $ARGS
     
     # Fix for known docker issue, when with "-it" parameter, command exits with status 129
     EXIT_CODE=$?

@@ -29,7 +29,7 @@ fi
 
 # Installing dependencies
 echo "Preparing PHP dependencies..."
-APP_ENV=prod $SCRIPT_DIR/backend.sh composer install --no-dev
+APP_ENV=prod $SCRIPT_DIR/backend.sh "composer install --no-dev"
 echo ""
 echo "Preparing JavaScript/CSS dependencies..."
 echo ""
@@ -37,6 +37,6 @@ $SCRIPT_DIR/frontend.sh yarn
 echo ""
 echo "Preparing JavaScript/CSS dependencies..."
 echo ""
-$SCRIPT_DIR/frontend.sh yarn run encore production
+$SCRIPT_DIR/frontend.sh "yarn run encore production"
 
 echo "Open your browser at http://127.0.0.1:8000"

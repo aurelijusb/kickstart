@@ -15,7 +15,7 @@ docker-compose --version > /dev/null 2>&1 || { echo >&2 "Docker-compose not foun
 # Entering into Node.js container (simulating SSH/terminal)
 if [ "$ARGS" != "" ]; then
     echo "Executing in Node.js (frontend) container: $ARGS"
-    docker-compose -f "$SCRIPT_DIR/docker-compose-tools.yml" run frontend.symfony bash -c "$ARGS"
+    docker-compose -f "$SCRIPT_DIR/docker-compose-tools.yml" run frontend.symfony $ARGS
 else
     echo "JavaScript/CSS dependencies can be installed via: yarn"
     echo "Assets compiling for production: yarn run encore production"
