@@ -13,8 +13,14 @@ jobs:
         run: ./scripts/start.sh
 #      - name: Install dependencies
 #        run: ./scripts/install-prod.sh
-      - name: Debug status
+      - name: Debug docker status
         run: docker ps -a
+      - name: Debug containers
+        run: docker inspect php.symfony
+      - name: Debug containers
+        run: docker inspect php.symfony
+      - name: Debug container content
+        run: docker exec php.symfony bash -c "pwd && ls -al"
 #      - name: Check result
 #        run: curl -v http://127.0.0.1:8000
 
