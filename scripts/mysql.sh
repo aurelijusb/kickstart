@@ -20,4 +20,9 @@ echo "Port: $PORT"
 echo ""
 echo 'Type "exit" to get out of MySql terminal'
 echo ""
-docker exec -it mysql.symfony mysql -uroot -h127.0.0.1 --password=p9iijKcfgENjBWDYgSH7
+
+if [ -t 0 ]; then
+    TTY="-it" # Current shell/terminal have stdin file descriptor. So we can use interactive (-it) mode
+fi
+
+docker exec ${TTY} mysql.symfony mysql -uroot -h127.0.0.1 --password=p9iijKcfgENjBWDYgSH7

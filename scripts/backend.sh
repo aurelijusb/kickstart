@@ -12,10 +12,14 @@ if [ `docker ps | grep php.symfony | wc -l` != "1" ]; then
     exit 1
 fi
 
+if [ -t 0 ]; then
+    TTY="-it" # Current shell/terminal have stdin file descriptor. So we can use interactive (-it) mode
+fi
+
 # Entering into PHP container (simulating SSH/terminal)
 if [ "$ARGS" != "" ]; then
     echo "Executing in PHP container: $ARGS"
-    docker exec -it php.symfony bash -c "$ARGS"
+    docker exec ${TTY} php.symfony bash -c "$ARGS"
     
     # Fix for known docker issue, when with "-it" parameter, command exits with status 129
     EXIT_CODE=$?
@@ -28,7 +32,7 @@ else
     echo "Dependencies can be installed via: composer install"
     echo "Many Symfony tools can be accessed via: bin/console"
     echo 'Type "exit" to get out of terminal'
-    docker exec -it php.symfony bash
+    docker exec ${TTY} php.symfony bash
     
     # Fix for known docker issue, when with "-it" parameter, command exits with status 129
     EXIT_CODE=$?
