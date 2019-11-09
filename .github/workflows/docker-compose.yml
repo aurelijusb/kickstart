@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Debugging
+        run: git config --get remote.origin.url
+      - name: Fixme
+        run: exit 1
       - name: Docker version
         run: docker --version
       - name: Docker compose version

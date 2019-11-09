@@ -11,7 +11,7 @@ COMMIT=$(git rev-parse --verify HEAD)
 DOCKER_TAG="docker.pkg.github.com/${REPO}/build-atifacts:cypress-${COMMIT}"
 
 echo "Will put artifacts to: ${DOCKER_TAG}"
-echo git config --get remote.origin.url
+git config --get remote.origin.url
 exit 1
 
 
