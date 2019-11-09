@@ -14,6 +14,7 @@ services:
     image: nfqakademija/docker:php-latest
     volumes:
       - ../:/code # Mount your code, so nginx/phpcould see it
+    user: $UID
 
   mysql.symfony:
     container_name: mysql.symfony
