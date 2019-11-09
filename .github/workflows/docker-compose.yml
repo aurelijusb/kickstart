@@ -9,6 +9,8 @@ jobs:
         run: docker --version
       - name: Docker compose version
         run: docker-compose --version
+      - name: Fix user and groups (because host is different from container)
+        run: chown 1000:1000 -R .
       - name: Start containers
         run: ./scripts/start.sh
       - name: Debug host environment
