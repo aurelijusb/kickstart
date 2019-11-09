@@ -19,6 +19,8 @@ jobs:
         run: docker inspect php.symfony
       - name: Debug container content
         run: docker exec php.symfony bash -c "pwd && ls -al"
+      - name: Debug current directory
+        run: pwd && ls -al
       - name: Debug directory
         run: ./scripts/backend.sh "pwd"
       - name: Debug directories
