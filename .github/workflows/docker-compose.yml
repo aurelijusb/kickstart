@@ -11,6 +11,10 @@ jobs:
         run: docker-compose --version
       - name: Start containers
         run: ./scripts/start.sh
+      - name: Debug host environment
+        run: id
+      - name: Debug docker (php) environment
+        run: ./scripts/backend.sh id
       - name: Debug docker status
         run: docker ps -a
       - name: Debug containers
@@ -25,8 +29,6 @@ jobs:
         run: ./scripts/backend.sh "pwd"
       - name: Debug directories
         run: ./scripts/backend.sh "ls -al /code"
-      - name: Debug current environment
-        run: ./scripts/backend.sh scripts/debug-environment.sh
       - name: Fix permissions
         run: ./scripts/backend.sh "chmod 777 ."
       - name: Install dependencies
