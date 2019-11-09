@@ -35,6 +35,8 @@ jobs:
         run: ./scripts/install-prod.sh
       - name: Check result
         run: curl -v http://127.0.0.1:8000
+      - name: Run E2E test
+        run: ./scripts/e2e-tests.sh
 
 
 

@@ -1,0 +1,5 @@
+{
+  "baseUrl": "http://nginx.symfony:80",
+  "projectId": "nfqacademy",
+  "video": false
+}

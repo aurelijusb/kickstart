@@ -32,3 +32,9 @@ yarn-error.log
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
+
+###> cypress ###
+/tests/e2e/cypress/screenshots
+###< cypress ###
+
