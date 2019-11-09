@@ -37,6 +37,16 @@ jobs:
         run: curl -v http://127.0.0.1:8000
       - name: Run E2E test
         run: ./scripts/e2e-tests.sh
+      - name: Store cypress test results (screenshots)
+        uses: actions/upload-artifact@v1
+        with:
+          name: cypress-screenshots
+          path: tests/e2e/cypress/screenshots (videos)
+      - name: Store cypress test results
+        uses: actions/upload-artifact@v1
+        with:
+          name: cypress-screenshots
+          path: tests/e2e/cypress/videos
       - name: Publish test results
         run: ./scripts/e2e-artifacts.sh
 
