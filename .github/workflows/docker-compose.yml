@@ -5,10 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Publish test results
-        run: ./scripts/e2e-artifacts.sh
-      - name: Debug
-        run: exit 1
       - name: Docker version
         run: docker --version
       - name: Docker compose version
@@ -45,8 +41,8 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: cypress-screenshots
-          path: tests/e2e/cypress/screenshots (videos)
-      - name: Store cypress test results
+          path: tests/e2e/cypress/screenshots
+      - name: Store cypress test results (videos)
         uses: actions/upload-artifact@v1
         with:
           name: cypress-screenshots
