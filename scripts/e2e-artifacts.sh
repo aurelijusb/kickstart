@@ -12,4 +12,5 @@ DOCKER_TAG="docker.pkg.github.com/${REPO}/build-atifacts:cypress-${COMMIT}"
 
 echo "Will put artifacts to: ${DOCKER_TAG}"
 
-docker push docker build ${SCRIPT_DIR}/../tests/e2e/cypress/ -t "$DOCKER_TAG"
+docker build ${SCRIPT_DIR}/../tests/e2e/cypress/ -t "$DOCKER_TAG"
+docker push "$DOCKER_TAG"
