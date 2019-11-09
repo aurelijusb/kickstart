@@ -29,6 +29,10 @@ jobs:
         run: ./scripts/backend.sh "pwd"
       - name: Debug directories
         run: ./scripts/backend.sh "ls -al /code"
+      - name: Temporary fix for permissions
+        run: chmod 777 .
+      - name: Temporary fix for permissions
+        run: chmod 777 var
       - name: Install dependencies
         run: ./scripts/install-prod.sh
       - name: Check result
