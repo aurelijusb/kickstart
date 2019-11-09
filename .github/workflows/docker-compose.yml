@@ -48,10 +48,10 @@ jobs:
           name: cypress-videos
           path: tests/e2e/cypress/videos
       - uses: actions/docker/login@master
-          env:
-            DOCKER_REGISTRY_URL: docker.pkg.github.com
-            DOCKER_USERNAME: ${{secrets.GITHUB_PKG_REGISTRY_USERNAME}}
-            DOCKER_PASSWORD: ${{secrets.GITHUB_PKG_REGISTRY_PASSWORD}}
+        env:
+          DOCKER_REGISTRY_URL: docker.pkg.github.com
+          DOCKER_USERNAME: ${{secrets.GITHUB_PKG_REGISTRY_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.GITHUB_PKG_REGISTRY_PASSWORD}}
       - name: Publish test results
         run: ./scripts/e2e-artifacts.sh
 
