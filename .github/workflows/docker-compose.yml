@@ -25,6 +25,10 @@ jobs:
         run: ./scripts/backend.sh "pwd"
       - name: Debug directories
         run: ./scripts/backend.sh "ls -al /code"
+      - name: Debug current environment
+        run: ./scripts/backend.sh scripts/debug-environment.sh
+      - name: Fix permissions
+        run: ./scripts/backend.sh "chmod 777 ."
       - name: Install dependencies
         run: ./scripts/install-prod.sh
       - name: Check result
