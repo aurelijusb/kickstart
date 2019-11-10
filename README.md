@@ -3,6 +3,15 @@
 NFQ Akademija
 ============
 
+# Naudingos nuorodos
+
+* Spalvos: https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
+* HTML: Boostrap: https://getbootstrap.com/
+* TWIG: https://symfony.com/doc/current/templating.html
+* Interface Kernel: https://symfony.com/doc/current/reference/configuration/kernel.html
+* Maker bundle: https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html
+* Controller request: https://symfony.com/doc/current/controller.html#the-request-object-as-a-controller-argument
+
 # Intro
 
 Sveiki! Tai yra Jūsų startinis projekto "template". 
