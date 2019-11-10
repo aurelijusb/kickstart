@@ -29,7 +29,7 @@ jobs:
 #      - name: Warning
 #        run: echo "::warning file=.dockerignore,line=1,col=1::There was an error"
       - name: Store some artifacts
-        run: echo "testas" > testas.txt
+        run: echo "Bla" > testas.txt && exit 1
       - name: Store artifacts
         if: always()
         uses: actions/upload-artifact@v1
