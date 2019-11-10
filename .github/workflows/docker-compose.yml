@@ -13,7 +13,7 @@ jobs:
       - name: Cache vendor (PHP / composer)
         uses: actions/cache@v1
         with:
-          path: vendor
+          path: /vendor
           key: ${{ runner.OS }}-php-build-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.OS }}-php-build-${{ env.cache-name }}-
@@ -21,7 +21,7 @@ jobs:
       - name: Cache node_modules (JavaScript / yarn)
         uses: actions/cache@v1
         with:
-          path: node_modules
+          path: /node_modules
           key: ${{ runner.OS }}-js-build-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.OS }}-js-build-${{ env.cache-name }}-
