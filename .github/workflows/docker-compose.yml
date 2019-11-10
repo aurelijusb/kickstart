@@ -1,21 +1,29 @@
 name: Docker Compose Actions Workflow
 on: push
 jobs:
-  build:
-    name: Download dependencies and build frontend assets
+#  build:
+#    name: Download dependencies and build frontend assets
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - name: Start containers
+#        run: ./scripts/start.sh
+#      - name: Temporary fix for permissions (different docekr users)
+#        run: chmod 777 . && chmod 777 public
+#      - name: Install dependencies
+#        run: ./scripts/install-prod.sh
+#      - name: Check result
+#        run: curl -v http://127.0.0.1:8000
+#      - name: Debug console
+#        run: ./scripts/backend.sh bin/console
+
+  debug:
+    name: Trying varios debug forms
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Start containers
-        run: ./scripts/start.sh
-      - name: Temporary fix for permissions (different docekr users)
-        run: chmod 777 . && chmod 777 public
-      - name: Install dependencies
-        run: ./scripts/install-prod.sh
-      - name: Check result
-        run: curl -v http://127.0.0.1:8000
-      - name: Debug console
-        run: ./scripts/backend.sh bin/console
+        run: echo "::debug file=.dockerignore ,line=2::Some annotation"
 
 #  test-curl:
 #    name: Browser-less tests
