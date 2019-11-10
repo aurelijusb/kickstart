@@ -22,8 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Start containers
+      - name: Debug
         run: echo "::debug file=.dockerignore ,line=2::Some annotation"
+      - name: Error
+        run: echo "::error file=.dockerignore,line=2,col=1::Something went wrong"
 
 #  test-curl:
 #    name: Browser-less tests
