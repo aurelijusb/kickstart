@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://nginx.symfony:80",
+  "baseUrl": "https://hw1.nfq2019.online",
   "projectId": "nfqacademy",
-  "video": true
+  "video": false
 }
