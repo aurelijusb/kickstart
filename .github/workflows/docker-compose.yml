@@ -24,10 +24,10 @@ jobs:
       - uses: actions/checkout@v1
       - name: Debug
         run: echo "::debug::Some message"
-      - name: Error
-        run: echo "::error file=.dockerignore,line=2,col=1::Something went wrong"
+#      - name: Error
+#        run: echo "::error file=.dockerignore,line=2,col=1::Something went wrong"
       - name: Warning
-        run: echo "::warning file=.dockerignore,line=1,col=1::Something went wrong. See http://example.com"
+        run: echo "::warning file=.dockerignore,line=1,col=1::See MarkDown. See [http://example.com](http://example.com)"
 
 #  test-curl:
 #    name: Browser-less tests
