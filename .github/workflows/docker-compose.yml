@@ -9,7 +9,7 @@ jobs:
       - name: Start containers
         run: ./scripts/start.sh
       - name: Temporary fix for permissions
-        run: chmod 777 . && chmod 777 public && chmod 777 -R .docker
+        run: chmod 777 . && chmod 777 public
       - name: Cache vendor (PHP / composer)
         uses: actions/cache@v1
         with:
@@ -28,34 +28,48 @@ jobs:
             ${{ runner.OS }}-js-build-
       - name: Install dependencies
         run: ./scripts/install-prod.sh
-
-  test-curl:
-    name: Browser-less tests
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Check result
         run: curl -v http://127.0.0.1:8000
+      - name: Debug console
+        run: ./scripts/backend.sh bin/console
 
-  test-cypress:
-    name: Multiply by 9
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download dependencies
-        run: docker pull "cypress/included:3.2.0"
-      - name: Run E2E test
-        run: ./scripts/e2e-tests.sh
-      - name: Store cypress test results (screenshots)
-        uses: actions/upload-artifact@v1
-        with:
-          name: cypress-screenshots
-          path: tests/e2e/cypress/screenshots
-      - name: Store cypress test results (videos)
-        uses: actions/upload-artifact@v1
-        with:
-          name: cypress-videos
-          path: tests/e2e/cypress/videos
+#  test-curl:
+#    name: Browser-less tests
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Start containers
+#        run: ./scripts/start.sh
+#
+#
+#  test-symfony-console:
+#    name: Browser-less tests
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Routes
+#        run: ./bin/console
+#
+#
+#  test-cypress:
+#    name: Multiply by 9
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download dependencies
+#        run: docker pull "cypress/included:3.2.0"
+#      - name: Run E2E test
+#        run: ./scripts/e2e-tests.sh
+#      - name: Store cypress test results (screenshots)
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: cypress-screenshots
+#          path: tests/e2e/cypress/screenshots
+#      - name: Store cypress test results (videos)
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: cypress-videos
+#          path: tests/e2e/cypress/videos
 
 
 
