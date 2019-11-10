@@ -1,0 +1,23 @@
+name: Symfony 1 Homework
+on: push
+jobs:
+  build:
+    name: Build and test for Symfony 1 Homework
+    runs-on: ubuntu-latest
+    steps:
+        # Prepare dependencies
+      - uses: actions/checkout@v1
+      - name: Start containers
+        run: ./scripts/start.sh
+      - name: Temporary fix for permissions (different docekr users)
+        run: chmod 777 . && chmod 777 public
+      - name: Install dependencies
+        run: ./scripts/install-prod.sh
+
+        # Fast tests
+      - name: Smoke test for infrastructure
+        if: always()
+        run: curl -v http://127.0.0.1:8000
+      - name: List used routes
+        if: always()
+        run: ./scripts/backend.sh bin/console debug:router
