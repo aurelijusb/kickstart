@@ -31,6 +31,8 @@ describe('First homework', function() {
                     expect(e).contain("Mentorius");
                 })
             });
+
+        cy.contains("Studentai").parent().screenshot();
     });
     it('Have correct students-mentor data', () => {
         d(`Testing Students block - data`);
@@ -42,6 +44,58 @@ describe('First homework', function() {
             .first()
             .contains("Tadas")
             .parent()
-            .contains("Mantas")
+            .contains("Mantas");
+    });
+
+    it('Have project block', () => {
+        d(`Testing Projektai block - simple`);
+        d(`Visiting: ${basePath}`);
+        cy.visit(basePath);
+        cy.contains("Projektai").parent().screenshot();
+    });
+
+    it('Have form block', () => {
+        d(`Testing Form block - simple`);
+        d(`Visiting: ${basePath}`);
+        cy.visit(basePath);
+        cy.contains("Sužinoti vertinimą").parent().screenshot();
+    });
+
+    it('Whole page', () => {
+        d(`Testing Whole page`);
+        d(`Visiting: ${basePath}`);
+        cy.visit(basePath);
+        cy.screenshot();
+    });
+
+    it('Click on first student', () => {
+        d(`Testing inner page page`);
+        d(`Visiting: ${basePath}`);
+        cy.visit(basePath);
+        cy.contains("Studentai")
+            .parent()
+            .children('.list-group-item:not(.list-group-item-info)')
+            .first().children('a').click();
+
+        d("Expected inner page");
+        cy.contains("Studentas");
+        cy.contains("Projektas");
+        cy.screenshot()
+
+        cy.contains("Visi studentai").click()
+    });
+
+    it('Click on Data file', () => {
+        d(`Testing data file`);
+        d(`Visiting: ${basePath}`);
+        cy.visit(basePath);
+
+        cy.contains("Duomenų failas").then( a => {
+            const link = a.attr('href');
+            cy.wrap([link]).each(link => dd(`Data file link: ${link}`))
+        }).then( links => {
+            const link = links[0];
+            expect(link).to.eq("students.json");
+        })
     });
 });
