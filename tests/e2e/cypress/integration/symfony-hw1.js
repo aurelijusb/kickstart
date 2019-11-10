@@ -13,11 +13,7 @@ const dd = async (message) => {
 
 describe('First homework', function() {
     it('Have students block', () => {
-        d(`Testing Students block - simple`);
-        d(`Visiting: ${basePath}`);
         cy.visit(basePath);
-
-        d(`Comparing Studentai block`);
         cy.contains("Studentai")
             .parent()
             .children('.list-group-item:not(.list-group-item-info)')
@@ -35,9 +31,7 @@ describe('First homework', function() {
         cy.contains("Studentai").parent().screenshot();
     });
     it('Have correct students-mentor data', () => {
-        d(`Testing Students block - data`);
         cy.visit(basePath);
-
         cy.contains("Studentai")
             .parent()
             .children('.list-group-item:not(.list-group-item-info)')
@@ -48,29 +42,21 @@ describe('First homework', function() {
     });
 
     it('Have project block', () => {
-        d(`Testing Projektai block - simple`);
-        d(`Visiting: ${basePath}`);
         cy.visit(basePath);
         cy.contains("Projektai").parent().screenshot();
     });
 
     it('Have form block', () => {
-        d(`Testing Form block - simple`);
-        d(`Visiting: ${basePath}`);
         cy.visit(basePath);
         cy.contains("Sužinoti vertinimą").parent().screenshot();
     });
 
     it('Whole page', () => {
-        d(`Testing Whole page`);
-        d(`Visiting: ${basePath}`);
         cy.visit(basePath);
         cy.screenshot();
     });
 
     it('Click on first student', () => {
-        d(`Testing inner page page`);
-        d(`Visiting: ${basePath}`);
         cy.visit(basePath);
         cy.contains("Studentai")
             .parent()
@@ -80,16 +66,13 @@ describe('First homework', function() {
         d("Expected inner page");
         cy.contains("Studentas");
         cy.contains("Projektas");
-        cy.screenshot()
+        cy.screenshot();
 
         cy.contains("Visi studentai").click()
     });
 
     it('Click on Data file', () => {
-        d(`Testing data file`);
-        d(`Visiting: ${basePath}`);
         cy.visit(basePath);
-
         cy.contains("Duomenų failas").then( a => {
             const link = a.attr('href');
             cy.wrap([link]).each(link => dd(`Data file link: ${link}`))
