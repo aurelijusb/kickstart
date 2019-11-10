@@ -6,10 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Start containers
-        run: ./scripts/start.sh
-      - name: Temporary fix for permissions
-        run: chmod 777 . && chmod 777 public
       - name: Cache vendor (PHP / composer)
         uses: actions/cache@v1
         with:
@@ -26,6 +22,10 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-js-build-${{ env.cache-name }}-
             ${{ runner.OS }}-js-build-
+      - name: Start containers
+        run: ./scripts/start.sh
+      - name: Temporary fix for permissions
+        run: chmod 777 . && chmod 777 public
       - name: Install dependencies
         run: ./scripts/install-prod.sh
       - name: Check result
