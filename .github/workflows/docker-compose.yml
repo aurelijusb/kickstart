@@ -26,8 +26,17 @@ jobs:
         run: echo "::debug::Some message"
 #      - name: Error
 #        run: echo "::error file=.dockerignore,line=2,col=1::Something went wrong"
-      - name: Warning
-        run: echo "::warning file=.dockerignore,line=1,col=1::See MarkDown. See [http://example.com](http://example.com)"
+#      - name: Warning
+#        run: echo "::warning file=.dockerignore,line=1,col=1::There was an error"
+      - name: Store some artifacts
+        run: echo "testas" > testas.txt
+      - name: Store artifacts
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: testas.txt
+          path: testas.txt
+
 
 #  test-curl:
 #    name: Browser-less tests
