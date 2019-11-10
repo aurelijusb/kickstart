@@ -38,9 +38,12 @@ yarn-error.log
 /tests/e2e/cypress/screenshots
 /tests/e2e/cypress/videos
 <<<<<<< HEAD
+<<<<<<< HEAD
 tests/e2e/package.json
 tests/e2e/yarn.lock
 tests/e2e/node_modules
+=======
+>>>>>>> 7a96e0d... Running end to end (Browser) tests
 =======
 >>>>>>> 7a96e0d... Running end to end (Browser) tests
 ###< cypress ###
