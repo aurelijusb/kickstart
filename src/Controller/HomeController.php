@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,7 +12,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      * @param KernelInterface $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function index(KernelInterface $request)
     {
