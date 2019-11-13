@@ -36,7 +36,7 @@
             <h3>{{ team.name }}</h3>
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{ key|escape }}">github.com/nfqakademija/{{ team.name }}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{ key|escape }}">github.com/nfqakademija/{{ key }}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
@@ -51,6 +51,6 @@
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="#">Duomenų failas</a>
+        <a class="text-light" href="/students.json">Duomenų failas</a>
     </div>
 {% endblock %}
