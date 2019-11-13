@@ -20,8 +20,7 @@ class StudentController extends AbstractController
         $project = $request->get('project');
         return $this->render('student/index.html.twig', [
             'name' => $name,
-            'project' => $project,
-            'isChosen' => $name === "Dominykas" ? true : false,
+            'project' => $project
         ]);
     }
 }
