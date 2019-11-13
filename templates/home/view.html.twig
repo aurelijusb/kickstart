@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="bg-light m-4">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">Projektas</th>
+                <th scope="row">Studentas</th>
+            </tr>
+            <tr>
+                <td>{{ student.project|e }}</td>
+                <td>{{ student.name|e }}</td>
+            </tr>
+            </tbody>
+        </table>
+        {% set isGoodStudent = (student.name == 'Artūras' and student.project == 'myfleet' ? true : false) %}
+        <div class="alert alert-{{ isGoodStudent ? 'success' : 'warning' }}" role="alert">
+            {{ isGoodStudent ? 'Dešimt balų' : 'Gal pasiseks kitą kartą' }}
+        </div>
+    </div>
+    <div class="m-4">
+        <a class="text-light" href="{{ path('student_list') }}">Visi studentai</a>
+    </div>
+{% endblock %}
