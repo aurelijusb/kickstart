@@ -9,11 +9,11 @@
         {% for key, team in students %}
             {% for student in team['students'] %}
                 <li class="list-group-item">
-                    <a href="/student?name={{ student }}&amp;project={{ key }}">{{ student }}</a>
+                    <a href="/student?name={{ student|e('url') }}&amp;project={{ key|e('url') }}">{{ student|escape }}</a>
                     (
                     <span class="badge">Mentorius</span>
                     {% for mentor in team['mentors'] %}
-                        {{ mentor }}
+                        {{ mentor|escape  }}
                     {% endfor %}
                     )
                 </li>
@@ -38,24 +38,24 @@
 
         {% for key, team in students %}
                 <li class="list-group-item">
-                    <h3>{{ team['name'] }}</h3>
+                    <h3>{{ team['name']|escape }}</h3>
                     <div class="panel panel-default">
                         <div>
-                            <a target="_blank" href="https://github.com/nfqakademija/{{ key }}">github.com/nfqakademija/{{ key }}</a>
+                            <a target="_blank" href="https://github.com/nfqakademija/{{ key|e('url') }}">github.com/nfqakademija/{{ key|escape }}</a>
                             <span class="badge">GitHub</span>
                         </div>
                         <div>
-                            <a target="_blank" href="http://{{ key }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/</a>
+                            <a target="_blank" href="http://{{ key|e('url') }}.projektai.nfqakademija.lt/">{{ key|escape }}.projektai.nfqakademija.lt/</a>
                             <span class="badge">Web</span>
                         </div>
                         <div>
-                            <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</pre>
+                            <pre>ssh {{ key|escape }}@deploy.nfqakademija.lt -p 2222</pre>
                         </div>
                     </div>
                 </li>
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="students.json">Duomenų failas</a>
+        <a class="text-light" href="https://hw1.nfq2019.online/students.json">Duomenų failas</a>
     </div>
 {% endblock %}
