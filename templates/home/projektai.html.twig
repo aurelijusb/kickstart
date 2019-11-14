@@ -1,0 +1,22 @@
+<ul class="list-group m-4">
+    <li class="list-group-item list-group-item-info">Projektai</li>
+    {% for team in teams %}
+        <li class="list-group-item">
+            <h3>{{ team['name'] }}</h3>
+            <div class="panel panel-default">
+                <div>
+                    <a target="_blank"
+                       href="https://github.com/nfqakademija/{{team['name']}}">github.com/nfqakademija/{{ team['name'] }}</a>
+                    <span class="badge">GitHub</span>
+                </div>
+                <div>
+                    <a target="_blank" href="http://{{ team['name'] }}.projektai.nfqakademija.lt/">{{ team['name'] }}.projektai.nfqakademija.lt/</a>
+                    <span class="badge">Web</span>
+                </div>
+                <div>
+                    <pre>ssh team1@deploy.nfqakademija.lt -p 2222</pre>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
