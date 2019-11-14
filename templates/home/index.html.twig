@@ -6,19 +6,13 @@
 
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-
-        {% for key, team in students %}
-            {% for student in team['students'] %}
-                <li class="list-group-item">
-                    <a href="/student?name={{ student|url_encode }}&amp;project={{ key|url_encode }}">{{ student }}</a>
-                    (
-                    <span class="badge">Mentorius</span>
-                    {% for mentor in team['mentors'] %}
-                        {{ mentor }}
-                    {% endfor %}
-                    )
-                </li>
-            {% endfor %}
+        {% for student in students %}
+            <li class="list-group-item">
+                <a href="{{ path('student', {name: student['student'], project: student['project']})|escape }}">{{ student['student'] }}</a>
+                (
+                <span class="badge">Mentorius</span>{{ student['mentors'][0] }}
+                )
+            </li>
         {% endfor %}
     </ul>
 
@@ -40,7 +34,7 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Projektai</li>
 
-        {% for key, team in students %}
+        {% for key, team in projects %}
                 <li class="list-group-item">
                     <h3>{{ team['name']|escape }}</h3>
                     <div class="panel panel-default">
