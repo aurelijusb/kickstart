@@ -5,6 +5,7 @@
 {% block body %}
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
+        {% set counter = 0 %}
         {% for team in array %}
             {% for member in team.students %}
             <li class="list-group-item">
@@ -13,6 +14,7 @@
                 <span class="badge"> Mentorius</span> {{team.mentors[0]}}
                 )
             </li>
+                {% set counter = counter + 1 %}
             {% endfor %}
         {% endfor %}
     </ul>

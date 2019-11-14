@@ -17,7 +17,6 @@ class HomeController extends AbstractController
         $info = json_decode($file, true);
 
         return $this->render('home/index.html.twig', [
-            'someVariable' => ['Tadas', 'Benas', 'Algirdas'],
             'array' => $info
         ]);
     }

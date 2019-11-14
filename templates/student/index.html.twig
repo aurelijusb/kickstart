@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StudentController!{% endblock %}
+
+{% block body %}
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+        {% set counter = 0 %}
+        {% for team in array %}
+            {% for member in team.students %}
+                {%  if counter==id %}
+                    <li class="list-group-item">
+                    <a href="/student?name=Tadas&amp;project=team1">{{ member }}</a>
+                    (
+                    <span class="badge"> Mentorius</span> {{team.mentors[0]}}
+                    )
+                    </li>
+                {% endif %}
+                {% set counter = counter + 1 %}
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endblock %}
