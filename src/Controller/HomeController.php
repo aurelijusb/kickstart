@@ -10,10 +10,15 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
+
     public function index()
     {
+        $file = file_get_contents('data.json', FILE_USE_INCLUDE_PATH);
+        $info = json_decode($file, true);
+
         return $this->render('home/index.html.twig', [
-            'someVariable' => ['Tadas', 'Benas', 'Algirdas']
+            'someVariable' => ['Tadas', 'Benas', 'Algirdas'],
+            'array' => $info
         ]);
     }
 }

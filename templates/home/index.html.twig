@@ -5,13 +5,15 @@
 {% block body %}
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-        {% for item in someVariable %}
+        {% for team in array %}
+            {% for member in team.students %}
             <li class="list-group-item">
-                <a href="/student?name=Tadas&amp;project=team1">{{ item }}</a>
+                <a href="/student?name=Tadas&amp;project=team1">{{ member }}</a>
                 (
-                <span class="badge">Mentorius</span> Mantas
+                <span class="badge"> Mentorius</span> {{team.mentors[0]}}
                 )
             </li>
+            {% endfor %}
         {% endfor %}
     </ul>
 {% endblock %}
