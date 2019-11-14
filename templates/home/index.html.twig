@@ -9,7 +9,7 @@
         {% for team in array %}
             {% for member in team.students %}
             <li class="list-group-item">
-                <a href="/student?name=Tadas&amp;project=team1">{{ member }}</a>
+                <a href="/student?{{ counter }}">{{ member }}</a>
                 (
                 <span class="badge"> Mentorius</span> {{team.mentors[0]}}
                 )

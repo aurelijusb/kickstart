@@ -20,7 +20,8 @@ class StudentController extends AbstractController
         return $this->render('student/index.html.twig', [
             'controller_name' => 'StudentController',
             'id' => $id,
-            'array' => $info
+            'array' => $info,
+            'arentas' => 21
         ]);
     }
 }
