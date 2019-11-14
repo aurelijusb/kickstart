@@ -14,7 +14,8 @@ class SearchController extends AbstractController
     public function index(Request $request)
     {
 
-        $path = substr($request->getRequestUri(), strlen($request->getPathInfo()) + 1, strlen($request->getRequestUri()));
+        $temp = $request->getRequestUri();
+        $path = substr($temp, strlen($request->getPathInfo()) + 1, strlen($temp));
         $pos = strpos($path, '&');
         $member = substr($path, 0, $pos);
         $team = substr($path, $pos + 1, strlen($path));
