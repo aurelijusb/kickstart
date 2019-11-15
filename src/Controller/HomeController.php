@@ -19,9 +19,8 @@ class HomeController extends AbstractController
         $teams = json_decode(file_get_contents($kernel->getProjectDir().'/public/students.json'), true);
         $students = [];
         foreach ($teams as $teamName => $team) {
-            foreach ($team['students'] as $student)
-            {
-                $students [] = [
+            foreach ($team['students'] as $student) {
+                $students[] = [
                     'student' => $student,
                     'project' => $teamName,
                     'mentors' => $team['mentors']
@@ -31,6 +30,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'students' => $students,
+            'projects' => $teams,
         ]);
     }
 }
