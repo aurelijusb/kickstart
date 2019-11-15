@@ -7,7 +7,7 @@ services:
     volumes:
       - ../:/code # Mount your code, so nginx/phpcould see it
     ports:
-      - 127.0.0.1:8000:80 # For development. Open in browser 127.0.0.1:8000
+      - 192.168.1.117:8000:80 # For development. Open in browser 127.0.0.1:8000
 
   php.symfony:
     container_name: php.symfony
@@ -21,4 +21,4 @@ services:
     volumes:
       - ../.docker/mysql-data/:/var/lib/mysql # To persist data between restarts
     ports:
-      - 127.0.0.1:3307:3306 # Connect to it via -h127.0.0.1 --port=3307
+      - 192.168.1.117:3307:3306 # Connect to it via -h127.0.0.1 --port=3307
