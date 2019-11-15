@@ -17,7 +17,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'teams' => $data,
             'title' => 'Projektai',
-            'dataFileUrl' => 'https://hw1.nfq2019.online/students.json',
+            'dataFileUrl' => 'students.json',
         ]);
     }
 

@@ -3,9 +3,9 @@
     {% for team in teams %}
         {% for student in team['students'] %}
             <li class="list-group-item">
-                <a href="{{ path('card', {name:student, project:team['name']}) }}">{{ student }}</a>
+                <a href="{{ path('card', {name:student, project:team['name']}) }}">{{ student |url_encode}}</a>
                 (
-                <span class="badge">Mentorius</span> {{ team['mentors'][0] }}
+                <span class="badge">Mentorius</span> {{ team['mentors'][0] |url_encode }}
                 )
             </li>
         {% endfor %}
