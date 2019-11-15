@@ -21,15 +21,5 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/card/name", name="card")
-     */
-    public function card()
-    {
-
-        return $this->render('home/index.html.twig', [
-            'data' => 'data',
-        ]);
-    }
 
 }
