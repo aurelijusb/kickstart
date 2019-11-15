@@ -20,9 +20,18 @@ class HomeController extends AbstractController
         $json = (string)file_get_contents($kernel->getProjectDir().'/public/students.json');
         $data = json_decode($json, true);
 
+        $projects = $students = [];
+        foreach ($data as $projectDomain => $items) {
+            $projects[] = ['domain' => $projectDomain, 'name' => $items['name']];
+            foreach ($items['students'] as $student) {
+                $students[] = ['name' => $student, 'mentor' => $items['mentors'][0], 'project' => $projectDomain];
+            }
+        }
+
         return $this->render('home/index.html.twig', [
             'title' => 'Projektai',
-            'teams' => $data,
+            'projects' => $projects,
+            'students' => $students,
         ]);
     }
 

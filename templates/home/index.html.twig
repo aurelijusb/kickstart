@@ -5,15 +5,13 @@
 {% block body %}
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-        {% for project, team in teams %}
-            {% for student in team.students %}
+        {% for student in students %}
             <li class="list-group-item">
-                <a href="{{ path('student_view', {'name': student, 'project': project}) }}">{{ student }}</a>
+                <a href="{{ path('student_view', {'name': student.name, 'project': student.project}) }}">{{ student.name|e }}</a>
                 (
-                <span class="badge">Mentorius</span> {{ team.mentors|first }}
+                <span class="badge">Mentorius</span> {{ student.mentor|e }}
                 )
             </li>
-            {% endfor %}
         {% endfor %}
     </ul>
 
@@ -32,20 +30,20 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Projektai</li>
 
-        {% for project, team in teams %}
+        {% for project in projects %}
         <li class="list-group-item">
-            <h3>{{ team.name|e }}</h3>
+            <h3>{{ project.name|e }}</h3>
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{ project|url_encode }}">github.com/nfqakademija/{{ project|e }}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{ project.domain|url_encode }}">github.com/nfqakademija/{{ project.domain|e }}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
-                    <a target="_blank" href="http://{{ project|url_encode }}.projektai.nfqakademija.lt/">{{ project|e }}.projektai.nfqakademija.lt/</a>
+                    <a target="_blank" href="http://{{ project.domain|url_encode }}.projektai.nfqakademija.lt/">{{ project.domain|e }}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>
-                    <pre>ssh {{ project|e }}@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{ project.domain|e }}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </div>
         </li>
