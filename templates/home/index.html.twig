@@ -8,7 +8,7 @@
     {% for team in data %}
         {% for student in team['students'] %}
             <li class="list-group-item">
-                <a href="/student?name={{student|escape('html')}}&amp;project={{team['team']|escape('url')}}">{{student}}</a>
+                <a href="/student?name={{student|escape('url')}}&project={{team['team']|escape('url')}}">{{student}}</a>
                 (
                 <span class="badge">Mentorius</span> {{team['mentors'][0]|escape('html')}}
                 )
