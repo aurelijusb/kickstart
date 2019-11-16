@@ -46,11 +46,11 @@
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ data.project}}.projektai.nfqakademija.lt/">{{ data.project }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ data.project|escape}}.projektai.nfqakademija.lt/">{{ data.project }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ data.project}}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ data.project|escape}}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
