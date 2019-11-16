@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CardController extends AbstractController
 {
     /**
-     * @Route("/card", name="student_card")
+     * @Route("/studentas", name="student")
      * @param Request $request
      */
     public function index(Request $request)
@@ -22,7 +22,7 @@ class CardController extends AbstractController
             $evaluation = 'Dešim balų';
         }
 
-        return $this->render('card/index.html.twig', [
+        return $this->render('studentas/index.html.twig', [
             'student' => $student,
             'project' => $project,
             'evaluation' => $evaluation,

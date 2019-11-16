@@ -14,8 +14,13 @@
             </tr>
             </tbody>
         </table>
-        <div class="alert alert-warning" role="alert">{{ evaluation }}
-        </div>
+        {% if evaluation ==  'Dešim balų' %}
+            <div class="alert alert-success">{{ evaluation }}
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">{{ evaluation }}
+            </div>
+        {% endif %}
     </div>
     <div class="m-4">
         <a class="text-light" href="{{ path('home') }}">Visi studentai</a>
