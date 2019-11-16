@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class StudentController extends AbstractController
@@ -26,9 +27,9 @@ class StudentController extends AbstractController
     /**
      * @Route("/students.json", name="students_json")
      */
-    public function showJson()
+    public function showJson(KernelInterface $kernel)
     {
-        $json = json_decode(file_get_contents('students.json'));
+        $json = json_decode(file_get_contents($kernel->getProjectDir() . '/students.json'));
 
         return new JsonResponse($json);
     }
