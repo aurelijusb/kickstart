@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use http\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -70,7 +69,6 @@ class StudentController extends AbstractController
             $teams[] = strtolower($key);
         }
         return $teams;
-
     }
 
     /**
