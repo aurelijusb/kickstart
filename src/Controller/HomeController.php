@@ -15,8 +15,7 @@ class HomeController extends AbstractController
      */
     public function index(Request $request)
     {
-        $path = 'https://hw1.nfq2019.online/students.json';
-        $content = file_get_contents($path);
+        $content = file_get_contents('students.json');
         $nfqData = json_decode($content, true);
 
         $studentsData = $this->groupByStudents($nfqData);
