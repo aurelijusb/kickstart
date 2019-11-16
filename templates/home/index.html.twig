@@ -42,15 +42,15 @@
                 <h3>{{ data.projectTitle }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ data.project }}">github.com/nfqakademija/{{ data.project }}</a>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ data.project|url_encode }}">github.com/nfqakademija/{{ data.project|url_encode }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ data.project|escape}}.projektai.nfqakademija.lt/">{{ data.project }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ data.project|url_encode}}.projektai.nfqakademija.lt/">{{ data.project|url_encode }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ data.project|escape}}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ data.project|url_encode}}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
