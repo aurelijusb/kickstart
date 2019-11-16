@@ -42,13 +42,15 @@ class StudentController extends AbstractController
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
+        $file = file_get_contents($kernel->getProjectDir() . '/public/students.json');
+        $storage = json_decode($file, true);
 
         switch ($element) {
             case 'name':
-                $students = $this->getStudents($kernel);
+                $students = $this->parseStudents($kernel, $storage);
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
             case 'team':
-                $teams = $this->getTeams($kernel);
+                $teams = $this->parseTeams($kernel, $storage);
                 return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
 
@@ -56,26 +58,29 @@ class StudentController extends AbstractController
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
 
-    private function getTeams(KernelInterface $kernel): array
+    /**
+     * @param KernelInterface $kernel
+     * @param $storage
+     * @return array
+     */
+    private function parseTeams(KernelInterface $kernel, $storage): array
     {
         $teams = [];
-        $file = file_get_contents($kernel->getProjectDir() . '/public/students.json');
-        $storage = json_decode($file, true);
         foreach ($storage as $key => $teamData) {
             $teams[] = strtolower($key);
         }
         return $teams;
 
     }
+
     /**
      * @param KernelInterface $kernel
+     * @param $storage
      * @return array
      */
-    private function getStudents(KernelInterface $kernel): array
+    private function parseStudents(KernelInterface $kernel, $storage): array
     {
         $students = [];
-        $file = file_get_contents($kernel->getProjectDir() . '/public/students.json');
-        $storage = json_decode($file, true);
         foreach ($storage as $teamData) {
             foreach ($teamData['students'] as $student) {
                 $students[] = strtolower($student);
