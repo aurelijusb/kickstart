@@ -1,7 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}Homework{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+        {% for project in students %}
+            <li class="list-group-item">
+                <a href="/student?name={{ project.student }}&project={{ project.project }}">{{ project.student }}</a>
+                (
+                <span class="badge">Mentorius</span>
+                {{ project.mentors[0] }}
+                )
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="m-4">
+        <form action="/student" method="get">
+            <div class="input-group">
+                <input type="text" class="form-control" name="name" placeholder="Studentas">
+            </div>
+            <div class="input-group">
+                <input type="text" class="form-control" name="project" placeholder="Projektas">
+            </div>
+            <button class="btn btn-success" type="submit">Sužinoti vertinimą</button>
+        </form>
+    </div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+        {% for key, project in projects %}
+            <li class="list-group-item">
+                <h3>{{ project.name }}</h3>
+                <div class="panel panel-default">
+                    <div>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ key }}">github.com/nfqakademija/{{ key }}</a>
+                        <span class="badge">GitHub</span>
+                    </div>
+                    <div>
+                        <a target="_blank" href="https://{{ key }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/</a>
+                        <span class="badge">Web</span>
+                    </div>
+                    <pre>ssh {{ project.name }}@deploy.nfqakademija.lt -p 2222</pre>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="m-4">
+        <a class="text-light" href="/students.json">Duomenų failas</a>
+    </div>
 {% endblock %}
