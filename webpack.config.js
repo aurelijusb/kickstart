@@ -28,7 +28,8 @@ Encore
         './assets/js/react.jsx'
     ])
     .addEntry('validation',
-        './assets/js/validation.js'
+        './assets/js/nameValidation.js',
+        './assets/js/teamValidation.js'
     )
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
