@@ -7,9 +7,9 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for student in someVariable %}
             <li class="list-group-item">
-                <a href="/student?name={{ student[0]|url_encode }}&amp;project={{ student[2]|url_encode }}">{{ student[0] }}</a>
+                <a href="/student?name={{ student[0]|url_encode }}&amp;project={{ student[2]|url_encode }}">{{ student[0]|escape('html') }}</a>
                 (
-                <span class="badge">Mentorius</span> {{ student[1] }}
+                <span class="badge">Mentorius</span> {{ student[1]|escape('html') }}
                 )
             </li>
         {% endfor %}
@@ -33,7 +33,7 @@
                 <h3>{{ repository[1] }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ repository[0] }}">github.com/nfqakademija/{{ repository[0] }}</a>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ repository[0]|url_encode }}">github.com/nfqakademija/{{ repository[0]|escape('html') }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
