@@ -7,7 +7,7 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for project in students %}
             <li class="list-group-item">
-                <a href="/student?name={{ project.student | escape }}&project={{ project.project | escape }}">
+                <a href="/student?name={{ project.student | url_encode }}&project={{ project.project | url_encode }}">
                     {{ project.student | escape }}
                 </a>
                 (
