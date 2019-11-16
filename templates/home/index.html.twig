@@ -7,7 +7,7 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for student in someVariable %}
             <li class="list-group-item">
-                <a href="/student?name={{ student[0] }}&amp;project={{ student[2] }}">{{ student[0] }}</a>
+                <a href="/student?name={{ student[0]|url_encode }}&amp;project={{ student[2]|url_encode }}">{{ student[0] }}</a>
                 (
                 <span class="badge">Mentorius</span> {{ student[1] }}
                 )
