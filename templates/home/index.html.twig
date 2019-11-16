@@ -7,10 +7,12 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for project in students %}
             <li class="list-group-item">
-                <a href="/student?name={{ project.student }}&project={{ project.project }}">{{ project.student }}</a>
+                <a href="/student?name={{ project.student | escape }}&project={{ project.project | escape }}">
+                    {{ project.student | escape }}
+                </a>
                 (
                 <span class="badge">Mentorius</span>
-                {{ project.mentors[0] }}
+                {{ project.mentors[0] | escape }}
                 )
             </li>
         {% endfor %}
@@ -30,14 +32,18 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for key, project in projects %}
             <li class="list-group-item">
-                <h3>{{ project.name }}</h3>
+                <h3>{{ project.name | escape }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="http://github.com/nfqakademija/{{ key | url_encode }}">github.com/nfqakademija/{{ key }}</a>
+                        <a target="_blank" href="http://github.com/nfqakademija/{{ key | url_encode }}">
+                            github.com/nfqakademija/{{ key | escape }}
+                        </a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ key | url_encode }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ key | url_encode }}.projektai.nfqakademija.lt/">
+                            {{ key | escape }}.projektai.nfqakademija.lt/
+                        </a>
                         <span class="badge">Web</span>
                     </div>
                     <pre>ssh {{ key | escape }}@deploy.nfqakademija.lt -p 2222</pre>
