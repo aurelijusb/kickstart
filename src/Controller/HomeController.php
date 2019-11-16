@@ -18,9 +18,9 @@ class HomeController extends AbstractController
         $studentList = array();
         $studentsJson = file_get_contents('students.json');
         $students = json_decode($studentsJson, true);
-        foreach ($students as $student) {
+        foreach ($students as $key => $student) {
             foreach ($student["students"] as $oneStudent) {
-                array_push($studentList, array($oneStudent, $student["mentors"][0], $student["name"]));
+                array_push($studentList, array($oneStudent, $student["mentors"][0], $key));
             }
         }
 
