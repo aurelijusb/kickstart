@@ -7,6 +7,9 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <style>
+                body{background-color: orange}
+            </style>
         {% endblock %}
     </head>
     <body>
