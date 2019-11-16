@@ -9,11 +9,11 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @Route("/about", name="about")
+     * @Route("/users", name="users")
      */
     public function index()
     {
-        return $this->render('home/index.html.twig', [
-            'someVariable' => 'NFQ Akademija',
-        ]);
+        return $this->render('home/index.html.twig', []);
     }
 }

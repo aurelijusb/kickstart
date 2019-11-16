@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    <div id="root"></div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('react') }}
 {% endblock %}
