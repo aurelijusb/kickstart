@@ -64,6 +64,7 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .enableReactPreset()
 
     // enables REACT preset
     .enableReactPreset()
