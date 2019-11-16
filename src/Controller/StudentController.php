@@ -17,7 +17,6 @@ class StudentController extends AbstractController
         $name = $request->get('name');
         $project = $request->get('project');
 
-//        dd($name, $project);
         return $this->render('home/student.html.twig', [
             'name' => $name,
             'project' => $project
