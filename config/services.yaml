@@ -23,5 +23,12 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    # As in https://sonata-project.org/bundles/admin/3-x/doc/getting_started/creating_an_admin.html#step-3-register-the-admin-class
+    admin.user:
+        class: App\Admin\UserAdmin
+        arguments: [~, App\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
