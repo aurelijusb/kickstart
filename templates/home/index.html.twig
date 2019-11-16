@@ -1,7 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}Projektai{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+            {% for team_name, students in data %}
+                {% for student in students.students %}
+                <li class="list-group-item">
+                    <a href="{{ path('student', {'name': student , 'project': team_name})}}"> {{ student }} </a> ( <span class="badge"> Mentorius </span>
+                    {{ students.mentors[0]}} )
+                </li>
+                 {% endfor %}
+            {% endfor %}
+    </ul>
+
+    <div class="m-4">
+        <form action="/student" method="get">
+            <div class="input-group">
+                <input name="name" type="text" class="form-control" placeholder="Studentas"/>
+            </div>
+            <div class="input-group">
+                <input name="project" type="text" class="form-control" placeholder="Projektas"/>
+            </div>
+            <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+        </form>
+    </div>
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+         {% for team_name, team in data %}
+          <li class="list-group-item">
+                <h3>{{ team.name}}</h3>
+                <div class="panel panel-default">
+                    <div>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ team.name }}">github.com/nfqakademija/{{ team_name }}</a>
+                        <span class="badge">GitHub</span>
+                    </div>
+                    <div>
+                        <a target="_blank" href="http://{{ team_name }}.projektai.nfqakademija.lt/">{{ team_name }}.projektai.nfqakademija.lt/</a>
+                        <span class="badge">Web</span>
+                    </div>
+                    <div>
+                        <pre>ssh {{ team_name }}@deploy.nfqakademija.lt -p 2222</pre>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}  
+    </ul>
+    <div class="m-4">
+        <a class="text-light" href="students.json">Duomenų failas</a>
+    </div>
 {% endblock %}
