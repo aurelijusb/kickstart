@@ -11,23 +11,23 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PeopleController extends AbstractController
 {
-    /**
-     * @Route("/people", name="people")
-     */
+  /**
+   * @Route("/people", name="people")
+   */
     public function index()
     {
         return $this->render('people/index.html.twig', [
-            'controller_name' => 'PeopleController',
+        'controller_name' => 'PeopleController',
         ]);
     }
 
-    /**
-     * @Route(
-     *     "/validate/{element}",
-     *     name="validatePerson",
-     *     methods={"POST"}
-     * )
-     */
+  /**
+   * @Route(
+   *     "/validate/{element}",
+   *     name="validatePerson",
+   *     methods={"POST"}
+   * )
+   */
     public function validate(Request $request, string $element)
     {
         try {
@@ -40,6 +40,14 @@ class PeopleController extends AbstractController
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                $studentTeam = $this->getStudentTeam($input);
+                $input2 = json_decode($request->getContent(), true)['input2'];
+                $isValidTeam = false;
+                if ($input) {
+                    $isValidTeam = (strtolower($input2) === $studentTeam);
+                }
+                return new JsonResponse(['valid' => $isValidTeam]);
         }
 
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
@@ -47,7 +55,8 @@ class PeopleController extends AbstractController
 
     private function getStorage()
     {
-        return /** @lang json */
+        return
+        /** @lang json */
         '{
           "team1": {
             "name": "Team1",
@@ -241,5 +250,18 @@ class PeopleController extends AbstractController
             }
         }
         return $students;
+    }
+
+    private function getStudentTeam(string $student_name)
+    {
+        $storage = json_decode($this->getStorage(), true);
+        foreach ($storage as $teamData) {
+            foreach ($teamData['students'] as $student) {
+                if (strtolower($student_name) == strtolower($student)) {
+                    return strtolower($teamData['name']);
+                }
+            }
+        }
+        return null;
     }
 }
