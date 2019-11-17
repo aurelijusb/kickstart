@@ -16,7 +16,7 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
 
-import axios from 'axios';
+const axios = require('axios');
 
 let versionedFileElement = document.getElementById('versionedFile');
 

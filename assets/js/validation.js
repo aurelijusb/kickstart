@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 let name = document.getElementById('name');
 let validationResultName = document.getElementById('validation-result-name');
