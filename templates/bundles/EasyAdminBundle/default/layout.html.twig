@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ app.request.locale|split('_')|first|default('en') }}" dir="{{ easyadmin_config('design.rtl') ? 'rtl' : 'ltr' }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noodp, noimageindex, notranslate, nocache" />
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="generator" content="EasyAdmin" />
-    <title>{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %}</title>
+{% extends 'base.html.twig' %}
+
+{% block title %}{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %}{% endblock %}
+{% block head %}
     {% block head_stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app.css') }}">
     {% endblock %}
@@ -31,9 +26,10 @@
         <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app.rtl.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app-custom-rtl.css') }}">
     {% endif %}
-</head>
+{% endblock %}
+
+{% block body_attributes %} id="{% block body_id %}{% endblock %}" class="easyadmin {% block body_class %}{% endblock %}" {% endblock %}
 {% block body %}
-    <body id="{% block body_id %}{% endblock %}" class="easyadmin {% block body_class %}{% endblock %}">
     <script>
         document.body.classList.add(
             'easyadmin-content-width-' + (localStorage.getItem('easyadmin/content/width') || 'normal'),
@@ -167,6 +163,4 @@
             <script src="{{ asset(js_asset) }}"></script>
         {% endfor %}
     {% endblock body_custom_javascript %}
-    </body>
 {% endblock body %}
-</html>
