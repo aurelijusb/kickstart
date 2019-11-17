@@ -28,6 +28,7 @@ Encore
         './assets/js/HelloWorld.jsx'
     ])
     .addEntry('validation', './assets/js/validation.js')
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -59,6 +60,7 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .enableReactPreset()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
