@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CardController extends AbstractController
 {
     /**
-     * @Route("/studentas", name="student")
+     * @Route("/student", name="student")
      * @param Request $request
      * @return Response
      */
@@ -20,11 +20,11 @@ class CardController extends AbstractController
         $project = urldecode($request->query->get('project'));
         $success = false;
 
-        if ($student === 'Andrius' && $project === 'NFQ Career Criteria Assessment') {
+        if ($student === 'Andrius' && $project === 'career') {
             $success = true;
         }
 
-        return $this->render('studentas/index.html.twig', [
+        return $this->render('student/index.html.twig', [
             'student' => $student,
             'project' => $project,
             'success' => $success,
