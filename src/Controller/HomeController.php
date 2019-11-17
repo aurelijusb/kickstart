@@ -20,6 +20,4 @@ class HomeController extends AbstractController
             'dataFileUrl' => 'students.json',
         ]);
     }
-
-
 }
