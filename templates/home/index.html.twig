@@ -7,9 +7,9 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for key, team in someVariable %}
-            {% for student in team['students'] %}
+            {% for student in team.students %}
                 <li class="list-group-item">
-                    <a href="{{ path('student', {'name': student, 'project': key}) }}">{{ student }}</a> ( <span class="badge">Mentorius</span> {{ team['mentors'][0] }} )
+                    <a href="{{ path('student', {'name': student, 'project': key}) }}">{{ student|escape }}</a> ( <span class="badge">Mentorius</span> {{ team.mentors[0]|escape }} )
                 </li>
             {% endfor %}
             <div></div>
@@ -32,7 +32,7 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for key, team in someVariable %}
             <li class="list-group-item">
-                <h3>{{ team['name'] }}</h3>
+                <h3>{{ team.name|escape }}</h3>
                 <div class="panel panel-default">
                     <div>
                         <a target="_blank" href="https://github.com/nfqakademija/{{ key|lower }}">github.com/nfqakademija/{{ key|lower }}</a>
