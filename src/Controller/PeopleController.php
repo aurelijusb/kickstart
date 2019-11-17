@@ -43,7 +43,7 @@ class PeopleController extends AbstractController
         }
         $projects = $this->getProjects();
         switch ($element) {
-            case 'project':
+            case 'team':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $projects)]);
         }
 
