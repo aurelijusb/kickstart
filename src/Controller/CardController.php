@@ -16,16 +16,16 @@ class CardController extends AbstractController
     {
         $student = urldecode($request->query->get('name'));
         $project = urldecode($request->query->get('project'));
-        $evaluation = 'Gal pasiseks kitą kartą';
+        $success = false;
 
         if ($student === 'Andrius' && $project === 'NFQ Career Criteria Assessment') {
-            $evaluation = 'Dešim balų';
+            $success = true;
         }
 
         return $this->render('studentas/index.html.twig', [
             'student' => $student,
             'project' => $project,
-            'evaluation' => $evaluation,
+            'success' => $success,
             'title' => 'Projektai',
         ]);
     }

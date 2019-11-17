@@ -9,16 +9,18 @@
                 <th scope="row">Studentas</th>
             </tr>
             <tr>
-                <td>{{ student }}</td>
                 <td>{{ project }}</td>
+                <td>{{ student }}</td>
             </tr>
             </tbody>
         </table>
-        {% if evaluation ==  'Dešim balų' %}
-            <div class="alert alert-success">{{ evaluation }}
+        {% if success %}
+            <div class="alert alert-success">
+                Dešim balų
             </div>
         {% else %}
-            <div class="alert alert-warning" role="alert">{{ evaluation }}
+            <div class="alert alert-warning" role="alert">
+                Gal pasiseks kitą kartą
             </div>
         {% endif %}
     </div>
