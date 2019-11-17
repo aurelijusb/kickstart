@@ -1,0 +1,11 @@
+{% block list_item %}
+	<li class="list-group-item">
+		<a href="/student?name={{ student_name }}&amp;project={{ team_name }}">{{ student_name }}</a>
+		(
+		<span class="badge">Mentorius</span>
+		{% for mentor in mentors %}
+			{{ mentor }}
+		{% endfor %}
+		)
+	</li>
+{% endblock %}

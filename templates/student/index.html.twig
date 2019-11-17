@@ -1,16 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StudentController!{% endblock %}
+{% block title %}Hello StudentController!
+{% endblock %}
 
 {% block body %}
-Katalogas: {{ controller_name }}
+	<ul class="list-group m-4">
+		<li class="list-group-item list-group-item-info">Studentai</li>
 
-    {% if controller_name == '/code'  %}
-     (Dockeryje)
-    {% else %}
-        Kažkur kitur
-    {% endif %}
+		{% for project in team_list %}
 
-    <a href="{{ path('home', {'student': "la ? & naujas domanas bas"}) }}">Pagrindinis</a>
+			{% for student in project.students %}
+				{{ include ('./student/list_item.html.twig', {'student_name': student, 'mentors': project.mentors, 'team_name': project.name}) }}
+			{% endfor %}
 
-{% endblock %}
+		{% endfor %}
+	</ul>
+	<div class="m-4">
+		<form action="/student" method="get">
+			<div class="input-group">
+				<input name="name" type="text" class="form-control" placeholder="Studentas"/>
+			</div>
+			<div class="input-group">
+				<input name="project" type="text" class="form-control" placeholder="Projektas"/>
+			</div>
+			<button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+		</form>
+	</div>
+
+	<ul class="list-group m-4">
+		<li class="list-group-item list-group-item-info">Projektai</li>
+
+		{% for project in team_list %}
+
+			{% for student in project.students %}
+				{{ include ('./student/list_item.html.twig', {'student_name': student, 'mentors': project.mentors, 'team_name': project.name}) }}
+			{% endfor %}
+
+		{% endfor %}
+
+	{% endblock %}
