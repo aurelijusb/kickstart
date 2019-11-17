@@ -17,7 +17,6 @@ const validateName = () => {
     }).catch(error => {
         validationResultName.innerText = 'Error: ' + error;
     })
-};
 
 name.onkeyup = validateName;
 name.onchange = validateName;
