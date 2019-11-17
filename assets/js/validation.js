@@ -3,9 +3,6 @@ const axios = require('axios');
 let name = document.getElementById('name');
 let validationResultName = document.getElementById('validation-result-name');
 
-let team = document.getElementById('team');
-let validationResultTeam = document.getElementById('validation-result-team');
-
 const validateName = () => {
     validationResultName.innerText = '...';
 
@@ -22,6 +19,12 @@ const validateName = () => {
     })
 };
 
+name.onkeyup = validateName;
+name.onchange = validateName;
+
+let team = document.getElementById('team');
+let validationResultTeam = document.getElementById('validation-result-team');
+
 const validateTeam = () => {
     validationResultTeam.innerText = '...';
 
@@ -37,9 +40,6 @@ const validateTeam = () => {
         validationResultTeam.innerText = 'Error: ' + error;
     })
 };
-
-name.onkeyup = validateName;
-name.onchange = validateName;
 
 team.onkeyup = validateTeam;
 team.onchange = validateTeam;
