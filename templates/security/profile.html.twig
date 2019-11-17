@@ -9,6 +9,9 @@
         {% for role in roles %}
             <span class="badge badge-secondary">{{ role|lower }}</span>
         {% endfor %}
+        <div class="mb-2">
+            <span class="badge badge-primary"> <a href="{{ user.homepage }}"></a>{{ user.homepage }}</span>
+        </div>
     </div>
 {% endblock %}
 

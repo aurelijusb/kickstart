@@ -35,6 +35,38 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @var null|\DateTime When password was changed
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $passwordChanged = null;
+    /** @var bool Does plain password was entered */
+    private $passwordWasChanged = false;
+
+    /**
+     * @var null|string Link to Personal Website
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $homepage = "";
+
+    /**
+     * @return string|null
+     */
+    public function getHomepage(): ?string
+    {
+        return $this->homepage;
+    }
+
+    /**
+     * @param string|null $homepage
+     */
+    public function setHomepage(?string $homepage): self
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,7 +91,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -80,6 +112,32 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /** Virtual method for EasyAdminBundle */
+    public function getPlainPassword(): string
+    {
+        return ''; // We store passwords hashed, it is impossible to regenerate back
+    }
+    /** Virtual method for EasyAdminBundle */
+    public function setPlainPassword($password): self
+    {
+        if (!$password) {
+            return $this;
+        }
+
+        $this->passwordWasChanged = true;
+        $hash = password_hash($password, PASSWORD_ARGON2I);
+        return $this->setPassword($hash);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPasswordWasChanged(): bool
+    {
+        return $this->passwordWasChanged;
+    }
+
 
     /**
      * @see UserInterface
@@ -112,4 +170,20 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getPasswordChanged(): ?\DateTime
+    {
+        return $this->passwordChanged;
+    }
+    /**
+     * @param \DateTime|null $passwordChanged
+     */
+    public function setPasswordChanged(?\DateTime $passwordChanged): void
+    {
+        $this->passwordChanged = $passwordChanged;
+    }
+
 }
