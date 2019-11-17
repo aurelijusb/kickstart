@@ -30,12 +30,11 @@
 	<ul class="list-group m-4">
 		<li class="list-group-item list-group-item-info">Projektai</li>
 
-		{% for project in team_list %}
-
-			{% for student in project.students %}
-				{{ include ('./student/list_item.html.twig', {'student_name': student, 'mentors': project.mentors, 'team_name': project.name}) }}
-			{% endfor %}
-
+		{% for key, project in team_list %}
+			{{ include ('./project/list_item.html.twig', {'project': project.name, 'proj': key}) }}
 		{% endfor %}
-
-	{% endblock %}
+	</ul>
+	<div class="m-4">
+		<a class="text-light" href="/build/students.json">Duomenų failas</a>
+	</div>
+{% endblock %}
