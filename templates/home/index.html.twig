@@ -35,15 +35,15 @@
                 <h3>{{ team.name|escape }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|lower }}">github.com/nfqakademija/{{ key|lower }}</a>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|escape }}">github.com/nfqakademija/{{ key|escape }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ key|lower }}.projektai.nfqakademija.lt/">{{ key|lower }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ key|escape }}.projektai.nfqakademija.lt/">{{ key|escape }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ key|lower }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ key|escape }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
