@@ -25,7 +25,3 @@ class StudentController extends AbstractController
         ]);
     }
 }
-
-
-
-
