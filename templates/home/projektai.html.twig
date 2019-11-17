@@ -6,15 +6,16 @@
             <div class="panel panel-default">
                 <div>
                     <a target="_blank"
-                       href="https://github.com/nfqakademija/{{key | url_encode}}">github.com/nfqakademija/{{ key | url_encode}}</a>
+                       href="https://github.com/nfqakademija/{{key | url_encode}}">github.com/nfqakademija/{{ key }}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
-                    <a target="_blank" href="http://{{ key | url_encode}}.projektai.nfqakademija.lt/">{{ key | url_encode}}.projektai.nfqakademija.lt/</a>
+                    <a target="_blank"
+                       href="http://{{ key | url_encode}}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>
-                    <pre>ssh team1@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </div>
         </li>
