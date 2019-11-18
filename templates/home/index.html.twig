@@ -40,17 +40,17 @@
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ team["name"]| url_encode }}.projektai.nfqakademija.lt/">{{ team["name"]}}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ team["name"]| url_encode }}.projektai.nfqakademija.lt/">{{ team_name }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ team["name"] }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ team_name }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="students.json">Duomenų failas</a>
+        <a class="text-light" href="/students.json">Duomenų failas</a>
     </div>
 {% endblock %}
