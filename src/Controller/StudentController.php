@@ -20,12 +20,9 @@ class StudentController extends AbstractController
 
         $outputProject = '';
 
-        foreach ($data as $key => $value)
-        {
-            foreach ($data[$key]['students'] as $testName)
-            {
-                if($testName === $name && $project === $data[$key]['name'])
-                {
+        foreach ($data as $key => $value) {
+            foreach ($data[$key]['students'] as $testName) {
+                if ($testName === $name && $project === $data[$key]['name']) {
                     $outputProject = $key;
                     break;
                 }
