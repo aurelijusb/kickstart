@@ -1,8 +1,8 @@
-name: Symfony 1 Homework
+name: Symfony 3 Homework
 on: push
 jobs:
   build:
-    name: Build and test for Symfony 1 Homework
+    name: Build and test for Symfony 3 Homework
     runs-on: ubuntu-latest
     steps:
         # Prepare dependencies
