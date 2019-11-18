@@ -8,7 +8,7 @@
             {% for student in team.students %}
                 <li class="list-group-item">
 
-                    <a href="{{ path('student', {'name': student, 'project': team.name}) }}"> {{ student }}</a>
+                    <a href="{{ path('student', {'name': student|url_encode, 'project': team.name|url_encode}) }}"> {{ student }}</a>
                     (<span class="badge"> Mentorius </span>{{  team.mentors[0] }} )
                 </li>
             {% endfor %}
@@ -51,6 +51,6 @@
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="https://hw1.nfq2019.online/students.json"> Duomenų failas </a>
+        <a class="text-light" href="/students.json"> Duomenų failas </a> <!-- is tikro traukia https://hw1.nfq2019.online/students.json -->
     </div>
 {% endblock %}
