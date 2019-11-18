@@ -36,15 +36,15 @@
                 <h3>{{ team["name"] }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ team["name"] | url_encode }}">github.com/nfqakademija/{{ team_name }}</a>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ team["name"] | e('html')  }}">github.com/nfqakademija/{{ team_name }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ team["name"]| url_encode }}.projektai.nfqakademija.lt/">{{ team_name }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ team["name"]| e('html')  }}.projektai.nfqakademija.lt/">{{ team_name }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ team_name }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ team_name| e('html')  }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
