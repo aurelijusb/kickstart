@@ -1,7 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}Projektai{% endblock %}
+
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+
+<ul class="list-group m-4">
+    <li class="list-group-item list-group-item-info">Studentai</li>
+    {% for team_name, students in decodededData %}
+        {% for student in students.students %}
+        <li class="list-group-item">
+            <a href="{{ path('student', {'name': student, 'project': team_name})}}">{{ student }}</a>
+            (
+            <span class="badge">Mentorius</span> {{ students.mentors[0] }}
+            )
+        </li>
+    {% endfor %}
+    {% endfor %}
+</ul>
+
+    <a href="{{ path('student') }}">Studentas</a>
 {% endblock %}

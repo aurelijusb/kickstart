@@ -3,7 +3,7 @@
 use App\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
-
+https://github.com/nfqakademija/receptai
 require dirname(__DIR__).'/config/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
