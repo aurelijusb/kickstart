@@ -3,6 +3,11 @@
 NFQ Akademija
 ============
 
+# Medžiaga
+
+Bus remiamasi: https://github.com/aurelijusb/kickstart/pull/140
+Namų darbai: https://github.com/aurelijusb/kickstart/pull/162
+
 # Intro
 
 Sveiki! Tai yra Jūsų startinis projekto "template". 
