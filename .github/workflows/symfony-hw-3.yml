@@ -30,7 +30,7 @@ jobs:
         run: ./scripts/backend.sh bin/console doctrine:migrations:latest
       - name: Insert test user
         if: always()
-        run: ./scripts/mysql.sh "INSERT INTO user (email, roles, password) VALUES ('admin@admin.lt', '[\"ROLE_USER\",\"ROLE_ADMIN\"]', '$argon2i$v=19$m=1024,t=2,p=2$TURiOFoydW9xS0dZRE5DVw$1nHOzh9hWiLJrjbBNNW7pIzMhUUvEAwcw6Tx7JJVfNk')"
+        run: ./scripts/insert-test-user.sh
       - name: Check user is added to database
         if: always()
         run: ./scripts/mysql.sh "SELECT * FROM user"

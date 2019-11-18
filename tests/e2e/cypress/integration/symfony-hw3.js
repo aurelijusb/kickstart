@@ -4,13 +4,11 @@ const d = async (message) => {
     console.info('D', message);
     await cy.ciDebug(message);
 };
-// const dd = async (message) => {
-//     console.log('DD', message);
-//     await cy.ciLog(message);
-// };
 
+// Uncomment during local development:
 // beforeEach(function () {
-//     cy.exec(`../../scripts/mysql.sh "TRUNCATE user;"`)
+//     cy.exec(`../../scripts/mysql.sh "TRUNCATE user;"`);
+//     cy.exec(`../../scripts/insert-test-user.sh`);
 // });
 
 describe('Third homework', function() {
@@ -59,4 +57,26 @@ describe('Third homework', function() {
         cy.contains("Atsijungti").click();
         cy.contains("Prisijungti");
     });
+
+    it('Access admin panel', () => {
+        d('Prisjungiame');
+        cy.visit(`${basePath}/login`);
+        cy.get('#inputEmail').type("admin@admin.lt");
+        cy.get('#inputPassword').type("slaptas"); // Not for production use
+        cy.get('form').submit();
+
+        d('Einame į profilio puslapį');
+        cy.contains("Naudotojas");
+        cy.contains("admin@admin.lt");
+        cy.contains("Administravimas").click();
+        cy.screenshot();
+
+        d('Administravimo puslapyje');
+        cy.screenshot();
+        cy.url().should('include','/admin');
+        cy.contains("admin@admin.lt");
+        cy.contains("kitas@kitas.lt");
+        cy.contains("Homepage");
+        cy.contains("www.linkedin.com/company/nfq/");
+    })
 });
