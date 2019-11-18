@@ -8,7 +8,7 @@
             {% for student in team.students %}
                 <li class="list-group-item">
 
-                    <a href="{{ path('student', {'name': student|url_encode, 'project': team.name|url_encode}) }}"> {{ student }}</a>
+                    <a href="{{ path('student', {'name': student, 'project': team.name})|url_encode }}"> {{ student }}</a>
                     (<span class="badge"> Mentorius </span>{{  team.mentors[0] }} )
                 </li>
             {% endfor %}
@@ -29,22 +29,22 @@
         <li class="list-group-item list-group-item-info"> Projektai </li>
         {%  for team in teams %}
             <li class="list-group-item">
-                <h3> {{ team.name|url_encode }} </h3>
+                <h3> {{ team.name }} </h3>
                 <div class="panel panel-default">
                     <div>
                         <a target="_blank" href="https://github.com/nfqakademija/{{ team.name|url_encode }}">
-                            github.com/nfqakademija/{{ team.name|url_encode }}
+                            github.com/nfqakademija/{{ team.name }}
                         </a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
                         <a target="_blank" href="http://{{ team.name|url_encode }}.projektai.nfqakademija.lt/">
-                            {{ team.name|url_encode }}.projektai.nfqakademija.lt
+                            {{ team.name }}.projektai.nfqakademija.lt
                         </a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ team.name|url_encode }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ team.name }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
