@@ -20,7 +20,14 @@ jobs:
         run: curl -v http://127.0.0.1:8000
       - name: List used routes
         if: always()
-        run: ./scripts/backend.sh bin/console debug:router
+        run:  bin/console debug:router
+
+        # Database
+      - name: Run database migrations
+        run: ./scripts/backend.sh bin/console doctrine:migrations:migrate
+      - name: Check latest migration
+        if: always()
+        run: ./scripts/backend.sh bin/console doctrine:migrations:latest
 
         # Browser based tests
       - name: Download Cypress dependencies
