@@ -35,6 +35,7 @@ yarn-error.log
 
 
 ###> cypress ###
+/tests/e2e/cypress/fixtures
 /tests/e2e/cypress/screenshots
 /tests/e2e/cypress/videos
 tests/e2e/package.json
