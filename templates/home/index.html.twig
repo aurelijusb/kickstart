@@ -36,12 +36,12 @@
                 <div class="panel panel-default">
                     <div>
                         <a target="_blank"
-                           href="https://github.com/nfqakademija/{{ project.project }}">github.com/nfqakademija/{{ project.project }}</a>
+                           href="https://github.com/nfqakademija/{{ project.project | url_encode }}">github.com/nfqakademija/{{ project.project }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
                         <a target="_blank"
-                           href="http://{{ project.project }}.projektai.nfqakademija.lt/">
+                           href="http://{{ project.project | url_encode }}.projektai.nfqakademija.lt/">
                             {{ project.project }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
