@@ -33,7 +33,7 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for team_name, team in teams %}
             <li class="list-group-item">
-                <h3>{{ team_name }}</h3>
+                <h3>{{ team["name"] }}</h3>
                 <div class="panel panel-default">
                     <div>
                         <a target="_blank" href="https://github.com/nfqakademija/{{ team["name"] | url_encode }}">github.com/nfqakademija/{{ team_name }}</a>
@@ -51,6 +51,6 @@
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="/students.json">Duomenų failas</a>
+        <a class="text-light" href="students.json">Duomenų failas</a>
     </div>
 {% endblock %}
