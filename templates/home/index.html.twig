@@ -8,7 +8,7 @@
         {% for index, team in json %}
             {% for student in team["students"] %}
                 <li class="list-group-item">
-                    <a href="{{ path('student', {'name': student|url_escape , 'project': index|url_escape }) }}">{{student}}</a>
+                    <a href="{{ path('student', {'name': student|url_encode , 'project': index|url_encode }) }}">{{student}}</a>
                     {# i think that the JSON is implying that there's a possibility of more than one mentor #}
                     {# so i made the template handle it, apologies for the messy code #}
                     {% if team["mentors"]|length > 1 %}
