@@ -49,7 +49,4 @@ class HomeController extends AbstractController
         }
         return $result;
     }
-
-
 }
-
