@@ -12,9 +12,9 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request)
+    public function index()
     {
-        /*foreach(json_decode($this->getTeams()) as $stud){
+        /*foreach(json_decode($this->getTeams(), true) as $stud){
             print_r($stud);
         }*/
         return $this->render('home/index.html.twig', [
