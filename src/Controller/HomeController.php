@@ -12,8 +12,10 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->render('home/index.html.twig', [
-            'someVariable' => 'NFQ Akademija',
-        ]);
+
+        $data = file_get_contents("students.json");
+        $teams = json_decode($data, true);
+
+        return $this->render('home/index.html.twig', ["teams" => $teams]);
     }
 }
