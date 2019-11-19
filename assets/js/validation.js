@@ -1,21 +1,32 @@
 const axios = require('axios');
 
-let name = document.getElementById('name');
-let validationResult = document.getElementById('validation-result');
-const validateName = function () {
-    validationResult.innerText = '...';
-    axios.post(validationResult.dataset.path, {input: name.value})
-        .then(function(response) {
-            if (response.data.valid) {
-                validationResult.innerHTML = ":)";
-            } else {
-                validationResult.innerHTML = ":(";
-            }
+const name = document.getElementById('name');
+const nameValidation = document.getElementById('validation-result-name');
+
+const team = document.getElementById('team');
+const teamValidation = document.getElementById('validation-result-team');
+
+const validate = (input, validationText) => {
+    validationText.innerText = '...';
+    axios
+        .post(validationText.dataset.path, { input: input.value })
+        .then(response => {
+            response.data.valid
+            ? (validationText.innerHTML = ':)')
+            : (validationText.innerHTML = ':(');
         })
-        .catch(function (error) {
-            validationResult.innerText = 'Error: ' + error;
+        .catch(error => {
+            validationText.innerText = 'Error ' + error;
         });
 };
 
-name.onkeyup = validateName;
-name.onchange = validateName;
+const eventListeners = (input, validationText) => {
+    const events = ['keyup', 'change'];
+    events.forEach(
+        event =>
+        input.addEventListener(event, () => validate(input, validationText))
+    );
+};
+
+eventListeners(name, nameValidation);
+eventListeners(team, teamValidation);
