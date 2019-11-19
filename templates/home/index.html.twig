@@ -6,10 +6,10 @@
 
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-            {% for teamObj in dataArray %}
+            {% for teamName, teamObj in dataArray %}
                 {% for student in teamObj.students %}
                 <li class="list-group-item">
-                    <a href="{{ path('student', {'name': student , 'project': teamObj.name })}}"> {{ student }} </a> 
+                    <a href="{{ path('student', {'name': student , 'project': teamName })}}"> {{ student }} </a> 
                     ( <span class="badge"> Mentorius </span>{{ teamObj.mentors[0]}} )
                 </li>
                  {% endfor %}
