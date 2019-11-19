@@ -9,7 +9,7 @@
         {% for key, team in someVariable %}
             {% for student in team.students %}
                 <li class="list-group-item">
-                    <a href="{{ path('student', {'name': student, 'project': key}) }}">{{ student|escape('html') }}</a> ( <span class="badge">Mentorius</span> {{ team.mentors[0]|escape('html') }} )
+                    <a href="{{ path('student', {'name': student, 'project': key} | escape) }}">{{ student }}</a> ( <span class="badge">Mentorius</span> {{ team.mentors[0] }} )
                 </li>
             {% endfor %}
             <div></div>
