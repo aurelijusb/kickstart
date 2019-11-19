@@ -3,5 +3,21 @@
 {% block title %}{{ someVariable }}{% endblock %}
 
 {% block body %}
+    <script>
+
+    </script>
     <div class="nfq-academy">{{ someVariable }}</div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+
+            {% for key,value in json %}
+                         <li class="list-group-item">
+                             <a href="{{ path('student',{'name':value.student,'project':value.project}) }}">{{ value.student }}</a>
+                             (
+                             <span class="badge">Mentorius</span> {{ value.mentors[0] }}
+                             )
+                         </li>
+            {% endfor %}
+    </ul>
+
 {% endblock %}
