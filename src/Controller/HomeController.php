@@ -17,7 +17,6 @@ class  HomeController extends AbstractController
         $array = (array) $encode;
         $sutends = $this->groupByStudents($encode);
         return $this->render('home/index.html.twig', [
-            'someVariable' => 'NFQ Akademija',
             'json' => $sutends,
         ]);
     }
