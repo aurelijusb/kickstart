@@ -9,9 +9,9 @@
             <li class="list-group-item">
                 <a
                         href="{{ path('student') }}?name={{ student.student|url_encode }}&project={{student.project|url_encode}}"
-                >{{ student.student }}</a>
+                >{{ student.student|escape }}</a>
                 (
-                <span class="badge">Mentorius</span>
+                <span class="badge">Mentorius</span> {{ student.mentors|escape }}
                 )
             </li>
         {% endfor %}
