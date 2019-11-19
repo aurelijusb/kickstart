@@ -12,7 +12,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $dataArray = json_decode(file_get_contents('https://hw1.nfq2019.online/students.json'), true);
+        $dataArray = json_decode(file_get_contents('students.json'), true);
 
         return $this->render('home/index.html.twig', [
             'dataArray' => $dataArray,
