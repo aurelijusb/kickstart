@@ -9,7 +9,7 @@
         {% for key, team in someVariable %}
             {% for student in team.students %}
                 <li class="list-group-item">
-                    <a href="{{ path('student', {'name': student, 'project': key}) }}">{{ student|escape }}</a> ( <span class="badge">Mentorius</span> {{ team.mentors[0]|escape }} )
+                    <a href="{{ path('student', {'name': student, 'project': key}) }}">{{ student|escape('html') }}</a> ( <span class="badge">Mentorius</span> {{ team.mentors[0]|escape('html') }} )
                 </li>
             {% endfor %}
             <div></div>
@@ -32,18 +32,18 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for key, team in someVariable %}
             <li class="list-group-item">
-                <h3>{{ team.name|escape }}</h3>
+                <h3>{{ team.name|escape('html') }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|escape }}">github.com/nfqakademija/{{ key|escape }}</a>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|escape('url') }}">github.com/nfqakademija/{{ key|escape('html') }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ key|escape }}.projektai.nfqakademija.lt/">{{ key|escape }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ key|escape('url') }}.projektai.nfqakademija.lt/">{{ key|escape }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ key|escape }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ key|escape('html') }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
