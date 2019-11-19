@@ -16,7 +16,7 @@
             </tr>
             </tbody>
         </table>
-        {% if (((studentName == 'Lukas') and (projectName == 'NFQ Car parking')) or ((studentName|lower == 'lukas') and (projectName == ''))) %}
+        {% if (((studentName|lower == 'lukas') and (projectName == 'NFQ Car parking')) or ((studentName|lower == 'lukas') and (projectName == ''))) %}
             <div class="alert alert-success" role="alert">
                 Dešimt balų
             </div>
