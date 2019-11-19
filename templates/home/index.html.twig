@@ -33,18 +33,18 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for project in projects %}
             <li class="list-group-item">
-                <h3>{{ project.name }}</h3>
+                <h3>{{ project.name|escape }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ project.name }}">github.com/nfqakademija/{{ project.name }}</a>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ project.name|escape }}">github.com/nfqakademija/{{ project.name|escape }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ project.name }}.projektai.nfqakademija.lt/">{{ project.name }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ project.name|escape }}.projektai.nfqakademija.lt/">{{ project.name|escape }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ project.name }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ project.name|escape }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
@@ -52,7 +52,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="/students.json">Duomenų failas</a>
+        <a class="text-light" href="students.json">Duomenų failas</a>
     </div>
 
 {% endblock %}

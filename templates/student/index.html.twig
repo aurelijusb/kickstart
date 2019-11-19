@@ -14,12 +14,12 @@
                 {% if project == NULL %}
                     <td>Negavome projekto duomenų</td>
                 {% else %}
-                    <td>{{ project }}</td>
+                    <td>{{ project|escape }}</td>
                 {% endif %}
                 {% if name == NULL %}
                     <td>Negavome studento vardą</td>
                 {% else %}
-                    <td>{{ name }}</td>
+                    <td>{{ name|escape }}</td>
                 {% endif %}
             </tr>
             </tbody>
