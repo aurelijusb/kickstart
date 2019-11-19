@@ -38,28 +38,28 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
 
 
-            {% for project, students in dataArray %}
+            {% for key, students in dataArray %}
         <li class="list-group-item">
             <h3>{{ students.name }}</h3>
 
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{project }}">github.com/nfqakademija/{{key}}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{key|url_encode}}">github.com/nfqakademija/{{key|e('html')}}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
                     <a target="_blank"
-                       href="http://{{project|e('html')}}.projektai.nfqakademija.lt/">{{project|e('html')}}.projektai.nfqakademija.lt/</a>
+                       href="http://{{key|url_encode}}.projektai.nfqakademija.lt/">{{key|e('html')}}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>
-                    <pre>ssh {{project|e('html')}}@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{key|e('html')}}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </div>
         </li>
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="{{ path('viewFile') }}">Duomenų failas</a>
+        <a class="text-light" href="students.json">Duomenų failas</a>
     </div>
 {% endblock %}

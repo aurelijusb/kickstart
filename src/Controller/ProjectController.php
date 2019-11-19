@@ -38,7 +38,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route ("/students.json", name="viewFile")
+     * @Route ("/student.json", name="viewFile")
      */
     public function viewFile()
     {
