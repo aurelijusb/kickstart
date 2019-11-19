@@ -14,12 +14,12 @@ class  HomeController extends AbstractController
     {
         $jsonContent = file_get_contents("https://hw1.nfq2019.online/students.json");
         $encode = json_decode($jsonContent, true);
-        $array = (array) $encode;
-        $sutends = $this->groupByStudents($encode);
+        $students = $this->groupByStudents($encode);
         return $this->render('home/index.html.twig', [
-            'json' => $sutends,
+            'json' => $students,
         ]);
     }
+
     private function groupByStudents(array $projects)
     {
         $result = [];
