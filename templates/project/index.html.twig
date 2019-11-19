@@ -11,10 +11,10 @@
             {% for student in students.students %}
                 <li class="list-group-item">
 
-                <a href="{{ path('student', {project:key, name:student})}}">{{ student }}</a>
+                <a href="{{ path('student', {name:student, project:key,})|escape}}">{{ student}}</a>
                 (
                 <span class="badge">Mentorius</span>
-                <span> {{ students.mentors.0 }}</span>
+                <span> {{ students.mentors.0}}</span>
                 )
             {% endfor %}
             </li>

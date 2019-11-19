@@ -38,20 +38,11 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route ("/student.json", name="viewFile")
-     */
-    public function viewFile()
-    {
-        $data = $this->provideStudents();
-        return new JsonResponse($data);
-    }
-
-    /**
      * @return mixed
      */
     private function provideStudents()
     {
-        $studentsJson = file_get_contents('https://hw1.nfq2019.online/students.json');
+        $studentsJson = file_get_contents("../public/students.json");
         return json_decode($studentsJson, true);
     }
 }
