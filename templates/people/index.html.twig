@@ -6,11 +6,18 @@
     <div id="root">Loading...</div>
     <noscript>To use this app, enable Javascript</noscript>
     <div>
-        Versijuojamas Javascript failas: <b id="versionedFile">...</b>
+        <label for="name">Vardas</label>
+        <input type="text" id="name"/>
+        <span id="validation-result-name" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
     </div>
 
-    <input type="text" id="name"/>
-    <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+    <div>
+        <label for="team">Komanda</label>
+        <input type="text" id="team"/>
+        <span id="validation-result-team" data-path="{{ path('validatePerson', {'element': 'team'}) }}"></span>
+    </div>
+
+    
 {% endblock %}
 
 {% block javascripts %}
