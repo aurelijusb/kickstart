@@ -44,16 +44,16 @@
 
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{key}}">github.com/nfqakademija/{{key}}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{key }}">github.com/nfqakademija/{{key}}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
                     <a target="_blank"
-                       href="http://{{key|url_encode}}.projektai.nfqakademija.lt/">{{key|url_encode}}.projektai.nfqakademija.lt/</a>
+                       href="http://{{key|e('html')}}.projektai.nfqakademija.lt/">{{key|e('html')}}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>
-                    <pre>ssh {{key|url_encode}}@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{key|e('html')}}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </div>
         </li>

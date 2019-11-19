@@ -18,7 +18,7 @@
         </tbody>
     </table>
 
-    {% if name|lower == 'kęstas' and (project == 'NFQ Car parking' or project == '') %}
+    {% if name|lower == 'kęstas' and (project|lower == 'nfq car parking' or project|lower == 'carparking') %}
         <div class="alert alert-success" role="alert">
             Dešimt balų
         </div>
