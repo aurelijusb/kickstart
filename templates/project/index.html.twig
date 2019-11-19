@@ -38,22 +38,22 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
 
 
-            {% for key, students in dataArray %}
+            {% for project, students in dataArray %}
         <li class="list-group-item">
             <h3>{{ students.name }}</h3>
 
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{key }}">github.com/nfqakademija/{{key}}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{project }}">github.com/nfqakademija/{{key}}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
                     <a target="_blank"
-                       href="http://{{key|e('html')}}.projektai.nfqakademija.lt/">{{key|e('html')}}.projektai.nfqakademija.lt/</a>
+                       href="http://{{project|e('html')}}.projektai.nfqakademija.lt/">{{project|e('html')}}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>
-                    <pre>ssh {{key|e('html')}}@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{project|e('html')}}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </div>
         </li>
