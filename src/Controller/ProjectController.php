@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,6 +35,15 @@ class ProjectController extends AbstractController
             'name' => $name,
             'project' => $project
         ]);
+    }
+
+    /**
+     * @Route ("/students.json", name="viewFile")
+     */
+    public function viewFile()
+    {
+        $data = $this->provideStudents();
+        return new JsonResponse($data);
     }
 
     /**

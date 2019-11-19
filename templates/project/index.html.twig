@@ -6,11 +6,12 @@
     <body data-gr-c-s-loaded="true">
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-        {% for students in dataArray %}
+        {% for key, students in dataArray %}
 
             {% for student in students.students %}
                 <li class="list-group-item">
-                <a href="/student?name={{ student |url_encode }}&project={{ students.name|url_encode }}">{{ student }}</a>
+
+                <a href="{{ path('student', {project:key, name:student})}}">{{ student }}</a>
                 (
                 <span class="badge">Mentorius</span>
                 <span> {{ students.mentors.0 }}</span>
@@ -21,7 +22,7 @@
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{path('student') }}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas">
             </div>
@@ -58,5 +59,7 @@
         </li>
         {% endfor %}
     </ul>
-    </body>
+    <div class="m-4">
+        <a class="text-light" href="{{ path('viewFile') }}">Duomenų failas</a>
+    </div>
 {% endblock %}

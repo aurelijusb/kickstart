@@ -3,33 +3,32 @@
 {% block title %}Vertinimas{% endblock %}
 
 {% block body %}
-    <body data-gr-c-s-loaded="true">
-    <div class="bg-light m-4">
-        <table class="table">
-            <tbody>
-            <tr>
-                <th scope="row">Projektas</th>
-                <th scope="row">Studentas</th>
-            </tr>
-            <tr>
-                <td>{{ project }}</td>
-                <td>{{ name }}</td>
-            </tr>
-            </tbody>
-        </table>
+<body data-gr-c-s-loaded="true">
+<div class="bg-light m-4">
+    <table class="table">
+        <tbody>
+        <tr>
+            <th scope="row">Projektas</th>
+            <th scope="row">Studentas</th>
+        </tr>
+        <tr>
+            <td>{{ project }}</td>
+            <td>{{ name }}</td>
+        </tr>
+        </tbody>
+    </table>
 
-        {% if name|lower == 'kęstas' and (project == 'NFQ Car parking' or project == '') %}
-            <div class="alert alert-success" role="alert">
-                Dešimt balų
-            </div>
-        {% else %}
-            <div class="alert alert-warning" role="alert">
-                Gal pasiseks kitą kartą
-            </div>
-        {% endif %}
-        <div class="m-4">
-            <a class="text-light" href="/">Visi studentai</a>
+    {% if name|lower == 'kęstas' and (project == 'NFQ Car parking' or project == '') %}
+        <div class="alert alert-success" role="alert">
+            Dešimt balų
         </div>
-    </div>
-    </body>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            Gal pasiseks kitą kartą
+        </div>
+    {% endif %}
+</div>
+<div class="m-4">
+    <a class="text-light" href="{{ path('students') }}">Visi studentai</a>
+</div>
 {% endblock %}
