@@ -11,9 +11,9 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(KernelInterface $kernel )
+    public function index(KernelInterface $kernel)
     {
-        $projects = json_decode(file_get_contents($kernel->getProjectDir().'/public/students.json' ), true);
+        $projects = json_decode(file_get_contents($kernel->getProjectDir().'/public/students.json'), true);
 
         $result=[];
         foreach ($projects as $projectName => $project) {

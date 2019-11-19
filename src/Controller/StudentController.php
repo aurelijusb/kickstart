@@ -20,7 +20,8 @@ class StudentController extends AbstractController
         $project=$request->get('project');
         $myName = false;
 
-        if ($name == 'Ričardas'){
+        if($name == 'Ričardas')
+        {
             $myName=true;
         }
 
