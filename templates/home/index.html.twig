@@ -12,7 +12,6 @@
                     <a href="{{ path('student', {'name': student, 'project': key} | escape) }}">{{ student }}</a> ( <span class="badge">Mentorius</span> {{ team.mentors[0] }} )
                 </li>
             {% endfor %}
-            <div></div>
         {% endfor %}
     </ul>
 
@@ -32,7 +31,7 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for key, team in someVariable %}
             <li class="list-group-item">
-                <h3>{{ team.name|escape('html') }}</h3>
+                <h3>{{ team.name }}</h3>
                 <div class="panel panel-default">
                     <div>
                         <a target="_blank" href="https://github.com/nfqakademija/{{ key| url_encode }}">github.com/nfqakademija/{{ key }}</a>
@@ -47,7 +46,6 @@
                     </div>
                 </div>
             </li>
-            <div></div>
         {% endfor %}
     </ul>
 
