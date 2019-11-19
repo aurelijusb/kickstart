@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StudentController!{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('home') }}?student={{ "labas" |url_encode}}">Main</a>
+
+{% endblock %}
