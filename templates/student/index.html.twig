@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dmitriy Yanov-Yanovskiy | Symfony 1 Homework{% endblock %}
+
+{% block body %}
+    <div class="bg-light m-4">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">Projektas</th>
+                <th scope="row">Studentas</th>
+            </tr>
+            <tr>
+                {% if project == NULL %}
+                    <td>Negavome projekto duomenų</td>
+                {% else %}
+                    <td>{{ project }}</td>
+                {% endif %}
+                {% if name == NULL %}
+                    <td>Negavome studento vardą</td>
+                {% else %}
+                    <td>{{ name }}</td>
+                {% endif %}
+            </tr>
+            </tbody>
+        </table>
+        {% if name == 'Dmitri' %}
+            <div class="alert alert-success" role="alert">
+                100 Balų
+            </div>
+        {% elseif name == NULL %}
+            <div class="alert alert-danger" role="alert">
+                Atsiprašome, negalime įvertinti kol negavome vardą
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                Gal pasiseks kitą kartą
+            </div>
+        {% endif %}
+    </div>
+    <div class="m-4">
+        <a class="text-light" href="{{ path('home') }}">Visi studentai</a>
+    </div>
+{% endblock %}
