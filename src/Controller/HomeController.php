@@ -25,8 +25,7 @@ class HomeController extends AbstractController
         $projectJsonData = file_get_contents($projectFilePath, FILE_USE_INCLUDE_PATH);
         $projectArray = json_decode($projectJsonData, true);
 
-        foreach ($projectArray as $key => $value)
-        {
+        foreach ($projectArray as $key => $value) {
             $projectArray[$key]['githubDecode'] = urldecode($projectArray[$key]['github']);
             $projectArray[$key]['webDecode'] = urldecode($projectArray[$key]['web']);
         }
