@@ -51,7 +51,7 @@ class User implements UserInterface
     private $homepage = "";
 
     /**
-     * @var null|string Link to Personal LinkedIn
+     * @var null|string Link to Personal Linkedin
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkedin = "";
@@ -211,5 +211,4 @@ class User implements UserInterface
     {
         $this->linkedin = $linkedin;
     }
-
 }
