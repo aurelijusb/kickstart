@@ -19,6 +19,7 @@ class HomeController extends AbstractController
         $result = [];
         $result2 = [];
         foreach ($projects as $projectName => $project) {
+            $result2[] = ['description' => $project['name'], 'project' => $projectName ];
             foreach ($project['students'] as $student) {
                 $result[] = ['student' => $student, 'project' => $projectName, 'mentors' => $project['mentors']];
             }
@@ -27,6 +28,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig',
             [
                 'result' => $result,
+                'result2' => $result2,
             ]);
     }
 }
