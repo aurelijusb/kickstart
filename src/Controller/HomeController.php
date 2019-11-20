@@ -32,7 +32,8 @@ class HomeController extends AbstractController
         $result = [];
         foreach ($projects as $projectName => $project) {
             foreach ($project['students'] as $student) {
-                $result[] = ['student' => $student, 'project' => $projectName, 'mentors' => $project['mentors']];
+                $result[] = ['student' => $student, 'project' => $projectName,
+                    'mentors' => $project['mentors']];
             }
         }
         return $result;
