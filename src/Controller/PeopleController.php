@@ -46,7 +46,7 @@ class PeopleController extends AbstractController
     }
     private function getStudents(): array
     {
-        $json = file_get_contents('https://hw1.nfq2019.online/students.json');       
+        $json = file_get_contents('https://hw1.nfq2019.online/students.json');
         $students = [];
         $storage = json_decode($json, true);
         foreach ($storage as $teamData) {
@@ -58,7 +58,7 @@ class PeopleController extends AbstractController
     }
     private function getTeams(): array
     {
-        $json = file_get_contents('https://hw1.nfq2019.online/students.json');       
+        $json = file_get_contents('https://hw1.nfq2019.online/students.json');
         $teams = [];
         $storage = json_decode($json, true);
         foreach ($storage as $name => $teamData) {
@@ -67,4 +67,3 @@ class PeopleController extends AbstractController
         return $teams;
     }
 }
-    
