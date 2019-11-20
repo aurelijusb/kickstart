@@ -14,9 +14,11 @@ class StudentController extends AbstractController
     public function index(Request $request)
     {
         $student = $request->get('student');
+        $project = $request->get('project');
 
         return $this->render('student/index.html.twig', [
             'student' => $student,
+            'project' => $project,
         ]);
     }
 }

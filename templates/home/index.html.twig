@@ -15,10 +15,20 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
 
-        {% for student in someVariable %}
-            <a class="list-group-item" href="{{ path('student',{'student':student}) }}">{{student}}</a>
-            <div></div>
-        {% endfor %}
+
+            {% for i in result %}
+{#            <a class="list-group-item" href="{{ path('student',{'student':i['student']}) }}">{{i['student']}}</a>#}
+{#                <a class="badge" href="{{ path('student',{'student':i['student']}) }}">{{i['student']}}</a>#}
+                <li class="list-group-item">
+                    <a href="{{ path('student',{'student':i['student'],'project':i['project']}) }}">{{i['student']}}</a>
+                    (
+                    <span class="badge">Mentorius</span> {{i['mentors'][0]}}
+                    )
+                </li>
+                <div></div>
+            {% endfor %}
+
+
     </ul>
 {% endblock %}
 
