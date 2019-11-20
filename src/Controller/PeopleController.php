@@ -41,7 +41,6 @@ class PeopleController extends AbstractController
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
             case 'team':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
-
         }
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
@@ -67,4 +66,5 @@ class PeopleController extends AbstractController
         }
         return $teams;
     }
-    }
+}
+    
