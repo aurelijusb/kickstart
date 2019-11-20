@@ -212,5 +212,4 @@ class User implements UserInterface
         $this->linkedin = $linkedin;
     }
 
-
 }
