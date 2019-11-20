@@ -10,7 +10,11 @@
             <span class="badge badge-secondary">{{ role|lower }}</span>
         {% endfor %}
         <div class="mb-2">
-            <span class="badge badge-primary">Website</span> <a href="{{ user.homepage }}"></a>{{ user.homepage }}
+            <span class="badge badge-primary">Website</span> <a href="{{ user.homepage }}">{{ user.homepage }}</a>
+            <br>
+            {% if user.linkedin %}
+            <span class="badge badge-primary">LinkedIn</span> <a href="{{ user.linkedin }}">{{ user.linkedin }}</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
