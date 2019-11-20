@@ -24,7 +24,7 @@ class PeopleController extends AbstractController
     /**
      * @Route(
      *     "/validate/{element}",
-     *     name="validatePerson",
+     *     name="validateInput",
      *     methods={"POST"}
      * )
      */
@@ -37,31 +37,10 @@ class PeopleController extends AbstractController
         }
 
         $students = $this->getStudents();
+        $teams = $this->getTeams();
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
-        }
-
-        return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
-    }
-
-    /**
-     * @Route(
-     *     "/validate-team/{element}",
-     *     name="validateTeam",
-     *     methods={"POST"}
-     * )
-     */
-    public function validateTeam(Request $request, string $element)
-    {
-        try {
-            $input = json_decode($request->getContent(), true)['input'];
-        } catch (Exception $e) {
-            return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
-        }
-
-        $teams = $this->getTeams();
-        switch ($element) {
             case 'team':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
