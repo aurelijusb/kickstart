@@ -9,14 +9,14 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Homework{% endblock %}
+{% block title %}Projektai{% endblock %}
 
 {% block body %}
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
 
         {% for student in someVariable %}
-            <a class="list-group-item" href="{{ path('student') }}">{{student}}</a>
+            <a class="list-group-item" href="{{ path('student',{'student':student}) }}">{{student}}</a>
             <div></div>
         {% endfor %}
     </ul>

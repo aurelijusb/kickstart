@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StudentController!{% endblock %}
+{% block title %}Vertinimas{% endblock %}
 
 {% block body %}
 {#{{controller_name}}#}
@@ -14,13 +14,20 @@
             </tr>
             <tr>
                 <td>team1</td>
-                <td>Tadas</td>
+                <td>{{student}}</td>
             </tr>
             </tbody>
         </table>
-        <div class="alert alert-warning" role="alert">
-            Gal pasiseks kitą kartą
+
+        {% if student == 'Algirdas' %}
+        <div class="alert alert-success" role="alert">
+            Dešimt balų
         </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                Gal pasiseks kitą kartą
+            </div>
+        {% endif %}
     </div>
     <div class="m-4">
         <a class="text-light" href="/">Visi studentai</a>
