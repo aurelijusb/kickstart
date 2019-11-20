@@ -45,6 +45,30 @@ class PeopleController extends AbstractController
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
 
+    /**
+     * @Route(
+     *     "/validate-team/{element}",
+     *     name="validateTeam",
+     *     methods={"POST"}
+     * )
+     */
+    public function validateTeam(Request $request, string $element)
+    {
+        try {
+            $input = json_decode($request->getContent(), true)['input'];
+        } catch (Exception $e) {
+            return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
+        }
+
+        $teams = $this->getTeams();
+        switch ($element) {
+            case 'team':
+                return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
+        }
+
+        return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
+    }
+
     private function getStorage()
     {
         return /** @lang json */
@@ -241,5 +265,15 @@ class PeopleController extends AbstractController
             }
         }
         return $students;
+    }
+
+    private function getTeams(): array
+    {
+      $teams = [];
+      $storage = json_decode($this->getStorage(), true);
+      foreach($storage as $teamData) {
+        array_push($teams, strtolower($teamData['name']));
+      }
+      return $teams;
     }
 }
