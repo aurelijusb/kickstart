@@ -21,10 +21,28 @@ class PeopleController extends AbstractController
         ]);
     }
 
+
+//    public function validatePerson(Request $request, string $element)
+//    {
+//        try {
+//            $input = json_decode($request->getContent(), true)['input'];
+//        } catch (Exception $e) {
+//            return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
+//        }
+//
+//        $students = $this->getStudents();
+//        switch ($element) {
+//            case 'name':
+//                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+//        }
+//
+//        return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
+//    }
+
     /**
      * @Route(
      *     "/validate/{element}",
-     *     name="validatePerson",
+     *     name="validate",
      *     methods={"POST"}
      * )
      */
@@ -36,14 +54,21 @@ class PeopleController extends AbstractController
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
-        $students = $this->getStudents();
+
         switch ($element) {
             case 'name':
-                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+                $data = $this->getStudents();
+                return new JsonResponse(['valid' => in_array(strtolower($input), $data)]);
+                break;
+            case 'team':
+                $data = $this->getTeams();
+                return new JsonResponse(['valid' => in_array(strtolower($input), $data)]);
+                break;
         }
 
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
+
 
     private function getStorage()
     {
@@ -241,5 +266,14 @@ class PeopleController extends AbstractController
             }
         }
         return $students;
+    }
+    private function getTeams(): array
+    {
+        $teams = [];
+        $storage = json_decode($this->getStorage(), true);
+        foreach ($storage as $key => $teamData) {
+                $teams[] = strtolower($key);
+        }
+        return $teams;
     }
 }
