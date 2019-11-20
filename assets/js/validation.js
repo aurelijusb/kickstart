@@ -22,7 +22,7 @@ const validate = (type, value) => {
 
 
 name.onkeyup = () => validate(validationResultName, name);
-name.onchange = () => validate(validationResultName, name)
+name.onchange = () => validate(validationResultName, name);
 
 team.onkeyup = () => validate(validationResultTeam, team);
 team.onchange = () => validate(validationResultTeam, team);
