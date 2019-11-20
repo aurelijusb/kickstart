@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 let name = document.getElementById('name');
-let validationResult = document.getElementById('validation-result');
+let validationResult = document.getElementById('validation-result-name');
 const validateName = function () {
     validationResult.innerText = '...';
     axios.post(validationResult.dataset.path, {input: name.value})
@@ -19,3 +19,23 @@ const validateName = function () {
 
 name.onkeyup = validateName;
 name.onchange = validateName;
+
+let team = document.getElementById('team');
+let teamvalidationResult = document.getElementById('validation-result-team');
+const validateTeam = function () {
+    teamvalidationResult.innerText = '...';
+    axios.post(teamvalidationResult.dataset.path, {input: team.value})
+        .then(function(response) {
+            if (response.data.valid) {
+                teamvalidationResult.innerHTML = ":)";
+            } else {
+                teamvalidationResult.innerHTML = ":(";
+            }
+        })
+        .catch(function (error) {
+            teamvalidationResult.innerText = 'Error: ' + error;
+        });
+};
+
+team.onkeyup = validateTeam;
+team.onchange = validateTeam;
