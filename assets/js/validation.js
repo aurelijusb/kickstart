@@ -5,39 +5,24 @@ let validationResultName = document.getElementById('validation-result-name');
 let team = document.getElementById('team')
 let validationResultTeam = document.getElementById('validation-result-team');
 
-const validateName = function () {
-    validationResultName.innerText = '...';
-    axios.post(validationResultName.dataset.path, {input: name.value})
+const validate = (type, value) => {
+    type.innerText = '...';
+    axios.post(type.dataset.path, {input: value.value})
         .then(function(response) {
             if (response.data.valid) {
-                validationResultName.innerHTML = ":)";
+                type.innerHTML = ":)";
             } else {
-                validationResultName.innerHTML = ":(";
+                type.innerHTML = ":(";
             }
         })
         .catch(function (error) {
-            validationResultName.innerText = 'Error: ' + error;
-        });
-};
-
-const validateTeam = function () {
-    validationResultTeam.innerText = '...';
-    axios.post(validationResultTeam.dataset.path, {input: team.value})
-        .then(function(response) {
-            if (response.data.valid) {
-                validationResultTeam.innerHTML = ":)";
-            } else {
-                validationResultTeam.innerHTML = ":(";
-            }
-        })
-        .catch(function (error) {
-            validationResultTeam.innerText = 'Error: ' + error;
+            type.innerText = 'Error: ' + error;
         });
 };
 
 
-name.onkeyup = validateName;
-name.onchange = validateName;
+name.onkeyup = () => validate(validationResultName, name);
+name.onchange = () => validate(validationResultName, name)
 
-team.onkeyup = validateTeam;
-team.onchange = validateTeam;
+team.onkeyup = () => validate(validationResultTeam, team);
+team.onchange = () => validate(validationResultTeam, team);

@@ -21,24 +21,6 @@ class PeopleController extends AbstractController
         ]);
     }
 
-
-//    public function validatePerson(Request $request, string $element)
-//    {
-//        try {
-//            $input = json_decode($request->getContent(), true)['input'];
-//        } catch (Exception $e) {
-//            return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
-//        }
-//
-//        $students = $this->getStudents();
-//        switch ($element) {
-//            case 'name':
-//                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
-//        }
-//
-//        return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
-//    }
-
     /**
      * @Route(
      *     "/validate/{element}",
@@ -53,7 +35,6 @@ class PeopleController extends AbstractController
         } catch (Exception $e) {
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
-
 
         switch ($element) {
             case 'name':
