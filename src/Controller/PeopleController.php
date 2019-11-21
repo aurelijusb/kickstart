@@ -249,11 +249,11 @@ class PeopleController extends AbstractController
 
     private function getTeams(): array
     {
-      $teams = [];
-      $storage = json_decode($this->getStorage(), true);
-      foreach ($storage as $team => $teamData) {
-        $teams[] = strtolower($team);
-      }
-      return $teams;
+        $teams = [];
+        $storage = json_decode($this->getStorage(), true);
+        foreach ($storage as $team => $teamData) {
+          $teams[] = strtolower($team);
+        }
+        return $teams;
     }
 }
