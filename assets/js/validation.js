@@ -1,10 +1,10 @@
 const axios = require('axios');
 
 const name = document.getElementById('name');
-const project = document.getElementById('project');
+const team = document.getElementById('team');
 
 const validate = (input, field) => {
-    const validation = document.getElementById(`validation-${field}`)
+    const validation = document.getElementById(`validation-result-${field}`)
     axios.post(validation.dataset.path, {input: input.value})
         .then(response => {
             if (response.data.valid) {
@@ -21,6 +21,6 @@ const validate = (input, field) => {
 name.onkeyup = () => validate(name, 'name');
 name.onchange = () => validate(name, 'name');
 
-project.onkeyup = () => validate(project, 'project');
-project.onchange = () => validate(project, 'project');
+team.onkeyup = () => validate(team, 'team');
+team.onchange = () => validate(team, 'team');
 

@@ -10,10 +10,10 @@
     </div>
 
     Vardas: <input type="text" id="name"/>
-    <span id="validation-name" data-path="{{ path('validatePerson', {'element': 'name'}) }}">:(</span>
+    <span id="validation-result-name" data-path="{{ path('validatePerson', {'element': 'name'}) }}">:(</span>
     <br/>
-    Komanda: <input type="text" id="project"/>
-    <span id="validation-project" data-path="{{ path('validatePerson', {'element': 'project'}) }}">:(</span>
+    Komanda: <input type="text" id="team"/>
+    <span id="validation-result-team" data-path="{{ path('validatePerson', {'element': 'team'}) }}">:(</span>
 {% endblock %}
 
 {% block javascripts %}
