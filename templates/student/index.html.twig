@@ -16,7 +16,7 @@
             </tr>
             </tbody>
         </table>
-        {% if name is same as('Andrius') %}
+        {% if name|lower is same as('Andrius'|lower) %}
             <div class="alert alert-success" role="alert">
                 Dešimt balų
             </div>
