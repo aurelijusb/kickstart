@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,6 +20,7 @@ class PeopleController extends AbstractController
             'controller_name' => 'PeopleController',
         ]);
     }
+
     /**
      * @Route(
      *     "/validate/{element}",
@@ -25,6 +28,7 @@ class PeopleController extends AbstractController
      *     methods={"POST"}
      * )
      */
+
     public function validate(Request $request, string $element)
     {
         try {
@@ -228,6 +232,7 @@ class PeopleController extends AbstractController
           }
         }';
     }
+
     private function getStudents(): array
     {
         $students = [];
@@ -239,6 +244,7 @@ class PeopleController extends AbstractController
         }
         return $students;
     }
+
     private function getTeams(): array
     {
         $teams = [];
