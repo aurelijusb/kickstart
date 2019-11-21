@@ -246,7 +246,7 @@ class PeopleController extends AbstractController
         return $students;
     }
 
-    private function getTeams(): array 
+    private function getTeams(): array
     {
         $teams = [];
         $storage = json_decode($this->getStorage(), true);
