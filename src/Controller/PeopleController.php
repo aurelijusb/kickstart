@@ -27,6 +27,9 @@ class PeopleController extends AbstractController
      *     name="validatePerson",
      *     methods={"POST"}
      * )
+     * @param Request $request
+     * @param string $element
+     * @return JsonResponse
      */
     public function validate(Request $request, string $element)
     {
@@ -35,20 +38,21 @@ class PeopleController extends AbstractController
         } catch (Exception $e) {
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
-
         $students = $this->getStudents();
+        $teams = $this->getTeams();
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
-
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
 
     private function getStorage()
     {
         return /** @lang json */
-        '{
+            '{
           "team1": {
             "name": "Team1",
             "mentors": [
@@ -231,6 +235,19 @@ class PeopleController extends AbstractController
         }';
     }
 
+    private function getTeams(): array
+    {
+        $result = [];
+        $storage = json_decode($this->getStorage(), true);
+        foreach ($storage as $projectName => $project) {
+            if ($projectName !== strtolower($project["name"])) {
+                $result[] = strtolower($project["name"]);
+                $result[] = $projectName;
+            }
+        }
+        return $result;
+    }
+
     private function getStudents(): array
     {
         $students = [];
@@ -242,4 +259,5 @@ class PeopleController extends AbstractController
         }
         return $students;
     }
+
 }
