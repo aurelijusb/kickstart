@@ -259,5 +259,4 @@ class PeopleController extends AbstractController
         }
         return $students;
     }
-
 }

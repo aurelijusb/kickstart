@@ -39,4 +39,3 @@ name.onkeyup = validateName;
 name.onchange = validateName;
 team.onkeyup = validateTeam;
 team.onchange = validateTeam;
-
