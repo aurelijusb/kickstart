@@ -1,11 +1,86 @@
 <?php
 
-function error($file, $line, $text) {
-    echo "::error file=$file,line=$line,col=0::$text\n";
+class GitHubActions
+{
+    private $errors = 0;
+
+    function error($file, $line, $context, $text)
+    {
+        $this->errors++;
+        $context = trim($context);
+        echo "Testing file: $file\n";
+        echo "::debug::$context\n";
+        echo "::error file=$file,line=$line,col=0::$text\n";
+    }
+
+    function hadErrors()
+    {
+        return $this->errors > 0;
+    }
 }
 
-echo "We are doing somehting\n";
-error('.gitignore', 38, 'Testing warninigs');
-echo "And still doing someting\n";
-error('.gitignore', 41, 'Testing warninigs 2');
-echo "Else\n";
+class Twig
+{
+    /** @var GitHubActions */
+    private $gitHubActions;
+
+    /**
+     * @param GitHubActions $gitHubActions
+     */
+    public function __construct(GitHubActions $gitHubActions)
+    {
+        $this->gitHubActions = $gitHubActions;
+    }
+
+    private function root()
+    {
+        return dirname(dirname(__DIR__));
+    }
+
+    private function recursiveScan($root, $extension)
+    {
+        $directory = new RecursiveDirectoryIterator($root);
+        $iterator = new RecursiveIteratorIterator($directory);
+        $matches = [];
+        /** @var SplFileInfo $item */
+        foreach ($iterator as $item) {
+            if ($item->getExtension() === $extension) {
+                $matches[] = $item->getRealPath();
+            }
+        }
+        return $matches;
+    }
+
+    function files()
+    {
+        return $this->recursiveScan($this->root() . '/templates/', 'twig');
+    }
+
+    function relative($path)
+    {
+        return substr($path, strlen($this->root() . '/'));
+    }
+}
+
+function contains($line, $needle)
+{
+    return strpos($line, $needle) !== false;
+}
+
+$actions = new GitHubActions();
+$twig = new Twig($actions);
+$files = $twig->files();
+foreach ($files as $file) {
+    $path = $twig->relative($file);
+    $lines = file($file);
+    foreach ($lines as $nr => $line) {
+        if (contains($line, '/student')) {
+            $actions->error($path, $nr, $line, "Twig'e visi keliai turėtų naudoti path komandą. https://symfony.com/doc/current/templates.html#linking-to-pages");
+        }
+    }
+}
+
+if ($actions->hadErrors()) {
+    echo "!!!!! Not all tests passed !!!!!\n";
+    exit(1);
+}
