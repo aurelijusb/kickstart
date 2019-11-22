@@ -27,3 +27,14 @@ if (typeof usingVersionedFileJs !== "undefined") {
             versionedFileElement.innerText = 'Error: '.error;
         });
 }
+
+// let versionedFileElement2 = document.getElementById('versionedFile2');
+// axios.get('/build/manifest.json')
+//     .then(function(response) {
+//         versionedFileElement2.innerText = response.data['build/app.js'];
+//         console.log(versionedFileElement2.innerText);
+//     })
+//     .catch(function (error) {
+//         versionedFileElement2.innerText = 'Error: ' . error;
+//     });
+

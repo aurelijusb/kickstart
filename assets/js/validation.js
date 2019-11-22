@@ -19,3 +19,4 @@ const validateName = function () {
 
 name.onkeyup = validateName;
 name.onchange = validateName;
+
