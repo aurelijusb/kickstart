@@ -22,10 +22,10 @@ name.onchange = validateName;
 
 let team = document.getElementById('team');
 let validationResult2 = document.getElementById('validation-result-team');
-const validateName2 = function () {
-    validationResult2.innerText = 'Įrašėteeeee: ' + team.value;
+const validateTeam = function () {
+    validationResult2.innerText = team.value;
 };
 
-team.onkeyup = validateName2;
-team.onchange = validateName2;
+team.onkeyup = validateTeam;
+team.onchange = validateTeam;
 
