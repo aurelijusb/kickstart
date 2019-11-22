@@ -9,7 +9,7 @@ class GitHubActions
         $this->errors++;
         $context = trim($context);
         echo "Testing file: $file\n";
-        echo "::debug::$context\n";
+        echo "Testing line: $context\n";
         $line++; // To show notice bellow line
         echo "::error file=$file,line=$line,col=0::$text\n";
     }
