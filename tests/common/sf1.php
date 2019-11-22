@@ -75,13 +75,16 @@ foreach ($files as $file) {
     $path = $twig->relative($file);
     $lines = file($file);
     foreach ($lines as $nr => $line) {
+
+        // Common mistakes
         if (contains($line, '/student')) {
             $actions->error($path, $nr, $line, "Twig'e visi keliai turėtų naudoti path komandą. https://symfony.com/doc/current/templates.html#linking-to-pages");
         }
+
     }
 }
 
 if ($actions->hadErrors()) {
-    echo "!!!!! Not all tests passed !!!!!\n";
+    echo "!!!!! Not all tests passed. Check GitHub 'File changes' tab for line to line annotations !!!!!\n";
     exit(1);
 }
