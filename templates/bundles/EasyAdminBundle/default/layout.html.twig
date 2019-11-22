@@ -36,6 +36,7 @@
             'easyadmin-sidebar-width-' + (localStorage.getItem('easyadmin/sidebar/width') || 'normal')
         );
     </script>
+
     {% block wrapper_wrapper %}
         <div class="wrapper">
             {% block wrapper %}
@@ -135,8 +136,10 @@
                                         {% block content_help %}
                                             {% if _entity_config is defined and _entity_config[app.request.query.get('action')]['help']|default(false) %}
                                                 <div class="content-header-help">
+
                                                     {{ _entity_config[app.request.query.get('action')]['help']|trans(domain = _entity_config.translation_domain)|raw }}
                                                 </div>
+
                                             {% endif %}
                                         {% endblock content_help %}
                                     {% endblock content_header %}
@@ -144,6 +147,7 @@
                             {% endblock content_header_wrapper %}
                             <section id="main" class="content-body">
                                 {% block main %}{% endblock %}
+
                             </section>
                             {% block content_footer_wrapper %}
                                 <section class="content-footer">
