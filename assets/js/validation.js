@@ -20,12 +20,12 @@ const validateName = function () {
 name.onkeyup = validateName;
 name.onchange = validateName;
 
-let team = document.getElementById('team');
-let validationResult2 = document.getElementById('validation-result-team');
-const validateTeam = function () {
-    validationResult2.innerText = team.value;
-};
-
-team.onkeyup = validateTeam;
-team.onchange = validateTeam;
+// let team = document.getElementById('team');
+// let validationResult2 = document.getElementById('validation-result-team');
+// const validateTeam = function () {
+//     validationResult2.innerText = team.value;
+// };
+//
+// team.onkeyup = validateTeam;
+// team.onchange = validateTeam;
 

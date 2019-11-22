@@ -271,4 +271,14 @@ class PeopleController extends AbstractController
         }
         return $students;
     }
+
+    private function getTeams(): array
+    {
+        $teams = [];
+        $storage = json_decode(getStorage(), true);
+        foreach ($storage as $projectName => $projects) {
+            $teams[] = $projectName;
+        }
+        return $teams;
+    }
 }
