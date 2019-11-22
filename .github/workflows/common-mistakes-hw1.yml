@@ -1,0 +1,11 @@
+name: "Symfony 1: Common mistakes"
+on:
+  - pull_request
+jobs:
+  build:
+    name: Inform about common mistakes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: php tests/common/sf1.php
