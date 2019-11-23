@@ -16,6 +16,11 @@ class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
+     * @param AppCustomAuthenticator $authenticator
+     * @param GuardAuthenticatorHandler $guardHandler
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
      */
     public function register(
         AppCustomAuthenticator $authenticator,
