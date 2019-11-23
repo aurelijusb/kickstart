@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -36,7 +37,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @var null|\DateTime When password was changed
+     * @var null|DateTime When password was changed
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $passwordChanged = null;
@@ -109,7 +110,7 @@ class User implements UserInterface
         return ''; // We store passwords hashed, it is impossible to regenerate back
     }
 
-    /** Virtual method for EasyAdminBundle */
+    /** Virtual metFixedhod for EasyAdminBundle */
     public function setPlainPassword($password): self
     {
         if (!$password) {
@@ -162,17 +163,17 @@ class User implements UserInterface
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    public function getPasswordChanged(): ?\DateTime
+    public function getPasswordChanged(): ?DateTime
     {
         return $this->passwordChanged;
     }
 
     /**
-     * @param \DateTime|null $passwordChanged
+     * @param DateTime|null $passwordChanged
      */
-    public function setPasswordChanged(?\DateTime $passwordChanged): void
+    public function setPasswordChanged(?DateTime $passwordChanged): void
     {
         $this->passwordChanged = $passwordChanged;
     }
@@ -214,5 +215,5 @@ class User implements UserInterface
 
         return $this;
     }
-
 }
+
