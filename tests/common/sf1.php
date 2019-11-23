@@ -14,6 +14,16 @@ class GitHubActions
         echo "::error file=$file,line=$line,col=0::$text\n";
     }
 
+    function warning($file, $line, $context, $text)
+    {
+        $this->errors++;
+        $context = trim($context);
+        echo "Testing file: $file\n";
+        echo "Testing line: $context\n";
+        $line++; // To show notice bellow line
+        echo "::warning file=$file,line=$line,col=0::$text\n";
+    }
+
     function hadErrors()
     {
         return $this->errors > 0;
@@ -79,6 +89,9 @@ foreach ($files as $file) {
         // Common mistakes
         if (contains($line, '/student')) {
             $actions->error($path, $nr, $line, "Twig'e visi keliai turėtų naudoti path komandą. https://symfony.com/doc/current/templates.html#linking-to-pages");
+        }
+        if (contains($line, '|escape')) {
+            $actions->warning($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
         }
         
     }
