@@ -36,7 +36,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('homepage', UrlType::class, ['required' => false])
-            ->add('linkedin', UrlType::class, ['required' => false])
+            ->add('LinkedIn', UrlType::class, ['required' => false])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
