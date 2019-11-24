@@ -11,7 +11,7 @@ easy_admin:
                     - { property: 'roles', template: 'admin/user/roles-type-read.html.twig' }
                     - { property: 'homepage', type: 'url' }
                     - { property: 'linkedin', type: 'url' }
-                    - { property: 'password', label: 'Password hash' }
+                    - { property: 'password', template: 'admin/user/password-read.html.twig' }
             form:
                 fields:
                     - { property: 'email', type: 'email' }
