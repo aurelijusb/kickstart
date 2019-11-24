@@ -31,5 +31,7 @@ final class Version20191123143317 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT NOT NULL COLLATE utf8mb4_bin, CHANGE password_changed password_changed DATETIME DEFAULT \'NULL\', CHANGE homepage homepage VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci, CHANGE linkedin linkedin VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci');
-    }
+    
+		$this->addSql('DROP TABLE user');
+	}
 }
