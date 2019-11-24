@@ -72,10 +72,12 @@ class PromoteUserCommand extends Command
         $this->printUserRoles($user, $output);
         $io->success('Admin role successfully added');
     }
+  
     private function info($message, $value, OutputInterface $io)
     {
         $io->writeln(sprintf('<info>%s</info>: <comment>%s</comment>', $message, $value));
     }
+  
     private function printUserRoles(UserInterface $user, OutputInterface $io)
     {
         $io->writeln(

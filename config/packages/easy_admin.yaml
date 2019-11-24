@@ -22,3 +22,6 @@ easy_admin:
 
             user:
                 name_property_path: "email"
+
+    user:
+        name_property_path: "email"
