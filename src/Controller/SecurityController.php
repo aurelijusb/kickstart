@@ -53,6 +53,7 @@ class SecurityController extends AbstractController
         // Redirect for not logged in users (or different kind)
         return new RedirectResponse($urlGenerator->generate('app_login'));
     }
+
     private function roleNames(array $userRoles)
     {
         foreach ($userRoles as $role) {
