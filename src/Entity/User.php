@@ -50,6 +50,12 @@ class User implements UserInterface
      */
     private $homepage = "";
 
+    /**
+     * @var null|string Link to linkedin page
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedin = "";
+
     public function getId(): ?int
     {
         return $this->id;
@@ -127,7 +133,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
@@ -187,4 +193,24 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getLinkedin(): ?string
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * @param string|null $linkedin
+     */
+    public function setLinkedin(?string $linkedin): self
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+
+
 }
