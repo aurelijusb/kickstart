@@ -15,6 +15,8 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -32,6 +34,7 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/logout", name="app_logout")
+     * @throws \Exception
      */
     public function logout()
     {
@@ -40,6 +43,9 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/profile", name="profile")
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param UserInterface|null $user
+     * @return RedirectResponse|Response
      */
     public function profile(UrlGeneratorInterface $urlGenerator, UserInterface $user = null)
     {
