@@ -50,6 +50,8 @@ class User implements UserInterface
      */
     private $homepage = "";
 
+    private $linkedin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -187,4 +189,17 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function setLinkedin(?string $linkedin): self
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+    
+    public function getLinkedin(): ?string
+    {
+        return $this->linkedin;
+    }
+
 }
