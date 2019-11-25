@@ -34,7 +34,7 @@
                     <a class="nav-link" href="{{ path('app_logout') }}">Atsijungti</a>
                 </li>
 
-                {% if role == 'admin' %}
+                {% if is_granted('ROLE_ADMIN') %}
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('easyadmin') }}">Administravimas</a>
