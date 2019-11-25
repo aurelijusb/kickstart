@@ -1,4 +1,4 @@
-const basePath = Cypress.env('BASE_URL') ? Cypress.env('BASE_URL') : 'https://hw1.nfq2019.online';
+const basePath = Cypress.env('BASE_URL') ? Cypress.env('BASE_URL') : 'http://127.0.0.1:8000/';
 
 const d = async (message) => {
     console.info('D', message);
@@ -19,7 +19,7 @@ describe('First homework', function() {
             .then(students => {
                 cy.wrap(students).each(student => dd(`Student: ${student}`));
             }).then( students => {
-                assert.equal(students.length, 46, "Expected 46 elements of students");
+                assert.equal(students.length, 51, "Expected 51 elements of students");
             }).then( students => {
                 cy.wrap(students).each(e => {
                     expect(e).contain("Mentorius");
@@ -128,7 +128,7 @@ describe('First homework', function() {
                     let path = element.get(0).href;
                     cy.visit(path).get('.alert, .success').then( data => {
                         if (data.get(0).innerText === 'Dešimt balų') {
-                            cy.screenshot()
+                            cy.screenshot();
                             cy.wrap([path]).each( path => {
                                 dd(`Įvertinti: ${path}`);
                             });
