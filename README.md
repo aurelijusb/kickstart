@@ -1,5 +1,8 @@
 ﻿![](https://avatars0.githubusercontent.com/u/4995607?v=3&s=100)
 
+HOMEWORK 3 COMPLETE and yes, it's in master branch.
+
+
 NFQ Akademija
 ============
 
