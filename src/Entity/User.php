@@ -194,9 +194,9 @@ class User implements UserInterface
         return $this;
     }
 
-    public function setLinkedin(?string $linkedIn): self
+    public function setLinkedin(?string $linkedin): self
     {
-        $this->linkedin = $linkedIn;
+        $this->linkedin = $linkedin;
 
         return $this;
     }
