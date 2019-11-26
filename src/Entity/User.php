@@ -53,22 +53,22 @@ class User implements UserInterface
      * @var null|string
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $linkedIn;
+    private $linkedin;
 
     /**
      * @return string|null
      */
-    public function getLinkedIn(): ?string
+    public function getLinkedin(): ?string
     {
-        return $this->linkedIn;
+        return $this->linkedin;
     }
 
     /**
-     * @param  string|null  $linkedIn
+     * @param  string|null  $linkedin
      */
-    public function setLinkedIn(?string $linkedIn): void
+    public function setLinkedin(?string $linkedin): void
     {
-        $this->linkedIn = $linkedIn;
+        $this->linkedin = $linkedin;
     }
 
 
