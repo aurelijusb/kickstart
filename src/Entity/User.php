@@ -210,5 +210,5 @@ class User implements UserInterface
         $this->linkedin = $linkedin;
 
         return $this;
-    } 
+    }
 }
