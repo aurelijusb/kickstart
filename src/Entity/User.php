@@ -54,7 +54,7 @@ class User implements UserInterface
      * @var null|string Link to LinkedIn Profile
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $linkedinUrl = "";
+    private $linkedin = "";
 
     public function getId(): ?int
     {
@@ -197,17 +197,17 @@ class User implements UserInterface
     /**
      * @return string|null
      */
-    public function getLinkedinUrl(): ?string
+    public function getLinkedin(): ?string
     {
-        return $this->linkedinUrl;
+        return $this->linkedin;
     }
 
     /**
-     * @param string|null $linkedinUrl
+     * @param string|null $linkedin
      */
-    public function setLinkedinUrl(?string $linkedinUrl): self
+    public function setLinkedin(?string $linkedin): self
     {
-        $this->linkedinUrl = $linkedinUrl;
+        $this->linkedin = $linkedin;
 
         return $this;
     }
