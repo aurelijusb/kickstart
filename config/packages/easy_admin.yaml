@@ -18,6 +18,7 @@ easy_admin:
                     - { property: 'roles', type: 'collection' }
                     - { property: 'plainPassword', type: 'password' }
                     - { property: 'homepage', type: 'url' }
+                    - { property: 'linkedin', type: 'url' }
 
     user:
         name_property_path: "email"
