@@ -95,6 +95,16 @@ foreach ($files as $file) {
         if (contains($line, 'action="/student"') || contains($line, ' href="/"') || contains($line, ' href="/student')) {
             $actions->error($path, $nr, $line, "Visoms nuorodoms reikėtų naudoti path komandą, nes pakeitus PHP/YAML pusėje bus sunku sugaudyti visus pakeitimu Twig'e. https://symfony.com/doc/4.2/templating.html#linking-to-pages");
         }
+        if (contains($line, 'href="https://hw1.nfq2019.online/students.json"')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "Duomenų failą reikėtų laikyti GitHub'e. Nes tavo sistemos rezultatas priklauso nuo students.json failo. " .
+                "Jei aš kitą semestrą jį pakeisiu – tai tavo sistema suluš?.. " .
+                "Taip pat, jei leisi automatinius testus savo projektui – norėsis, kad visi failai būtų lokaliai (dėl stabilumo ir greičio)"
+            );
+        }
         if (contains($line, '{% set ')) {
             $actions->error(
                 $path,
@@ -109,7 +119,7 @@ foreach ($files as $file) {
         if (contains($line, '{{ controller_name }}')) {
             $actions->warning($path, $nr, $line, "Verta nepalikinėti šiukšlių, nes kolegos skaitys VISUS tavo kodo pakeitimus. https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews");
         }
-        if (contains($line, "\$request->get('name')") || contains($line, '$request->get("name")')) {
+        if (contains($line, "\$request->get('name')") || contains($line, '$request->get("name")') || contains($line, "\$request->get('project')")) {
             $actions->warning(
                 $path,
                 $nr,
