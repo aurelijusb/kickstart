@@ -92,6 +92,9 @@ foreach ($files as $file) {
         if (contains($line, '|escape') || contains($line, '|e ')  || contains($line, '| e ')) {
             $actions->error($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
         }
+        if (contains($line, 'action="/student"') || contains($line, ' href="/"')  || contains($line, ' href="/student')) {
+            $actions->error($path, $nr, $line, "Visoms nuorodoms reikėtų naudoti path komandą, nes pakeitus PHP/YAML pusėje bus sunku sugaudyti visus pakeitimu Twig'e. https://symfony.com/doc/4.2/templating.html#linking-to-pages");
+        }
         if (contains($line, '{% set ')) {
             $actions->error(
                 $path,
