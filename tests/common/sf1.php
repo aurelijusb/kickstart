@@ -105,7 +105,7 @@ foreach ($files as $file) {
         if (contains($line, '|escape') || contains($line, '|e ') || contains($line, '| e ')) {
             $actions->error($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
         }
-        if (contains($line, 'action="/student"') || contains($line, ' href="/"') || contains($line, ' href="/student')) {
+        if (contains($line, 'action="/student"') || contains($line, ' href="/"') || contains($line, ' href="/student') || contains($line, "href='/'")) {
             $actions->error($path, $nr, $line, "Visoms nuorodoms reikėtų naudoti path komandą, nes pakeitus PHP/YAML pusėje bus sunku sugaudyti visus pakeitimu Twig'e. https://symfony.com/doc/4.2/templating.html#linking-to-pages");
         }
         if (contains($line, 'href="https://hw1.nfq2019.online/students.json"')) {
@@ -132,7 +132,7 @@ foreach ($files as $file) {
         if (contains($line, '{{ controller_name }}')) {
             $actions->warning($path, $nr, $line, "Verta nepalikinėti šiukšlių, nes kolegos skaitys VISUS tavo kodo pakeitimus. https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews");
         }
-        if (contains($line, "\$request->get('name')") || contains($line, '$request->get("name")') || contains($line, "\$request->get('project')")) {
+        if (contains($line, "request->get('name')") || contains($line, '$request->get("name")') || contains($line, "request->get('project')")) {
             $actions->warning(
                 $path,
                 $nr,
