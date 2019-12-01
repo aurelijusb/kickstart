@@ -7,11 +7,16 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for project in students %}
             <li class="list-group-item">
-                <a href="/student?name={{ project.student | url_encode }}&project={{ project.project | url_encode }}">
-                    {{ project.student | e }}</a>
+                <a
+                    href="{{ path('student', {
+                        name: project.student,
+                        project: project.project
+                    }) }}"
+                >
+                    {{ project.student }}</a>
                 (
                 <span class="badge">Mentorius</span>
-                {{ project.mentors[0] | e }}
+                {{ project.mentors[0] }}
                 )
             </li>
         {% endfor %}
@@ -31,19 +36,19 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for key, project in projects %}
             <li class="list-group-item">
-                <h3>{{ project.name | e }}</h3>
+                <h3>{{ project.name }}</h3>
                 <div class="panel panel-default">
                     <div>
                         <a target="_blank" href="http://github.com/nfqakademija/{{ key | url_encode }}">
-                            github.com/nfqakademija/{{ key | e }}</a>
+                            github.com/nfqakademija/{{ key }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
                         <a target="_blank" href="http://{{ key | url_encode }}.projektai.nfqakademija.lt/">
-                            {{ key | e }}.projektai.nfqakademija.lt/</a>
+                            {{ key }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
-                    <pre>ssh {{ key | e }}@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </li>
         {% endfor %}

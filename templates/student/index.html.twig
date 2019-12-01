@@ -11,8 +11,8 @@
                     <th scope="row">Studentas</th>
                 </tr>
                 <tr>
-                    <td>{{ project | e }}</td>
-                    <td>{{ student | e }}</td>
+                    <td>{{ project }}</td>
+                    <td>{{ student }}</td>
                 </tr>
             </tbody>
         </table>
@@ -23,6 +23,6 @@
         {% endif %}
     </div>
     <div class="m-4">
-        <a href="/" class="text-light">Visi studentai</a>
+        <a href="{{ path('home') }}" class="text-light">Visi studentai</a>
     </div>
 {% endblock %}
