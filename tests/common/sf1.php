@@ -197,6 +197,16 @@ foreach ($files as $file) {
                 "Taip pat, jei leisi automatinius testus savo projektui – norėsis, kad visi failai būtų lokaliai (dėl stabilumo ir greičio)"
             );
         }
+        if (contains($line, "file_get_contents('../public/students.json')")) {
+            $actions->warning(
+                $path,
+                $nr,
+                $line,
+                "Alternatyva būtų naudoti Symfony KernelInterface. " .
+                "Tada mažiau priklausytym nuo PHP failo perkėlimo į kitą katalogą. " .
+                "https://www.php.net/manual/en/function.set-include-path.php"
+            );
+        }
     }
 }
 
