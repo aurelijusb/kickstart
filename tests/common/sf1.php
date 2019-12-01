@@ -16,7 +16,6 @@ class GitHubActions
 
     function warning($file, $line, $context, $text)
     {
-        $this->errors++;
         $context = trim($context);
         echo "Testing file: $file\n";
         echo "Testing line: $context\n";
@@ -90,10 +89,35 @@ foreach ($files as $file) {
         if (contains($line, '/student')) {
             $actions->error($path, $nr, $line, "Twig'e visi keliai turėtų naudoti path komandą. https://symfony.com/doc/current/templates.html#linking-to-pages");
         }
-        if (contains($line, '|escape')) {
-            $actions->warning($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
+        if (contains($line, '|escape') || contains($line, '|e ') || contains($line, '| e ')) {
+            $actions->error($path, $nr, $line, "Symfony standartiškai yra įjungęs autoescape, tai papildomai rašyti |escape filtro nereikia. https://symfony.com/doc/4.3/templates.html#output-escaping");
         }
-        
+        if (contains($line, 'action="/student"') || contains($line, ' href="/"') || contains($line, ' href="/student')) {
+            $actions->error($path, $nr, $line, "Visoms nuorodoms reikėtų naudoti path komandą, nes pakeitus PHP/YAML pusėje bus sunku sugaudyti visus pakeitimu Twig'e. https://symfony.com/doc/4.2/templating.html#linking-to-pages");
+        }
+        if (contains($line, '{% set ')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "Symfony karkase speciailiai atskiriama verslo logika (Controller/PHP) ir atvaizdavimas (Twig). " .
+                "Todėl visus sudėtingesnius apskaičiavimus geriau laikyti PHP pusėje, nes PHP kodą yra pogiau automatiškai testuoti" .
+                "arba derinti (debug) negu iš Twig sugeneruotą kodą. " .
+                "Realiuose projektuose ši problema taip pat sprendžiama ir su nepriklausomai ištestuojamais https://symfony.com/doc/current/templating/twig_extension.html " .
+                "Namų darbe užtenkta tiesiog perkleti logiką į Controller");
+        }
+        if (contains($line, '{{ controller_name }}')) {
+            $actions->warning($path, $nr, $line, "Verta nepalikinėti šiukšlių, nes kolegos skaitys VISUS tavo kodo pakeitimus. https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews");
+        }
+        if (contains($line, "\$request->get('name')") || contains($line, '$request->get("name")')) {
+            $actions->warning(
+                $path,
+                $nr,
+                $line,
+                "Gera praktika yra išreikštinai pasakyti, kokia yra standartinė reikšmė (kai naudotjas nenurodo parametero), " .
+                "nes PHP kalboje neakivaizdu, kas bus greažinta: '', null, false ar 0"
+            );
+        }
     }
 }
 
