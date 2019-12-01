@@ -145,6 +145,7 @@ foreach ($files as $file) {
 }
 
 $scss = new Scss($actions);
+$files = $twig->files();
 foreach ($files as $file) {
     $path = $scss->relative($file);
     $lines = file($file);
