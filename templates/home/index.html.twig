@@ -22,7 +22,7 @@
         {% endfor %}
     </ul>
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{ path('student')}}" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" name="name" placeholder="Studentas">
             </div>
