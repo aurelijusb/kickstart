@@ -29,7 +29,7 @@ class GitHubActions
     }
 }
 
-class Twig
+abstract class Technology
 {
     /** @var GitHubActions */
     private $gitHubActions;
@@ -42,12 +42,12 @@ class Twig
         $this->gitHubActions = $gitHubActions;
     }
 
-    private function root()
+    protected function root()
     {
         return dirname(dirname(__DIR__));
     }
 
-    private function recursiveScan($root, $extension)
+    protected function recursiveScan($root, $extension)
     {
         $directory = new RecursiveDirectoryIterator($root);
         $iterator = new RecursiveIteratorIterator($directory);
@@ -61,14 +61,27 @@ class Twig
         return $matches;
     }
 
-    function files()
-    {
-        return $this->recursiveScan($this->root() . '/templates/', 'twig');
-    }
+    abstract function files();
 
     function relative($path)
     {
         return substr($path, strlen($this->root() . '/'));
+    }
+}
+
+class Twig extends Technology
+{
+    function files()
+    {
+        return $this->recursiveScan($this->root() . '/templates/', 'twig');
+    }
+}
+
+class Scss extends Technology
+{
+    function files()
+    {
+        return $this->recursiveScan($this->root() . '/assets/', 'scss');
     }
 }
 
@@ -126,6 +139,24 @@ foreach ($files as $file) {
                 $line,
                 "Gera praktika yra išreikštinai pasakyti, kokia yra standartinė reikšmė (kai naudotjas nenurodo parametero), " .
                 "nes PHP kalboje neakivaizdu, kas bus greažinta: '', null, false ar 0"
+            );
+        }
+    }
+}
+
+$scss = new Scss($actions);
+foreach ($files as $file) {
+    $path = $scss->relative($file);
+    $lines = file($file);
+    foreach ($lines as $nr => $line) {
+        if (contains($line, 'background-color: #')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "SCSS visa nauda ir yra, kad galima naudoti kintamuosius, o ne rašyti pliką CSS. " .
+                "Pabandyk tą patį rezultatą gauti praplėčiant Bootstrap per kintamuosius. " .
+                "https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults"
             );
         }
     }
