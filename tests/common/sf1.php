@@ -85,6 +85,14 @@ class Scss extends Technology
     }
 }
 
+class Php extends Technology
+{
+    function files()
+    {
+        return $this->recursiveScan($this->root() . '/src/', 'php');
+    }
+}
+
 function contains($line, $needle)
 {
     return strpos($line, $needle) !== false;
@@ -158,6 +166,35 @@ foreach ($files as $file) {
                 "SCSS visa nauda ir yra, kad galima naudoti kintamuosius, o ne rašyti pliką CSS. " .
                 "Pabandyk tą patį rezultatą gauti praplėčiant Bootstrap per kintamuosius. " .
                 "https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults"
+            );
+        }
+    }
+}
+
+$php = new Php($actions);
+$files = $php->files();
+foreach ($files as $file) {
+    $path = $php->relative($file);
+    $lines = file($file);
+    foreach ($lines as $nr => $line) {
+        if (contains($line, 'urldecode(')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "Twigas specialiai padarytas, kad išspręstų dažniausias formatavimo problemas. " .
+                "Nes jei pakeisime atvaizdavimą (pvz. text e-mail), tai surankioti visas vietas bus sunkiau. " .
+                "https://twig.symfony.com/doc/3.x/filters/url_encode.html"
+            );
+        }
+        if (contains($line, 'hw1.nfq2019.online/students.json')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "Duomenų failą reikėtų laikyti GitHub'e. Nes tavo sistemos rezultatas priklauso nuo students.json failo. " .
+                "Jei aš kitą semestrą jį pakeisiu – tai tavo sistema suluš?.. " .
+                "Taip pat, jei leisi automatinius testus savo projektui – norėsis, kad visi failai būtų lokaliai (dėl stabilumo ir greičio)"
             );
         }
     }
