@@ -13,7 +13,7 @@ class HomeController extends AbstractController
 
     public function index()
     {
-        $file = file_get_contents('data.json', FILE_USE_INCLUDE_PATH);
+        $file = file_get_contents('student.json', FILE_USE_INCLUDE_PATH);
         $info = json_decode($file, true);
 
         return $this->render('home/index.html.twig', [

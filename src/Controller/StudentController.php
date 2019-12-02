@@ -13,7 +13,7 @@ class StudentController extends AbstractController
      */
     public function index(Request $request)
     {
-        $file = file_get_contents('data.json', FILE_USE_INCLUDE_PATH);
+        $file = file_get_contents('student.json', FILE_USE_INCLUDE_PATH);
         $info = json_decode($file, true);
         $id = substr($request->getRequestUri(), strlen($request->getPathInfo()) + 1, strlen($request->getRequestUri()));
         return $this->render('student/index.html.twig', [
