@@ -44,9 +44,9 @@ describe('Third homework', function() {
         d('Profilio puslapyje ieškome LinkedIn');
         cy.url().should('include','/profile');
         cy.screenshot();
-        cy.contains("Website");
+        cy.contains(/Website/i);
         cy.contains("https://aurelijus.banelis.lt");
-        cy.contains("LinkedIn");
+        cy.contains(/LinkedIn/i);
         cy.contains("https://www.linkedin.com/in/aurelijusbanelis");
 
 
@@ -76,7 +76,7 @@ describe('Third homework', function() {
         cy.url().should('include','/admin');
         cy.contains("admin@admin.lt");
         cy.contains("kitas@kitas.lt");
-        cy.contains("Homepage");
+        cy.contains(/Homepage/i);
         cy.contains("www.linkedin.com/company/nfq/");
     })
 });
