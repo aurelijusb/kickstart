@@ -5,22 +5,20 @@
 {% block body %}
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
-        {% set counter = 0 %}
         {% for team in array %}
             {% for member in team.students %}
             <li class="list-group-item">
-                <a href="/student?{{ counter }}">{{ member }}</a>
+                <a href="{{ path('search', {name: member, project: team.name})  }}">{{ member }}</a>
                 (
                 <span class="badge"> Mentorius</span> {{team.mentors[0]}}
                 )
             </li>
-                {% set counter = counter + 1 %}
             {% endfor %}
         {% endfor %}
     </ul>
 
     <div class="m-4">
-        <form action="/search" method="get">
+        <form action="{{ path('search')}}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas" pattern="[A-Za-z0-9]+">
             </div>
@@ -56,7 +54,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="data.json">Duomenų failas</a>
+        <a class="text-light" href="student.json">Duomenų failas</a>
     </div>
 
 

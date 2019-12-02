@@ -3,32 +3,25 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController
 {
     /**
      * @Route("/search", name="search")
+     * @param Request $request
+     * @return Response
      */
     public function index(Request $request)
     {
-
-        $temp = $request->getRequestUri();
-        $path = substr($temp, strlen($request->getPathInfo()) + 1, strlen($temp));
-        $pos = strpos($path, '&');
-        $member = substr($path, 0, $pos);
-        $team = substr($path, $pos + 1, strlen($path));
-
-        $pos = strpos($member, '=');
-        $member = substr($member, $pos + 1, strlen($member));
-        $pos = strpos($team, '=');
-        $team = substr($team, $pos + 1, strlen($team));
-
+        $name = $request->get('name');
+        $project = $request->get('project');
         return $this->render('search/index.html.twig', [
             'controller_name' => 'SearchController',
-            'team' => $team,
-            'member' => $member
+            'name' => $name,
+            'project' => $project
         ]);
     }
 }
