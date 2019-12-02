@@ -17,14 +17,17 @@ class HomeController extends AbstractController
      */
     public function index(KernelInterface $kernel)
     {
-        $json = (string)file_get_contents($kernel->getProjectDir().'/public/students.json');
+        $json = file_get_contents($kernel->getProjectDir().'/public/students.json');
+        if (false === $json) {
+            throw \Exception("Unable to read internal file");
+        }
         $data = json_decode($json, true);
 
         $projects = $students = [];
         foreach ($data as $projectDomain => $items) {
             $projects[] = ['domain' => $projectDomain, 'name' => $items['name']];
             foreach ($items['students'] as $student) {
-                $students[] = ['name' => $student, 'mentor' => $items['mentors'][0], 'project' => $projectDomain];
+                $students[] = ['name' => $student, 'mentors' => $items['mentors'], 'project' => $projectDomain];
             }
         }
 
@@ -43,9 +46,10 @@ class HomeController extends AbstractController
     public function view(Request $request)
     {
         $data = [
-            'project' => $request->get('project'),
-            'name' => $request->get('name'),
+            'project' => $request->get('project', ''),
+            'name' => $request->get('name', ''),
         ];
+        $data['isGoodStudent'] = ('myfleet' === $data['project'] && 'Artūras' === $data['name']);
         return $this->render('home/view.html.twig', [
             'title' => 'Vertinimas',
             'student' => $data,
