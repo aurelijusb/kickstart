@@ -190,6 +190,14 @@ foreach ($files as $file) {
                 "Taip pat, jei leisi automatinius testus savo projektui – norėsis, kad visi failai būtų lokaliai (dėl stabilumo ir greičio)"
             );
         }
+        if (contains($line, '$_GET') || contains($line, '$_POST') || contains($line, '$_SERVER') || contains($line, '$_REQUEST')) {
+            $actions->error(
+                $path,
+                $nr,
+                $line,
+                "Naudok Symfony Request objektą. Tada bus daug lengviau testuoti ir mažiau problemu su (kažkur besikeičiančiais) globaliais kintamaisiais. https://symfony.com/doc/current/controller.html#the-request-object-as-a-controller-argument"
+            );
+        }
         if (contains($line, "file_get_contents('../public/students.json')")) {
             $actions->warning(
                 $path,
