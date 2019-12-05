@@ -3,16 +3,20 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @param KernelInterface $request
      */
-    public function index()
+    public function index(KernelInterface $request)
     {
-        $projects = json_decode(file_get_contents('../public/students.json'), true);
+        set_include_path($request->getProjectDir() . '/public/students.json');
+
+        $projects = json_decode(file_get_contents(get_include_path()), true);
         $students = $this->groupByStudents($projects);
 
         return $this->render('home/index.html.twig', [
