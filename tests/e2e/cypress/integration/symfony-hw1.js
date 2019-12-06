@@ -89,9 +89,15 @@ describe('First homework', function() {
             .contains(`<b>Ir</b> jo "geras" draug'as`)
             .then( element => {
                 const link = element.get(0).href;
+                dd(`Actual link: ${link}`);
+                const expected1 = '?name=%3Cb%3EIr%3C/b%3E%20jo%20%22geras%22%20draug%27as&project=hack%3Cb%3Eer%3C/b%3E%27is%20po%20.mySubdomain%20%26project%3D123'; // Generated with path
+                const expected2 = '?name=%3Cb%3EIr%3C%2Fb%3E%20jo%20%22geras%22%20draug%27as&project=hack%3Cb%3Eer%3C%2Fb%3E%27is%20po%20.mySubdomain%20%26project%3D123'; // Generated with url_encode
+                dd(`Expected end: ${expected1}`);
                 assert(
-                    link.endsWith('?name=%3Cb%3EIr%3C/b%3E%20jo%20%22geras%22%20draug%27as&project=hack%3Cb%3Eer%3C/b%3E%27is%20po%20.mySubdomain%20%26project%3D123'),
-                    'Expected urlencoded Twig filter'
+                    link.endsWith(expected1) || expected2,
+                    `Expected url_encode Twig filter: actual: \n${link}\n does not ends with \n${expected1}\n ` +
+                    `See https://symfony.com/doc/4.2/templating.html#linking-to-pages and ` +
+                    `https://twig.symfony.com/doc/2.x/filters/url_encode.html`
                 );
             })
     });
@@ -110,7 +116,11 @@ describe('First homework', function() {
             .contains(`hack<b>er</b>'is po .mySubdomain &project=123.projektai.nfqakademija.lt/`)
             .then( element => {
                 const link = element.get(0).href;
-                expect(link).to.eq(`http://hack%3Cb%3Eer%3C%2Fb%3E%27is%20po%20.mysubdomain%20%26project%3D123.projektai.nfqakademija.lt/`);
+                dd(`Actual link:   ${link}`);
+                const expected = `http://hack%3Cb%3Eer%3C%2Fb%3E%27is%20po%20.mysubdomain%20%26project%3D123.projektai.nfqakademija.lt/`;
+                dd(`Expected link: ${expected}`);
+                expect(link).to.eq(expected);
+                cy.wrap(element); // Because asynchronous in cypress works a bit different
             })
             .parent()
             .parent()
