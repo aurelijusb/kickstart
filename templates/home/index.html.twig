@@ -7,7 +7,7 @@
     <li class="list-group-item list-group-item-info">Studentai</li>
     {% for dataRow in studentData %}
     <li class="list-group-item">
-        <a href="{{ path('student', {name:dataRow['student'], project: dataRow['project']})|escape }}">{{dataRow['student']}}</a>
+        <a href="{{ path('student', {name:dataRow['student'], project: dataRow['project']}) }}">{{dataRow['student']}}</a>
         (
         <span class="badge">Mentorius</span> {{dataRow['mentors']|join(', ') }}
         )
@@ -51,7 +51,7 @@
 
 
 <div class="m-4">
-        <a class="text-light" href="https://hw1.nfq2019.online/students.json">Duomenų failas</a>
+        <a class="text-light" href="{{ path('students-json') }}">Duomenų failas</a>
     </div>
 
 {% endblock %}
