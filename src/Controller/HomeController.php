@@ -13,12 +13,11 @@ class HomeController extends AbstractController
      */
     public function index(Request $request)
     {
+        $data = file_get_contents("students.json");
+        $teams = json_decode($data, true);
+
         return $this->render('home/index.html.twig', [
-            'someVariable' => [
-                $request->get('student', 'nežinau'),
-                'darius',
-                'petras',
-            ],
+            'teams' => $teams
         ]);
     }
 }
