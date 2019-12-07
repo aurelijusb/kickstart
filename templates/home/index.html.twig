@@ -5,7 +5,7 @@
         {% for key, team in studData %}
             {% for student in team.students %}
                 <li class="list-group-item">
-                    <a href="{{ path('student', {name: student, project: key })|escape }}"> {{ student }}</a>
+                    <a href="{{ path('student', {name: student, project: key })}}"> {{ student }}</a>
                     (
                     <span class="badge">Mentorius</span> {{ team.mentors[0] }}
                     )
@@ -15,7 +15,7 @@
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{path('student')}}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas">
             </div>
