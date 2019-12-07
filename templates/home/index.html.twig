@@ -7,16 +7,16 @@
     <li class="list-group-item list-group-item-info">Studentai</li>
     {% for dataRow in studentData %}
     <li class="list-group-item">
-        <a href="{{ path('student', {name:dataRow['student'], project: dataRow['project']})|escape }}">{{dataRow['student']|escape}}</a>
+        <a href="{{ path('student', {name:dataRow['student'], project: dataRow['project']})|escape }}">{{dataRow['student']}}</a>
         (
-        <span class="badge">Mentorius</span> {{dataRow['mentors']|join(', ')|escape }}
+        <span class="badge">Mentorius</span> {{dataRow['mentors']|join(', ') }}
         )
     </li>
     {% endfor %}
 </ul>
 
     <div class="m-4">
-        <form action="/student" method="get" _lpchecked="1">
+        <form action="{{path('student')}}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas">
             </div>
@@ -51,7 +51,7 @@
 
 
 <div class="m-4">
-        <a class="text-light" href="/students.json">Duomenų failas</a>
+        <a class="text-light" href="https://hw1.nfq2019.online/students.json">Duomenų failas</a>
     </div>
 
 {% endblock %}
