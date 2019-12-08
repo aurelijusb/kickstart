@@ -3,6 +3,16 @@
 NFQ Akademija
 ============
 
+# Naudingos nuorodos
+
+* TWIG: https://symfony.com/doc/current/templating.html
+* HTML: Boostrap: https://getbootstrap.com/
+* CSS/SASS: https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
+* Interface Kernel: https://symfony.com/doc/current/reference/configuration/kernel.html
+* Maker bundle: https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html
+* Controller request: https://symfony.com/doc/current/controller.html#the-request-object-as-a-controller-argument
+* Profiler: https://symfony.com/doc/current/profiler.html
+
 # Intro
 
 Sveiki! Tai yra Jūsų startinis projekto "template". 
@@ -13,8 +23,7 @@ visais reikalingais failais ir įrankiais darbui:
 - Paprastas pavyzdys (Controller, Template, CSS)
 - Įdiegtas bootstrap
 - Asset'ų buildinimas (encore, yarn, sass)
-- Travis CI template
-
+- GitHub actions (CI) pavyzdys
 
 # Paleidimo instrukcija
 
