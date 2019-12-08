@@ -8,7 +8,7 @@
         {% for team in data %}
             {% for student in team.students %}
                 <li class="list-group-item">
-                    <a href="/student?name={{ student|escape }}&project={{ team.name|escape }}">{{ student }}</a>
+                    <a href="{{ path('student') }}?name={{ student }}&project={{ team.name }}">{{ student }}</a>
                     ( <span class="badge">Mentorius</span> {{ team.mentors[0] }} )
                 </li>
             {% endfor %}
@@ -16,7 +16,7 @@
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{ path('student') }}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas">
             </div>
@@ -50,7 +50,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="https://hw1.nfq2019.online/students.json">Duomenų failas</a>
+        <a class="text-light" href="{{ path('students') }}">Duomenų failas</a>
     </div>
 
 {% endblock %}

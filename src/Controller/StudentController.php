@@ -4,19 +4,20 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class StudentController extends AbstractController
 {
     /**
      * @Route("/student/", name="student")
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = file_get_contents("https://hw1.nfq2019.online/students.json");
+        $data = file_get_contents(dirname(__FILE__) . "/../students.json", FILE_USE_INCLUDE_PATH);
         $data = json_decode($data, true);
 
-        $name = $_GET['name'];
-        $project = $_GET['project'];
+        $name = $request->query->get('name');
+        $project = $request->query->get('project');
 
         $outputProject = '';
 

@@ -5,3 +5,5 @@
 #students:
 #    path: /student/
 #    controller: App\Controller\DefaultController::index
+students:
+  path: /src/students.json
