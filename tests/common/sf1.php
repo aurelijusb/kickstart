@@ -142,16 +142,16 @@ foreach ($files as $file) {
         if (contains($line, '{{ controller_name }}')) {
             $actions->warning($path, $nr, $line, "Verta nepalikinėti šiukšlių, nes kolegos skaitys VISUS tavo kodo pakeitimus. https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews");
         }
-    }
-    if (contains($line, 'team["mentors"][0]') || contains($line, '[0]') || contains($line, '["mentors"]')) {
-        $actions->warning(
-            $path,
-            $nr,
-            $line,
-            "Twig'as palaiko ir alternatyvią sintaksę masyvo elementų posiekimui." .
-            "T.y, naudojant taškus vietoj laužtinių skliaustų." .
-            "https://twig.symfony.com/doc/3.x/templates.html#variables"
-        );
+        if (contains($line, 'team["mentors"][0]') || contains($line, '[0]') || contains($line, '["mentors"]') ||  contains($line, "['github']")) {
+            $actions->warning(
+                $path,
+                $nr,
+                $line,
+                "Twig'as palaiko ir alternatyvią sintaksę masyvo elementų posiekimui." .
+                "T.y, naudojant taškus vietoj laužtinių skliaustų." .
+                "https://twig.symfony.com/doc/3.x/templates.html#variables"
+            );
+        }
     }
 }
 
