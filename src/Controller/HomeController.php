@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -28,6 +29,24 @@ class HomeController extends AbstractController
     {
         return $this->redirect('json/students.json');
     }
+    /**
+     * @Route("/github", name="github")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function retrunGithub(Request $request)
+    {
+        return $this->redirect('https://github.com/nfqakademija/'.$request->get('param', ''));
+    }
+    /**
+     * @Route("/web", name="web")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function returnWeb(Request $request)
+    {
+        return $this->redirect('http://'.$request->get('param', '').'.projektai.nfqakademija.lt/');
+    }
 
     private function groupByStudents(array $projects)
     {
@@ -43,7 +62,7 @@ class HomeController extends AbstractController
     {
         $result = [];
         foreach ($projects as $projectName => $project) {
-            $result[] = ['project' =>$project['name']];
+            $result[] = ['projectName' =>$project['name'], 'project' => $projectName];
         }
         return $result;
     }

@@ -29,7 +29,20 @@
         <li class="list-group-item list-group-item-info">Projektai</li>
         {% for key,value in projectJson %}
             <li class="list-group-item">
-                <h3> {{ value.project }} </h3>
+                <h3>{{ value.projectName }}</h3>
+                <div class="panel panel-default">
+                    <div>
+                        <a target="_blank" href="{{ path('github',{'param':value.project}) }}">github.com/nfqakademija/{{ value.project }}</a>
+                        <span class="badge">GitHub</span>
+                    </div>
+                    <div>
+                        <a target="_blank" href="{{ path('web',{'param':value.project}) }}">{{ value.project }}.projektai.nfqakademija.lt/</a>
+                        <span class="badge">Web</span>
+                    </div>
+                    <div>
+                        <pre>ssh {{ value.project }}@deploy.nfqakademija.lt -p 2222</pre>
+                    </div>
+                </div>
             </li>
         {% endfor %}
     </ul>
