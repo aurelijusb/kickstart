@@ -21,6 +21,13 @@ class HomeController extends AbstractController
             'projectJson' => $projects,
         ]);
     }
+    /**
+     * @Route("/json", name="json")
+     */
+    public function returnJson()
+    {
+        return $this->redirect('json/students.json');
+    }
 
     private function groupByStudents(array $projects)
     {
