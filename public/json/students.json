@@ -167,6 +167,16 @@
       "Evaldas",
       "Algirdas"
     ]
-  }
+  },
+  "hack<b>er</b>'is po .mySubdomain &project=123": {
+  "name": "' OR 1 -- DROP DATABASE",
+  "mentors": [
+    "<b>Ponas</b> Programišius"
+  ],
+  "students": [
+    "Aurelijus",
+    "<b>Ir</b> jo \"geras\" draug'as"
+  ]
+}
 }
 
