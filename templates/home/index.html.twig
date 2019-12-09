@@ -14,4 +14,12 @@
             </li>
         {% endfor %}
     </ul>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+        {% for key,value in projectJson %}
+            <li class="list-group-item">
+                <h3> {{ value.project }} </h3>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

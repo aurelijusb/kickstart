@@ -15,8 +15,10 @@ class HomeController extends AbstractController
         $jsonContent = file_get_contents("json/students.json");
         $encode = json_decode($jsonContent, true);
         $students = $this->groupByStudents($encode);
+        $projects = $this->groupByProject($encode);
         return $this->render('home/index.html.twig', [
             'json' => $students,
+            'projectJson' => $projects,
         ]);
     }
 
@@ -27,6 +29,14 @@ class HomeController extends AbstractController
             foreach ($project['students'] as $student) {
                 $result[] = ['student' => $student, 'project' => $projectName, 'mentors' => $project['mentors']];
             }
+        }
+        return $result;
+    }
+    private function groupByProject(array $projects)
+    {
+        $result = [];
+        foreach ($projects as $projectName => $project) {
+            $result[] = ['project' =>$projectName];
         }
         return $result;
     }
