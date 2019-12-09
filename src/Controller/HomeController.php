@@ -34,9 +34,4 @@ class HomeController extends AbstractController
         }
         return $data;
     }
-
-    private function getBrowser()
-    {
-        return $_SERVER['HTTP_USER_AGENT'];
-    }
 }
