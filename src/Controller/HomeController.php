@@ -20,20 +20,9 @@ class HomeController extends AbstractController
         $studentJsonData = file_get_contents($studentFilePath, FILE_USE_INCLUDE_PATH);
         $studentArray = json_decode($studentJsonData, true);
 
-        $projectFileName = 'projects.json';
-        $projectFilePath = $projectDir . '/public/' . $projectFileName;
-        $projectJsonData = file_get_contents($projectFilePath, FILE_USE_INCLUDE_PATH);
-        $projectArray = json_decode($projectJsonData, true);
-
-        foreach ($projectArray as $key => $value) {
-            $projectArray[$key]['githubDecode'] = urldecode($projectArray[$key]['github']);
-            $projectArray[$key]['webDecode'] = urldecode($projectArray[$key]['web']);
-        }
-
         return $this->render('home/index.html.twig', [
             'title' => 'Projektai',
             'studentArray' => $studentArray,
-            'projectArray' => $projectArray,
             'studentFileName' => $studentFileName,
         ]);
     }

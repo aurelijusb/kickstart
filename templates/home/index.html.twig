@@ -6,15 +6,15 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% if studentArray %}
-            {% for key in studentArray|keys %}
-                {% for student in studentArray[key]['students'] %}
+            {% for key, project in studentArray %}
+                {% for student in project.students %}
                     <li class="list-group-item">
                         <a href="{{ path('student', {'name': student, 'project': key}) }}">
                             {{ student }}
                         </a>
                         (
                         <span class="badge">Mentorius</span>
-                        {% for mentor in studentArray[key]['mentors'] %}
+                        {% for mentor in project.mentors %}
                             {{ mentor }}
                         {% endfor %}
                         )
@@ -40,37 +40,25 @@
     </div>
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Projektai</li>
-        {% if projectArray %}
-            {% for key in projectArray|keys %}
+        {% if studentArray %}
+            {% for key, project in studentArray %}
                 <li class="list-group-item">
-                    <h3>{{ projectArray[key]['name'] }}</h3>
+                    <h3>{{ project.name }}</h3>
                     <div class="panel panel-default">
                         <div>
-                            <a target="_blank" href="{{ projectArray[key]['github'] }}">
-                                {{ projectArray[key]['githubDecode']|replace
-                                    ({
-                                        'https://': '',
-                                        'http://': '',
-                                        'www.': ''
-                                    })
-                                }}
+                            <a target="_blank" href="{{ 'https://github.com/nfqakademija/' ~ key|url_encode }}">
+                                {{ 'github.com/nfqakademija/' ~ key }}
                             </a>
                             <span class="badge">GitHub</span>
                         </div>
                         <div>
-                            <a target="_blank" href="{{ projectArray[key]['web'] }}">
-                                {{ projectArray[key]['webDecode']|replace
-                                    ({
-                                        'https://': '',
-                                        'http://': '',
-                                        'www.': ''
-                                    })
-                                }}
+                            <a target="_blank" href="{{ 'http://' ~ key|url_encode ~ '.projektai.nfqakademija.lt/' }}">
+                                {{ key ~ '.projektai.nfqakademija.lt/' }}
                             </a>
                             <span class="badge">Web</span>
                         </div>
                         <div>
-                            <pre>{{ projectArray[key]['ssh'] }}</pre>
+                            <pre>{{ 'ssh ' ~ key ~ '@deploy.nfqakademija.lt -p 2222' }}</pre>
                         </div>
                     </div>
                 </li>
