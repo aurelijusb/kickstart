@@ -12,7 +12,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $jsonContent = file_get_contents("https://hw1.nfq2019.online/students.json");
+        $jsonContent = file_get_contents("json/students.json");
         $encode = json_decode($jsonContent, true);
         $students = $this->groupByStudents($encode);
         return $this->render('home/index.html.twig', [
