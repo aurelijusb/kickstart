@@ -23,8 +23,8 @@ class HomeController extends AbstractController
         $name = $request->get('name');
         $project = $request->get('project');
 
-        if(isset($name) || isset($project)) {
-            return $this->Student($request);
+        if (isset($name) || isset($project)) {
+            return $this->student($request);
         } else {
             return $this->render('home/index.html.twig', [
                 'students' => $students,
@@ -33,7 +33,7 @@ class HomeController extends AbstractController
         }
     }
 
-    public function Student(Request $request): Response
+    public function student(Request $request): Response
     {
         $name = $request->get('name', 'nenurodyta');
         $team = $request->get('project', 'nenurodyta');
@@ -46,7 +46,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    private function groupByStudents(array $projects): array 
+    private function groupByStudents(array $projects): array
     {
         $result = [];
         foreach ($projects as $projectName => $project) {
