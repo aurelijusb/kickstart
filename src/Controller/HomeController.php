@@ -29,5 +29,4 @@ class HomeController extends AbstractController
     {
         return file_get_contents('students.json');
     }
-
 }
