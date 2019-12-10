@@ -8,7 +8,7 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for student in students %}
             <li class="list-group-item">
-                <a href="{{ path('student', {name: student['student']|url_encode, project: student['project']|url_encode}, true) }}">{{ student['student'] }}</a>
+                <a href="{{ path('student', {name: student['student']|url_encode, project: student['project']|url_encode}, relative = true) }}">{{ student['student'] }}</a>
                 (
                 <span class="badge">Mentorius</span>{{ student['mentors'][0] }}
                 )
@@ -54,6 +54,6 @@
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="{{ absolute_url('students.json') }}">Duomenų failas</a>
+        <a class="text-light" href="{{ relative_path('students.json') }}">Duomenų failas</a>
     </div>
 {% endblock %}
