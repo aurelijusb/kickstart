@@ -17,8 +17,9 @@ class HomeController extends AbstractController
     public function index(Request $request): Response
     {
         $json = file_get_contents('./../public/students.json');
-        $projects = json_decode($json, true);
-        $students = $this->groupByStudents($projects);
+        $projectsJson = json_decode($json, true);
+        $students = $this->groupByStudents($projectsJson);
+        $projects = $this->setProjectUrls($projectsJson);
 
         $name = $request->get('name');
         $project = $request->get('project');
@@ -51,8 +52,28 @@ class HomeController extends AbstractController
         $result = [];
         foreach ($projects as $projectName => $project) {
             foreach ($project['students'] as $student) {
-                $result[] = ['student' => $student, 'project' => $projectName, 'mentors' => $project['mentors']];
+                $result[] = [
+                    'student' => $student,
+                    'project' => $projectName,
+                    'mentors' => $project['mentors'],
+                    'github' => 'https://github.com/nfqakademija/'.urlencode($projectName),
+                    'web' => 'http://'.urlencode($projectName).'.projektai.nfqakademija.lt/'
+                ];
             }
+        }
+        return $result;
+    }
+
+    private function setProjectUrls(array $projects): array
+    {
+        $result = [];
+        foreach ($projects as $projectName => $project) {
+                $result[] = [
+                    'name' => $projectName,
+                    'github' => 'https://github.com/nfqakademija/'.urlencode($projectName),
+                    'web' => 'http://'.urlencode($projectName).'.projektai.nfqakademija.lt/'
+                ];
+
         }
         return $result;
     }

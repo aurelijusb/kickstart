@@ -39,17 +39,15 @@
                     <h3>{{ team['name'] }}</h3>
                     <div class="panel panel-default">
                         <div>
-                            {% set github = 'https://github.com/nfqakademija/%s'|format(key|url_encode) %}
-                            {% set web = 'http://%s.projektai.nfqakademija.lt/'|format(key|url_encode) %}
-                            <a target="_blank" href="{{ relative_path(github) }}">github.com/nfqakademija/{{ key }}</a>
+                            <a target="_blank" href="{{ relative_path(team['github']) }}">github.com/nfqakademija/{{ team['name'] }}</a>
                             <span class="badge">GitHub</span>
                         </div>
                         <div>
-                            <a target="_blank" href="{{ relative_path(web) }}">{{ key }}.projektai.nfqakademija.lt/</a>
+                            <a target="_blank" href="{{ relative_path(team['web']) }}">{{ team['name'] }}.projektai.nfqakademija.lt/</a>
                             <span class="badge">Web</span>
                         </div>
                         <div>
-                            <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</pre>
+                            <pre>ssh {{ team['name'] }}@deploy.nfqakademija.lt -p 2222</pre>
                         </div>
                     </div>
                 </li>
