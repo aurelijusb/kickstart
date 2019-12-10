@@ -2,12 +2,8 @@
 
 namespace App\Controller;
 
-use GuzzleHttp\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGenerator;
 
 class HomeController extends AbstractController
 {
@@ -23,7 +19,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/students.json", name="student_json")
+     * @Route("students.json", name="student_json")
      */
     public function jsonPath()
     {
