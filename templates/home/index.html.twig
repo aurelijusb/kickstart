@@ -4,7 +4,7 @@
 
 
 {% block body %}
-Testing
+
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for team_name, students in decodededData %}
@@ -20,7 +20,7 @@ Testing
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{ path('student') }}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas"/>
             </div>
