@@ -12,6 +12,8 @@ jobs:
         run: ./scripts/start.sh
       - name: Temporary fix for permissions (different docekr users)
         run: chmod 777 . && chmod 777 public
+      - name: Simulate Arnas local environment
+        run: sudo apt install php-http
       - name: Install dependencies
         run: ./scripts/install-prod.sh
 
