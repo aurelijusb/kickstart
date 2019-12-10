@@ -42,3 +42,6 @@ tests/e2e/yarn.lock
 tests/e2e/node_modules
 ###< cypress ###
 
+
+bin/.phpunit.result.cache
+bin/.phpunit
