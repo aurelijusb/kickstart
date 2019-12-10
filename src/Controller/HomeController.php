@@ -12,7 +12,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $json = file_get_contents('https://hw1.nfq2019.online/students.json');
+        $json = file_get_contents('./../public/students.json');
         $projects = json_decode($json, true);
         $students = $this->groupByStudents($projects);
 

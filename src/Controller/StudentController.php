@@ -13,8 +13,8 @@ class StudentController extends AbstractController
      */
     public function index(Request $request)
     {
-        $name = $request->get('name');
-        $team = $request->get('project');
+        $name = $request->get('name', 'nenurodyta');
+        $team = $request->get('project', 'nenurodyta');
         $success = (bool)random_int(0, 1);
 
         return $this->render('student/index.html.twig', [

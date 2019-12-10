@@ -8,7 +8,7 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for student in students %}
             <li class="list-group-item">
-                <a href="{{ path('student', {name: student['student'], project: student['project']})|escape }}">{{ student['student'] }}</a>
+                <a href="{{ path('student', {name: student['student'], project: student['project']}) }}">{{ student['student'] }}</a>
                 (
                 <span class="badge">Mentorius</span>{{ student['mentors'][0] }}
                 )
@@ -20,7 +20,7 @@
 
 {% block body %}
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{ path('student') }}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas"/>
             </div>
@@ -36,7 +36,7 @@
 
         {% for key, team in projects %}
                 <li class="list-group-item">
-                    <h3>{{ team['name']|escape }}</h3>
+                    <h3>{{ team['name'] }}</h3>
                     <div class="panel panel-default">
                         <div>
                             <a target="_blank" href="https://github.com/nfqakademija/{{ key|url_encode }}">github.com/nfqakademija/{{ key }}</a>
@@ -54,6 +54,6 @@
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="students.json">Duomenų failas</a>
+        <a class="text-light" href="{{ absolute_url('students.json') }}">Duomenų failas</a>
     </div>
 {% endblock %}
