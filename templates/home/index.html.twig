@@ -9,7 +9,7 @@
                 <li class="list-group-item">
 
                     <a href="{{ path('student', {'name': student, 'project': key}) }}"> {{ student }}</a>
-                    (<span class="badge"> Mentorius </span>{{  team.mentors[0] }} )
+                    (<span class="badge"> Mentorius </span>{{ team.mentors.0 }} )
                 </li>
             {% endfor %}
         {% endfor %}
@@ -22,17 +22,17 @@
             <div class="input-group">
                 <input name="project" type="text" class="form-control" placeholder="Projektas">
             </div>
-            <button type="submit" class="btn btn-success"> Sužinoti vertinimą </button>
+            <button type="submit" class="btn btn-success"> Sužinoti vertinimą</button>
         </form>
     </div>
     <ul class="list-group m-4">
-        <li class="list-group-item list-group-item-info"> Projektai </li>
+        <li class="list-group-item list-group-item-info"> Projektai</li>
         {% for key, team in teams %}
             <li class="list-group-item">
                 <h3> {{ team.name }} </h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|url_encode}}">
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|url_encode }}">
                             github.com/nfqakademija/{{ key }}
                         </a>
                         <span class="badge">GitHub</span>
@@ -51,6 +51,6 @@
         {% endfor %}
     </ul>
     <div class="m-4">
-        <a class="text-light" href="students.json"> Duomenų failas </a> <!-- is tikro traukia https://hw1.nfq2019.online/students.json -->
+        <a class="text-light" href="{{ path('student_json') }}"> Duomenų failas </a>
     </div>
 {% endblock %}

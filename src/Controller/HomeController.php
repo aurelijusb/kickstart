@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use GuzzleHttp\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGenerator;
 
 class HomeController extends AbstractController
 {
@@ -14,21 +16,18 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        /*foreach(json_decode($this->getTeams(), true) as $stud){
-            print_r($stud);
-        }*/
         return $this->render('home/index.html.twig', [
             'controller_name' => 'StudentController',
-            'teams' => json_decode($this->getTeams(), true),
+            'teams' => json_decode($this->jsonPath(), true),
         ]);
     }
 
-    public function getTeams()
+    /**
+     * @Route("/students.json", name="student_json")
+     */
+    public function jsonPath()
     {
-        $client = new Client();
-        $response = $client->request('GET', 'https://hw1.nfq2019.online/students.json');
-        $response->getStatusCode();
-        $response->getHeaderLine('application/json; charset=utf8');
-        return $response->getBody()->getContents();
+        return file_get_contents('students.json');
     }
+
 }
