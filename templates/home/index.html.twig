@@ -39,11 +39,13 @@
                     <h3>{{ team['name'] }}</h3>
                     <div class="panel panel-default">
                         <div>
-                            <a target="_blank" href="https://github.com/nfqakademija/{{ key|url_encode }}">github.com/nfqakademija/{{ key }}</a>
+                            {% set github = 'https://github.com/nfqakademija/%s'|format(key|url_encode) %}
+                            {% set web = 'http://%s.projektai.nfqakademija.lt/'|format(key|url_encode) %}
+                            <a target="_blank" href="{{ relative_path(github) }}">github.com/nfqakademija/{{ key }}</a>
                             <span class="badge">GitHub</span>
                         </div>
                         <div>
-                            <a target="_blank" href="http://{{ key|url_encode }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/</a>
+                            <a target="_blank" href="{{ relative_path(web) }}">{{ key }}.projektai.nfqakademija.lt/</a>
                             <span class="badge">Web</span>
                         </div>
                         <div>
