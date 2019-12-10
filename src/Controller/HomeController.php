@@ -73,7 +73,6 @@ class HomeController extends AbstractController
                     'github' => 'https://github.com/nfqakademija/'.urlencode($projectName),
                     'web' => 'http://'.urlencode($projectName).'.projektai.nfqakademija.lt/'
                 ];
-
         }
         return $result;
     }
