@@ -1,21 +1,46 @@
 const axios = require('axios');
 
 let name = document.getElementById('name');
-let validationResult = document.getElementById('validation-result');
+let nameValidationResult = document.getElementById('validation-result-name');
 const validateName = function () {
-    validationResult.innerText = '...';
-    axios.post(validationResult.dataset.path, {input: name.value})
-        .then(function(response) {
+    nameValidationResult.innerText = '...';
+    axios.post(nameValidationResult.dataset.path, {input: name.value})
+        .then(function (response) {
             if (response.data.valid) {
-                validationResult.innerHTML = ":)";
+                nameValidationResult.innerHTML = ":)";
             } else {
-                validationResult.innerHTML = ":(";
+                nameValidationResult.innerHTML = ":(";
             }
         })
         .catch(function (error) {
-            validationResult.innerText = 'Error: ' + error;
+            nameValidationResult.innerText = 'Error: ' + error;
         });
 };
 
+
 name.onkeyup = validateName;
 name.onchange = validateName;
+
+
+let team = document.getElementById('team');
+let teamValidationResult = document.getElementById('validation-result-team');
+const validateTeam = function () {
+    teamValidationResult.innerText = '...';
+    axios.post(teamValidationResult.dataset.path, {input: team.value})
+        .then(function (response) {
+            if (response.data.valid) {
+                teamValidationResult.innerHTML = ":)";
+            } else {
+                teamValidationResult.innerHTML = ":(";
+            }
+        })
+        .catch(function (error) {
+            teamValidationResult.innerText = 'Error: ' + error;
+        });
+};
+
+
+
+
+team.onkeyup = validateTeam;
+team.onchange = validateTeam;
