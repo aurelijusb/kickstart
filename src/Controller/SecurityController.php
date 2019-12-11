@@ -40,6 +40,9 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/profile", name="profile")
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param UserInterface|null $user
+     * @return RedirectResponse|Response
      */
     public function profile(UrlGeneratorInterface $urlGenerator, UserInterface $user = null)
     {

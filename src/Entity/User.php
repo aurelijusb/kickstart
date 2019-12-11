@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -36,7 +37,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @var null|\DateTime When password was changed
+     * @var null|DateTime When password was changed
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $passwordChanged = null;
@@ -45,10 +46,34 @@ class User implements UserInterface
     private $passwordWasChanged = false;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedin;
+
+    /**
      * @var null|string Link to Personal Website
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $homepage = "";
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedin(): ?String
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * @param mixed $linkedin
+     * @return User
+     */
+    public function setLinkedin($linkedin): self
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -155,17 +180,17 @@ class User implements UserInterface
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    public function getPasswordChanged(): ?\DateTime
+    public function getPasswordChanged(): ?DateTime
     {
         return $this->passwordChanged;
     }
 
     /**
-     * @param \DateTime|null $passwordChanged
+     * @param DateTime|null $passwordChanged
      */
-    public function setPasswordChanged(?\DateTime $passwordChanged): void
+    public function setPasswordChanged(?DateTime $passwordChanged): void
     {
         $this->passwordChanged = $passwordChanged;
     }
@@ -180,6 +205,7 @@ class User implements UserInterface
 
     /**
      * @param string|null $homepage
+     * @return User
      */
     public function setHomepage(?string $homepage): self
     {
