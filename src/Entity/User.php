@@ -194,8 +194,7 @@ class User implements UserInterface
         return $this;
     }
 
-    
- /**
+    /**
     * @return string|null
     */
    public function getLinkedin(): ?string
