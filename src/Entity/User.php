@@ -49,6 +49,12 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $homepage = "";
+    /**
+     * @var null|string Link to Personal Website
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedin = "";
+
 
     public function getId(): ?int
     {
@@ -180,10 +186,30 @@ class User implements UserInterface
 
     /**
      * @param string|null $homepage
+     * @return User
      */
     public function setHomepage(?string $homepage): self
     {
         $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLinkedin(): ?string
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * @param string|null $homepage
+     * @return User
+     */
+    public function setLinkedin(?string $linkedIn): self
+    {
+        $this->linkedin = $linkedIn;
 
         return $this;
     }
