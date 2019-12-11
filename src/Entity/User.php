@@ -193,7 +193,6 @@ class User implements UserInterface
 
         return $this;
     }
-<<<<<<< HEAD
 
     
  /**
@@ -213,6 +212,4 @@ class User implements UserInterface
 
        return $this;
    }
-=======
->>>>>>> upstream/homework-2019-11-19
 }
