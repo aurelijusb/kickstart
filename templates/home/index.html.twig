@@ -10,7 +10,7 @@
         {% for key, project in data %}
             {% for student in project.students %}
                 <li class="list-group-item">
-                    <a href="{{ path('student', {name: student, project: key })|escape }}"> {{ student }}</a>
+                    <a href="{{ path('student', {name: student, project: key }) }}"> {{ student }}</a>
                     (<span class="badge">Mentorius</span> {{ project.mentors[0] }})
                 </li>
             {% endfor %}
@@ -19,7 +19,7 @@
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action={{ path('student') }} method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas">
             </div>
@@ -37,15 +37,15 @@
                 <h3>{{ project.name }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|url_encode }}">github.com/nfqakademija/{{ key|escape }}</a>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ key|url_encode }}">github.com/nfqakademija/{{ key }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ key|url_encode }}.projektai.nfqakademija.lt/">{{ key|escape }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ key|url_encode }}.projektai.nfqakademija.lt/">{{ key }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ key|escape }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ key }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
