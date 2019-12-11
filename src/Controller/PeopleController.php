@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +36,7 @@ class PeopleController extends AbstractController
     {
         try {
             $input = json_decode($request->getContent(), true)['input'];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
@@ -56,6 +57,7 @@ class PeopleController extends AbstractController
     {
         $students = [];
         $storage = json_decode(file_get_contents($this->kernel->getProjectDir(). '/students.json'), true);
+
 
         foreach ($storage as $teamData) {
             foreach ($teamData['students'] as $student) {

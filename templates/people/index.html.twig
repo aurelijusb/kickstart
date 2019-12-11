@@ -4,6 +4,7 @@
 
 {% block body %}
     <div id="root">Loading...</div>
+
     <noscript>To use this app, enable Javascript</noscript>
     <div>
         <label for="name">Vardas</label>
@@ -17,7 +18,6 @@
         <span id="validation-result-team" data-path="{{ path('validatePerson', {'element': 'team'}) }}"></span>
     </div>
 
-    
 {% endblock %}
 
 {% block javascripts %}
@@ -27,4 +27,6 @@
     </script>
     {{ encore_entry_script_tags('validation') }}
     {{ parent() }}
+
 {% endblock %}
+
