@@ -17,21 +17,7 @@ $(document).ready(function() {
 });
 
 const axios = require('axios');
-<<<<<<< HEAD
 
-// if (typeof usingVersionedFileJs !== "undefined") {
-//
-//     let versionedFileElement = document.getElementById('versionedFile');
-//
-//     axios.get('/build/manifest.json')
-//         .then(function (response) {
-//             versionedFileElement.innerText = response.data['build/app.js'];
-//         })
-//         .catch(function (error) {
-//             versionedFileElement.innerText = 'Error: '.error;
-//         });
-// }
-=======
 if (typeof usingVersionedFileJs !== "undefined") {
     let versionedFileElement = document.getElementById('versionedFile');
     axios.get('/build/manifest.json')
@@ -42,4 +28,4 @@ if (typeof usingVersionedFileJs !== "undefined") {
             versionedFileElement.innerText = 'Error: '.error;
         });
 }
->>>>>>> upstream/homework-2019-11-14
+
