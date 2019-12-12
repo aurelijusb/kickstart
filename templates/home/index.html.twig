@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
-
+{% block title %}{{ title }}{% endblock %}
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    {{ include('home/studentai.html.twig') }}
+    {{ include('home/forma.html.twig') }}
+    {{ include('home/projektai.html.twig') }}
+    {{ include('home/duomenu_failas.html.twig') }}
+    <div class="nfq-academy"></div>
 {% endblock %}
