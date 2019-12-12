@@ -1,7 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ someVariable }}{% endblock %}
+{% block title %}NR Symfony homework{% endblock %}
 
 {% block body %}
-    <div class="nfq-academy">{{ someVariable }}</div>
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Studentai</li>
+        {% for index, team in json %}
+            {% for student in team["students"] %}
+                <li class="list-group-item">
+                    <a href="{{ path('student', {'name': student|url_encode , 'project': index|url_encode }) }}">{{student}}</a>
+                    {# i think that the JSON is implying that there's a possibility of more than one mentor #}
+                    {# so i made the template handle it, apologies for the messy code #}
+                    {% if team["mentors"]|length > 1 %}
+                        (
+                            <span class="badge">Mentorius (iai)</span>
+                            {% for mentor in team["mentors"] %}
+                                {{ mentor }}{% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        )
+                    {% elseif team["mentors"]|length > 0 %}
+                        ( <span class="badge">Mentorius</span> {{ team["mentors"][0] }} )
+                    {% else %}
+                        ( <span class="badge">Mentorių neturi</span> )
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            Nėra studentų.
+        {% endfor %}
+    </ul>
+
+    <div class="m-4">
+        <form action="/student" method="get">
+                <div class="input-group">
+                    <input name="name" type="text" class="form-control" placeholder="Studentas">
+                </div>
+                <div class="input-group">
+                    <input name="project" type="text" class="form-control" placeholder="Projektas">
+                </div>
+                <button type="submit" class="btn btn-success">Sužinoti vertinimą</button>
+        </form>
+    </div>
+
+
+    <ul class="list-group m-4">
+        <li class="list-group-item list-group-item-info">Projektai</li>
+        {% for index, team in json %}
+            <li class="list-group-item">
+                <h3>{{ team["name"] }}</h3>
+                <div class="panel panel-default">
+                    <div>
+                        <a target="_blank" href="https://github.com/nfqakademija/{{ index|url_encode }}">
+                            github.com/nfqakademija/{{ index }}
+                        </a>
+                        <span class="badge">GitHub</span>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div>
+                        <a target="_blank" href="https://{{ index|url_encode }}.projektai.nfqakademija.lt">
+                            {{ index }}.projektai.nfqakademija.lt
+                        </a>
+                        <span class="badge">Web</span>
+                    </div>
+                </div>
+                <div>
+                    <pre>ssh {{index}}@deploy.nfqakademija.lt -p 2222</pre>
+                </div>
+            </li>
+        {% else %}
+            Nėra projektų.
+        {% endfor %}
+    </ul>
+
+
+    <div class="m-4">
+        <a class="text-light" href="students.json">Duomenų failas</a>
+    </div>
+
 {% endblock %}
