@@ -8,11 +8,11 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
 
 
-        {% for i in result %}
+        {% for project in result %}
             <li class="list-group-item">
-                <a href="{{ path('student',{'student':i['student'],'project':i['project']}) }}">{{ i['student'] }}</a>
+                <a href="{{ path('student',{'student':project['student'],'project':project['project']}) }}">{{ project['student'] }}</a>
                 (
-                <span class="badge">Mentorius</span> {{ i['mentors'][0] }}
+                <span class="badge">Mentorius</span> {{ project['mentors'][0] }}
                 )
             </li>
             <div></div>
@@ -20,7 +20,7 @@
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="/Algirdas" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas"/>
             </div>
@@ -35,22 +35,22 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Projektai</li>
 
-        {% for i in result2 %}
+        {% for project in result2 %}
 
         <li class="list-group-item">
-            <h3>{{i['description']}}</h3>
+            <h3>{{project['description']}}</h3>
             <div class="panel panel-default">
                 <div>
-                    <a target="_blank" href="https://github.com/nfqakademija/{{i['project']}}">github.com/nfqakademija/{{i['project']}}</a>
+                    <a target="_blank" href="https://github.com/nfqakademija/{{project['project']|url_encode}}">github.com/nfqakademija/{{project['project']}}</a>
                     <span class="badge">GitHub</span>
                 </div>
                 <div>
                     <a target="_blank"
-                       href="http://{{i['project']}}.projektai.nfqakademija.lt/">{{i['project']}}.projektai.nfqakademija.lt/</a>
+                       href="http://{{project['project']|url_encode}}.projektai.nfqakademija.lt/">{{project['project']}}.projektai.nfqakademija.lt/</a>
                     <span class="badge">Web</span>
                 </div>
                 <div>
-                    <pre>ssh {{i['project']}}@deploy.nfqakademija.lt -p 2222</pre>
+                    <pre>ssh {{project['project']}}@deploy.nfqakademija.lt -p 2222</pre>
                 </div>
             </div>
         </li>
