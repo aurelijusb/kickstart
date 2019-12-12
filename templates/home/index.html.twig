@@ -7,17 +7,15 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
 
-        {% autoescape %}
         {% for project in result %}
             <li class="list-group-item">
-                <a href="{{ path('student',{'student':project['student'],'project':project['project']}) }}">{{ project['student']|escape }}</a>
+                <a href="{{ path('student',{'student':project['student'],'project':project['project']}) }}">{{ project['student']}}</a>
                 (
-                <span class="badge">Mentorius</span> {{ (project['mentors'][0])|e('html') }}
+                <span class="badge">Mentorius</span> {{ (project['mentors'][0])}}
                 )
             </li>
             <div></div>
         {% endfor %}
-        {% endautoescape %}
     </ul>
 
     <div class="m-4">

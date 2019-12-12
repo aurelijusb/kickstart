@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "221fd1d5e1e8a49551585826debba28b",
+    "content-hash": "9c8b7a85c3822ffb825351ba32d9ec33",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2584,16 +2584,16 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v4.3.5",
+            "version": "v4.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "5f08141850932e8019c01d8988bf3ed6367d2991"
+                "reference": "3feb99b01560f94173d8fbc5a203ea497d01d499"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/5f08141850932e8019c01d8988bf3ed6367d2991",
-                "reference": "5f08141850932e8019c01d8988bf3ed6367d2991",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/3feb99b01560f94173d8fbc5a203ea497d01d499",
+                "reference": "3feb99b01560f94173d8fbc5a203ea497d01d499",
                 "shasum": ""
             },
             "require": {
@@ -2672,7 +2672,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-07T15:06:41+00:00"
+            "time": "2019-12-01T14:00:23+00:00"
         },
         {
             "name": "symfony/mime",
