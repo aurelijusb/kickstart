@@ -3,8 +3,7 @@
 {% block title %}Vertinimas{% endblock %}
 
 {% block body %}
-{#{{controller_name}}#}
-{#    <a href="{{ path('home') }}?student={{ "labas" |url_encode}}">Visi studentai</a>#}
+
     <div class="bg-light m-4">
         <table class="table">
             <tbody>
@@ -30,7 +29,7 @@
         {% endif %}
     </div>
     <div class="m-4">
-        <a class="text-light" href="/">Visi studentai</a>
+        <a class="text-light" href="{{path('home')}}">Visi studentai</a>
     </div>
 
 {% endblock %}

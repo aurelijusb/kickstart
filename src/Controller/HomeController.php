@@ -4,14 +4,16 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $data = file_get_contents('students.json');
         $projects = json_decode($data, true);
@@ -25,7 +27,7 @@ class HomeController extends AbstractController
             }
         }
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/index.html.twig',[
                 'result' => $result,
                 'result2' => $result2,
             ]
