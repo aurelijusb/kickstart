@@ -1,6 +1,7 @@
+
 // customize some Bootstrap variables
 $primary: darken(#428bca, 20%);
-
+$body-bg:#f0590e;
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
@@ -9,5 +10,13 @@ $primary: darken(#428bca, 20%);
   text-align: center;
   font-size: 96px;
   font-weight: 100;
-  font-family: 'Lato', serif;
+  // font-family: 'Lato', serif;
 }
+
+// body{
+//   background-color: #ff4500;
+// }
+
+// .container{
+//   background-color: orangered;
+// }
