@@ -5,17 +5,20 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @param KernelInterface $request
      * @return Response
      */
-    public function index(): Response
+    public function index(KernelInterface $request)
     {
-        $data = file_get_contents('students.json');
+        $filedir = $request->getProjectDir().'/public/students.json';
+        $data = file_get_contents($filedir);
         $projects = json_decode($data, true);
 
         $result = [];
