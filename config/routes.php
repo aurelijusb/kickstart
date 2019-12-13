@@ -13,7 +13,7 @@ return function (RoutingConfigurator $routes) {
     $routes->add('studentsFile', '/studentsFile')
         ->controller([StudentController::class, 'studentsFile'])
     ;
-    $routes->add('students.json', 'students.json')
+    $routes->add('/students.json', '/students.json')
         ->controller([StudentController::class, 'student'])
     ;
 };
