@@ -41,7 +41,7 @@
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="{{ url('teamWeb',{'slug':  project.name | url_encode } ) }}">{{ project.name }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="{{ url( "teamWeb",{'slug':  project.name  |url_encode}) }}">{{ project.name }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
@@ -53,7 +53,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="" href="{{ path('students') }}">Duomenų failas</a>
+        <a class="" href="{{ url('students') }}">Duomenų failas</a>
     </div>
 
 {% endblock %}
