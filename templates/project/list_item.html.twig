@@ -1,0 +1,18 @@
+{% block list_item %}
+<li class="list-group-item">
+	<h3>{{ project|e }}</h3>
+	<div class="panel panel-default">
+		<div>
+			<a target="_blank" href="https://github.com/nfqakademija/{{ project|e }}">github.com/nfqakademija/{{ proj|e }}</a>
+			<span class="badge">GitHub</span>
+		</div>
+		<div>
+			<a target="_blank" href="http://{{ project|e }}.projektai.nfqakademija.lt/">{{ proj|e }}.projektai.nfqakademija.lt/</a>
+			<span class="badge">Web</span>
+		</div>
+		<div>
+			<pre>ssh {{ proj|e }}@deploy.nfqakademija.lt -p 2222</pre>
+		</div>
+	</div>
+</li>
+{% endblock %}
