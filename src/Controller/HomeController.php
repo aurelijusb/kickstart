@@ -57,6 +57,6 @@ class HomeController extends AbstractController
      */
     public function teamWeb($slug)
     {
-        return $this->redirect('http://'.urldecode($slug)   .'projektai.nfqakademija.lt/');
+        return $this->redirect($slug .'projektai.nfqakademija.lt/');
     }
 }
