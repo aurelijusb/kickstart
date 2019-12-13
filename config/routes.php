@@ -14,6 +14,5 @@ return function (RoutingConfigurator $routes) {
         ->controller([StudentController::class, 'studentsFile'])
     ;
     $routes->add('students', 'students.json')
-        ->controller([StudentController::class, 'student'])
     ;
 };
