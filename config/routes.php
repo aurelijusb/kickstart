@@ -10,9 +10,7 @@ return function (RoutingConfigurator $routes) {
     $routes->add('teamWeb', '/teamWeb/{slug}')
         ->controller([HomeController::class, 'teamWeb'])
     ;
-    $routes->add('studentsFile', '/studentsFile')
-        ->controller([StudentController::class, 'studentsFile'])
-    ;
     $routes->add('students', 'students.json')
+        ->controller([StudentController::class, 'student'])
     ;
 };
