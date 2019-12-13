@@ -22,4 +22,8 @@ class StudentController extends AbstractController
             'project' => $project,
         ]);
     }
+    public function studentsFile()
+    {
+        return $this->redirect('students.json');
+    }
 }

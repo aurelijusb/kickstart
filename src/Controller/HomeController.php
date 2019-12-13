@@ -38,4 +38,18 @@ class HomeController extends AbstractController
         }
         return $result;
     }
+    /**
+     * @Route("/teamGit/{slug}", name="teamGit")
+     */
+    public function teamGit($slug)
+    {
+        return $this->redirect('https://github.com/nfqakademija/'. $slug);
+    }
+    /**
+     * @Route("/teamWeb/{slug}", name="teamWeb")
+     */
+    public function teamWeb($slug)
+    {
+        return $this->redirect('http://'. $slug . '.projektai.nfqakademija.lt/');
+    }
 }

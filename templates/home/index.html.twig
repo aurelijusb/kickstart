@@ -8,9 +8,9 @@
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for student in students %}
         <li class="list-group-item">
-            <a href="{{ path('student', {name: student['student'] , project: student['project'] }) }}">{{ student['student'] | escape}}</a>
+            <a href="{{ path('student', {name: student.student , project: student.project }) }}">{{ student.student }}</a>
             ( <span class="badge">Mentorius</span>
-            {% for mentor in student["mentors"]  %}
+            {% for mentor in student.mentors  %}
                 {{ mentor }}
 
             {% endfor %})
@@ -19,7 +19,7 @@
     </ul>
 
     <div class="m-4">
-        <form action="/student" method="get">
+        <form action="{{ path('student') }}" method="get">
             <div class="input-group">
                 <input name="name" type="text" class="form-control" placeholder="Studentas"/>
             </div>
@@ -37,15 +37,15 @@
                 <h3>{{ project.team }}</h3>
                 <div class="panel panel-default">
                     <div>
-                        <a target="_blank" href="https://github.com/nfqakademija/{{ project.name | url_encode }}">github.com/nfqakademija/{{ project.name | escape }}</a>
+                        <a target="_blank" href="{{ path('teamGit',{'slug':  project.name | url_encode } ) }}">github.com/nfqakademija/{{ project.name }}</a>
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="http://{{ project.name | url_encode }}.projektai.nfqakademija.lt/">{{ project.name | escape }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="{{ path('teamWeb',{'slug':  project.name | url_encode } ) }}">{{ project.name }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
-                        <pre>ssh {{ project.name | escape }}@deploy.nfqakademija.lt -p 2222</pre>
+                        <pre>ssh {{ project.name }}@deploy.nfqakademija.lt -p 2222</pre>
                     </div>
                 </div>
             </li>
@@ -53,7 +53,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="text-light" href="students.json">Duomenų failas</a>
+        <a class="" href="{{ path('studentsFile') }}">Duomenų failas</a>
     </div>
 
 {% endblock %}

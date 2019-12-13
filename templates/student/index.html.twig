@@ -19,14 +19,14 @@
                     {% if not project  %}
                         Nenurodytas
                     {% else %}
-                        {{ project|escape }}
+                        {{ project }}
                     {% endif %}
                 </td>
                 <td>
                     {% if not name  %}
                         Nenurodytas
                     {% else %}
-                        {{ name|escape }}
+                        {{ name }}
                     {% endif %}
                 </td>
             </tr>
@@ -43,6 +43,6 @@
         {% endif %}
     </div>
     <div class="m-4">
-        <a class="text-light" href="/">Visi studentai</a>
+        <a class="" href="{{ path('home') }}">Visi studentai</a>
     </div>
 {% endblock %}
