@@ -7,14 +7,13 @@ return function (RoutingConfigurator $routes) {
     $routes->add('teamGit', '/teamGit/{slug}')
         ->controller([HomeController::class, 'teamGit'])
     ;
-
     $routes->add('teamWeb', '/teamWeb/{slug}')
         ->controller([HomeController::class, 'teamWeb'])
     ;
     $routes->add('studentsFile', '/studentsFile')
         ->controller([StudentController::class, 'studentsFile'])
     ;
-    $routes->add('student', '/student')
+    $routes->add('students.json', 'students.json')
         ->controller([StudentController::class, 'student'])
     ;
 };

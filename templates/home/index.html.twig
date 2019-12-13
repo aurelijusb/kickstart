@@ -7,14 +7,14 @@
     <ul class="list-group m-4">
         <li class="list-group-item list-group-item-info">Studentai</li>
         {% for student in students %}
-        <li class="list-group-item">
-            <a href="{{ path('student', {name: student.student , project: student.project }) }}">{{ student.student }}</a>
-            ( <span class="badge">Mentorius</span>
-            {% for mentor in student.mentors  %}
-                {{ mentor }}
+            <li class="list-group-item">
+                <a href="{{ path('student', {name: student.student , project: student.project }) }}">{{ student.student }}</a>
+                ( <span class="badge">Mentorius</span>
+                {% for mentor in student.mentors  %}
+                    {{ mentor }}
 
-            {% endfor %})
-        </li>
+                {% endfor %})
+            </li>
         {% endfor %}
     </ul>
 
@@ -41,7 +41,7 @@
                         <span class="badge">GitHub</span>
                     </div>
                     <div>
-                        <a target="_blank" href="{{ path('teamWeb',{'slug':  project.name | url_encode } ) }}">{{ project.name }}.projektai.nfqakademija.lt/</a>
+                        <a target="_blank" href="http://{{ project.name | url_encode }}.projektai.nfqakademija.lt/">{{ project.name }}.projektai.nfqakademija.lt/</a>
                         <span class="badge">Web</span>
                     </div>
                     <div>
@@ -53,7 +53,7 @@
     </ul>
 
     <div class="m-4">
-        <a class="" href="{{ path('studentsFile') }}">Duomenų failas</a>
+        <a class="" href="{{ path('students.json') }}">Duomenų failas</a>
     </div>
 
 {% endblock %}

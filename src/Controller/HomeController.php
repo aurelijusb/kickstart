@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class HomeController extends AbstractController
 {
@@ -38,18 +39,32 @@ class HomeController extends AbstractController
         }
         return $result;
     }
+
     /**
      * @Route("/teamGit/{slug}", name="teamGit")
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function teamGit($slug)
     {
         return $this->redirect('https://github.com/nfqakademija/'. $slug);
     }
+
     /**
      * @Route("/teamWeb/{slug}", name="teamWeb")
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function teamWeb($slug)
     {
-        return $this->redirect('http://'. $slug . '.projektai.nfqakademija.lt/');
+
+        //var_dump('https://'. $slug . '.projektai.nfqakademija.lt/');
+        return $this->redirect('https://'. htmlspecialchars($slug) . '.projektai.nfqakademija.lt/');
+
+        return $this->redirect($this->generateUrl(
+            'teamWeb',
+            ['slug' => htmlspecialchars($slug)],
+            UrlGeneratorInterface::ABSOLUTE_URL
+        ));
     }
 }
