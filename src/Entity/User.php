@@ -36,6 +36,28 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @var null|string Link to Personal linkedin
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedin  = "";
+
+    /**
+     * @return string|null
+     */
+    public function getLinkedin(): ?string
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * @param string|null $linkedin
+     */
+    public function setLinkedin(?string $linkedin): void
+    {
+        $this->linkedin = $linkedin;
+    }
+
+    /**
      * @var null|\DateTime When password was changed
      * @ORM\Column(type="datetime", nullable=true)
      */
