@@ -38,7 +38,7 @@ describe('Secodn homework', function() {
     it('Test new functionality: not existing', () => {
         cy.visit(`${basePath}/people`);
         cy.get("#team").type("neegzistuojanti").blur();
-        cy.get("#validation-result-team").contains(":(");
+        cy.get("#validation-result-team,##validation-result-project,#project-validation-result,#team-validation-result").contains(":(");
         cy.screenshot();
     });
 });
