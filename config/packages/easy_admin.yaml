@@ -1,4 +1,9 @@
 easy_admin:
+    design:
+        assets:
+            css:
+                - '/build/app.css'
+
     entities:
         # List the entity class name you want to manage
 #        - App\Entity\Product
@@ -10,6 +15,7 @@ easy_admin:
                     - 'username'
                     - { property: 'roles', template: 'admin/user/roles-type-read.html.twig' }
                     - { property: 'homepage', type: 'url' }
+                    - { property: 'linkedin', type: 'url' }
                     - { property: 'password', template: 'admin/user/password-read.html.twig' }
             form:
                 fields:
@@ -17,6 +23,7 @@ easy_admin:
                     - { property: 'roles', type: 'collection' }
                     - { property: 'plainPassword', type: 'password' }
                     - { property: 'homepage', type: 'url' }
+                    - { property: 'linkedin', type: 'url' }
 
     user:
         name_property_path: "email"
