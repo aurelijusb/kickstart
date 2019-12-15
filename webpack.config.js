@@ -25,11 +25,11 @@ Encore
      */
     .addEntry('app', [
         './assets/js/app.js',
-        './assets/js/react.jsx'
+        './assets/js/react.jsx',
     ])
-    .addEntry('validation',
-        './assets/js/validation.js'
-    )
+    .addEntry('validation', [
+        './assets/js/validation.js',
+    ])
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

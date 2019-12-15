@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -27,6 +27,9 @@ class PeopleController extends AbstractController
      *     name="validatePerson",
      *     methods={"POST"}
      * )
+     * @param Request $request
+     * @param string $element
+     * @return JsonResponse
      */
     public function validate(Request $request, string $element)
     {
@@ -37,18 +40,20 @@ class PeopleController extends AbstractController
         }
 
         $students = $this->getStudents();
+        $teams = $this->getTeams();
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
 
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
-
     private function getStorage()
     {
         return /** @lang json */
-        '{
+            '{
           "team1": {
             "name": "Team1",
             "mentors": [
@@ -230,7 +235,6 @@ class PeopleController extends AbstractController
           }
         }';
     }
-
     private function getStudents(): array
     {
         $students = [];
@@ -241,5 +245,15 @@ class PeopleController extends AbstractController
             }
         }
         return $students;
+    }
+    private function getTeams(): array
+    {
+        $teams = [];
+        $storage = json_decode($this->getStorage(), true);
+        $storage = array_keys($storage);
+        foreach ($storage as $teamData) {
+            $teams[] = strtolower($teamData);
+        }
+        return $teams;
     }
 }
