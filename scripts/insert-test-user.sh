@@ -9,6 +9,10 @@ SQL1="INSERT INTO user (email, roles, password) VALUES ('admin@admin.lt', '[\"RO
 
 PASSWORD2='$argon2i$v=19$m=1024,t=2,p=2$WGpLM2pFaGcwM2JBRDNlNQ$wLD7adbkxlEnpVg2zB8oBO/3dUsKJLQ7RpTEHEdLiAg'
 SQL2="INSERT INTO symfony.user (email, roles, password, homepage, password_changed, linkedin) VALUES ('kitas@kitas.lt', '[]', '$PASSWORD2', 'http://nfq.lt', '2019-11-18 22:51:26', 'https://www.linkedin.com/company/nfq/');"
+SQL3="INSERT INTO symfony.user (email, roles, password, homepage, password_changed, linked_in) VALUES ('kitas@kitas.lt', '[]', '$PASSWORD2', 'http://nfq.lt', '2019-11-18 22:51:26', 'https://www.linkedin.com/company/nfq/');"
 
 $SCRIPT_DIR/mysql.sh "$SQL1"
 $SCRIPT_DIR/mysql.sh "$SQL2"
+$SCRIPT_DIR/mysql.sh "$SQL3"
+
+exit 0 # Ignore errors as there will always be mismatch between "linkedin" vs "linked_in" field name
