@@ -10,6 +10,7 @@ easy_admin:
                     - 'username'
                     - { property: 'roles', template: 'admin/user/roles-type-read.html.twig' }
                     - { property: 'homepage', type: 'url' }
+                    - { property: 'linkedIn', type: 'url' }
                     - { property: 'password', template: 'admin/user/password-read.html.twig' }
             form:
                 fields:
@@ -17,6 +18,7 @@ easy_admin:
                     - { property: 'roles', type: 'collection' }
                     - { property: 'plainPassword', type: 'password' }
                     - { property: 'homepage', type: 'url' }
+                    - { property: 'linkedIn', type: 'url' }
 
     user:
         name_property_path: "email"
