@@ -31,7 +31,7 @@ describe('Third homework', function() {
         cy.get("#registration_form_email").type('aurelijus@banelis.lt');
         cy.get("#registration_form_plainPassword").type('slaptas'); // Not for production use
         cy.get("#registration_form_homepage").type('https://aurelijus.banelis.lt');
-        cy.get("#registration_form_linkedin").type('https://www.linkedin.com/in/aurelijusbanelis');
+        cy.get("#registration_form_linkedin,#registration_form_linkedIn").type('https://www.linkedin.com/in/aurelijusbanelis');
         cy.get("#registration_form_agreeTerms").check();
         cy.get('form').submit();
 
