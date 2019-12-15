@@ -9,7 +9,7 @@ const dd = async (message) => {
     await cy.ciLog(message);
 };
 
-describe('Secodn homework', function() {
+describe('Second homework', function() {
     it('Whole page: Homepage', () => {
         cy.visit(basePath);
         cy.screenshot();
