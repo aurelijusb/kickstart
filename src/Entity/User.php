@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -36,7 +37,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @var null|\DateTime When password was changed
+     * @var null|DateTime When password was changed
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $passwordChanged = null;
@@ -49,6 +50,13 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $homepage = "";
+
+    /**
+     * @var null|string Link to Personal LinkedIn
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedIn = "";
+
 
     public function getId(): ?int
     {
@@ -102,7 +110,7 @@ class User implements UserInterface
         return ''; // We store passwords hashed, it is impossible to regenerate back
     }
 
-    /** Virtual method for EasyAdminBundle */
+    /** Virtual metFixedhod for EasyAdminBundle */
     public function setPlainPassword($password): self
     {
         if (!$password) {
@@ -127,7 +135,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
@@ -155,17 +163,17 @@ class User implements UserInterface
     }
 
     /**
-     * @return \DateTime|null
+     * @return DateTime|null
      */
-    public function getPasswordChanged(): ?\DateTime
+    public function getPasswordChanged(): ?DateTime
     {
         return $this->passwordChanged;
     }
 
     /**
-     * @param \DateTime|null $passwordChanged
+     * @param DateTime|null $passwordChanged
      */
-    public function setPasswordChanged(?\DateTime $passwordChanged): void
+    public function setPasswordChanged(?DateTime $passwordChanged): void
     {
         $this->passwordChanged = $passwordChanged;
     }
@@ -180,10 +188,30 @@ class User implements UserInterface
 
     /**
      * @param string|null $homepage
+     * @return User
      */
     public function setHomepage(?string $homepage): self
     {
         $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLinkedIn(): ?string
+    {
+        return $this->linkedIn;
+    }
+
+    /**
+     * @param string|null $linkedIn
+     * @return User
+     */
+    public function setLinkedIn(?string $linkedIn): self
+    {
+        $this->linkedIn = $linkedIn;
 
         return $this;
     }
