@@ -21,30 +21,30 @@ describe('Second homework', function() {
 
     it('Test old functionality: happy case', () => {
         cy.visit(`${basePath}/people`);
-        cy.get("#name,input:nth-of-type(1)").first().type("lukas").blur();
-        cy.get("#validation-result-name,span[data-path]:nth-of-type(1)").first().contains(":)")
+        cy.get("input").first().type("lukas").blur(); // for #name
+        cy.get("span[data-path]").first().contains(":)") // for #validation-result-name
     });
     it('Test old functionality: not existing', () => {
         cy.visit(`${basePath}/people`);
-        cy.get("#name,input:nth-of-type(1)").first().type("neegzistuojantis").blur();
-        cy.get("#validation-result-name,span[data-path]:nth-of-type(1)").first().contains(":(")
+        cy.get("input").first().type("neegzistuojantis").blur(); // for #name
+        cy.get("span[data-path]").first().contains(":(") // for #validation-result-name
     });
     it('Test new functionality: happy case: devcollab', () => {
         cy.visit(`${basePath}/people`);
-        cy.get("#team,input:nth-of-type(2)").first().type("devcollab").blur();
-        cy.get("#validation-result-team,span[data-path]:nth-of-type(2)").first().contains(":)");
+        cy.get("input").last().type("devcollab").blur(); // for #team
+        cy.get("span[data-path]").last().contains(":)"); // for #validation-result-team
         cy.screenshot();
     });
     it('Test new functionality: happy case: barakas', () => {
         cy.visit(`${basePath}/people`);
-        cy.get("#team,input:nth-of-type(2)").first().type("barakas").blur();
-        cy.get("#validation-result-team,span[data-path]:nth-of-type(2)").first().contains(":)");
+        cy.get("input").last().type("barakas").blur(); // for #team
+        cy.get("span[data-path]").last().contains(":)"); // for #validation-result-team
         cy.screenshot();
     });
     it('Test new functionality: not existing', () => {
         cy.visit(`${basePath}/people`);
-        cy.get("#team,input:nth-of-type(2)").first().type("neegzistuojanti").blur();
-        cy.get("#validation-result-team,span[data-path]:nth-of-type(2)").first().contains(":(");
+        cy.get("input").last().type("neegzistuojanti").blur(); // for #team
+        cy.get("span[data-path]").last().contains(":("); // for #validation-result-team
         cy.screenshot();
     });
 });
