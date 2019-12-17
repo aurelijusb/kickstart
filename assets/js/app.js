@@ -17,13 +17,15 @@ $(document).ready(function() {
 });
 
 const axios = require('axios');
+
 if (typeof usingVersionedFileJs !== "undefined") {
     let versionedFileElement = document.getElementById('versionedFile');
+
     axios.get('/build/manifest.json')
-        .then(function (response) {
+        .then(response => {
             versionedFileElement.innerText = response.data['build/app.js'];
         })
-        .catch(function (error) {
-            versionedFileElement.innerText = 'Error: '.error;
+        .catch(error => {
+            versionedFileElement.innerText = 'Error: ' + error;
         });
 }
