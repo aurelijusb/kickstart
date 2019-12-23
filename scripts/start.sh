@@ -12,7 +12,7 @@ if [ ! -f "$SCRIPT_DIR/../.env" ]; then
     if [ -f "$SCRIPT_DIR/../.env.dist" ]; then
         cp "$SCRIPT_DIR/../.env.dist" "$SCRIPT_DIR/../.env"
     else
-        echo >&2 "No .env file. Current Symofony project setup will not work"
+        echo >&2 "No .env file. Current Symfony project setup will not work"
         exit 1
     fi
 fi
