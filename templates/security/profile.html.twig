@@ -12,5 +12,10 @@
         <div class="mb-2">
             <span class="badge badge-primary">Website</span> <a href="{{ user.homepage }}"></a>{{ user.homepage }}
         </div>
+        {% if user.linkedin is not null %}
+            <div class="mb-2">
+                <span class="badge badge-primary">LinkedIn</span> <a href="{{ user.linkedin }}"></a>{{ user.linkedin }}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
