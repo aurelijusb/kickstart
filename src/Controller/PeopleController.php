@@ -22,12 +22,12 @@ class PeopleController extends AbstractController
     }
 
     /**
-     * @Route(
-     *     "/validate/{element}",
-     *     name="validatePerson",
-     *     methods={"POST"}
-     * )
-     */
+ * @Route(
+ *     "/validate/{element}",
+ *     name="validatePerson",
+ *     methods={"POST"}
+ * )
+ */
     public function validate(Request $request, string $element)
     {
         try {
@@ -37,13 +37,18 @@ class PeopleController extends AbstractController
         }
 
         $students = $this->getStudents();
+        $teams = $this->getTeams();
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
 
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
+
+
 
     private function getStorage()
     {
@@ -241,5 +246,15 @@ class PeopleController extends AbstractController
             }
         }
         return $students;
+    }
+
+    private function getTeams(): array
+    {
+        $teams = [];
+        $storage = json_decode($this->getStorage(), true);
+        foreach ($storage as $key => $val) {
+            $teams[] = strtolower($key);
+        }
+        return $teams;
     }
 }
