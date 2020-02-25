@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PeopleController extends AbstractController
@@ -28,7 +29,7 @@ class PeopleController extends AbstractController
      *     methods={"POST"}
      * )
      */
-    public function validate(Request $request, string $element)
+    public function validate(KernelInterface $kernelInterface, Request $request, string $element)
     {
         try {
             $input = json_decode($request->getContent(), true)['input'];
@@ -36,210 +37,49 @@ class PeopleController extends AbstractController
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
-        $students = $this->getStudents();
+        $students = $this->getStudents($kernelInterface);
+        $teams = $this->getTeams($kernelInterface);
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
 
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
     }
 
-    private function getStorage()
+    private function getStorage(KernelInterface $kernelInterface)
     {
-        return /** @lang json */
-        '{
-          "team1": {
-            "name": "Team1",
-            "mentors": [
-              "Mantas"
-            ],
-            "students": [
-              "Tadas",
-              "Gytis",
-              "Ričardas"
-            ]
-          },
-          "baltichalatai": {
-            "name": "BaltiChalatai",
-            "mentors": [
-              "Lukas"
-            ],
-            "students": [
-              "Vytas",
-              "Lukas",
-              "Diana"
-            ]
-          },
-          "nnizer": {
-            "name": "ePacientas",
-            "mentors": [
-              "Tadas"
-            ],
-            "students": [
-              "Kornelijus",
-              "Dominykas",
-              "Miglė"
-            ]
-          },
-          "activegen": {
-            "name": "ActiveGen",
-            "mentors": [
-              "Arnoldas"
-            ],
-            "students": [
-              "Andrius",
-              "Nojus",
-              "Martynas",
-              "Edvinas"
-            ]
-          },
-          "mms": {
-            "name": "Membership-management-system",
-            "mentors": [
-              "Mindaugas"
-            ],
-            "students": [
-              "Erika",
-              "Rokas",
-              "Valentinas",
-              "Eligijus"
-            ]
-          },
-          "pamainos": {
-            "name": "NFQ pamainu sistema",
-            "mentors": [
-              "Paulius"
-            ],
-            "students": [
-              "Liudas",
-              "Justina",
-              "Andrius"
-            ]
-          },
-          "receptai": {
-            "name": "Receptai",
-            "mentors": [
-              "Mantas"
-            ],
-            "students": [
-              "Arnoldas",
-              "Arentas",
-              "Tautvydas"
-            ]
-          },
-          "pulse": {
-            "name": "NFQ pulse",
-            "mentors": [
-              "Lorenas"
-            ],
-            "students": [
-              "Arvydas",
-              "Titas",
-              "Kristijonas",
-              "Andrius"
-            ]
-          },
-          "lita": {
-            "name": "NFQ Petro atrankos problema akademijai",
-            "mentors": [
-              "Paulius"
-            ],
-            "students": [
-              "Kristina",
-              "Indrė",
-              "Dmitri"
-            ]
-          },
-          "myfleet": {
-            "name": "MyFleet",
-            "mentors": [
-              "Laurynas"
-            ],
-            "students": [
-              "Artūras",
-              "Ignas",
-              "Jonas"
-            ]
-          },
-          "career": {
-            "name": "NFQ Career Criteria Assessment",
-            "mentors": [
-              "Erikas"
-            ],
-            "students": [
-              "Matas",
-              "Andrius",
-              "Ainis"
-            ]
-          },
-          "carparking": {
-            "name": "NFQ Car parking",
-            "mentors": [
-              "Andrejus"
-            ],
-            "students": [
-              "Kęstas",
-              "Lukas",
-              "Lukas"
-            ]
-          },
-          "podcast": {
-            "name": "Krepšinio podcastai",
-            "mentors": [
-              "Eligijus"
-            ],
-            "students": [
-              "Edvardas",
-              "Nerijus",
-              "Kazimieras"
-            ]
-          },
-          "Barakas": {
-            "name": "barakas",
-            "mentors": [
-              "Armandas"
-            ],
-            "students": [
-              "Raimondas",
-              "Mantas",
-              "Tomas"
-            ]
-          },
-          "devcollab": {
-            "name": "Education sharing platform",
-            "mentors": [
-              "Viktoras"
-            ],
-            "students": [
-              "Karolis",
-              "Arnas",
-              "Evaldas",
-              "Algirdas"
-            ]
-          },
-          "hack<b>er</b>\'is po .mySubdomain &project=123": {
-            "name": "\' OR 1 -- DROP DATABASE",
-            "mentors": [
-              "<b>Ponas</b> Programišius"
-            ],
-            "students": [
-              "Aurelijus",
-              "<b>Ir</b> jo \"geras\" draug\'as"
-            ]
-          }
-        }';
+        $projectDir = $kernelInterface->getProjectDir();
+
+        $storageFileName = 'storage.json';
+        $storageFilePath = $projectDir . '/public/' . $storageFileName;
+        $storageJsonData = file_get_contents($storageFilePath, FILE_USE_INCLUDE_PATH);
+        $storageArray = json_decode($storageJsonData, true);
+
+        return $storageArray;
     }
 
-    private function getStudents(): array
+    private function getStudents(KernelInterface $kernelInterface): array
     {
         $students = [];
-        $storage = json_decode($this->getStorage(), true);
+        $storage = $this->getStorage($kernelInterface);
         foreach ($storage as $teamData) {
             foreach ($teamData['students'] as $student) {
                 $students[] = strtolower($student);
             }
         }
         return $students;
+    }
+
+    private function getTeams(KernelInterface $kernelInterface): array
+    {
+        $teams = [];
+        $storage = $this->getStorage($kernelInterface);
+        foreach ($storage as $key => $value) {
+            $teams[] = strtolower($key);
+        }
+        return $teams;
     }
 }
