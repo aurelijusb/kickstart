@@ -37,9 +37,13 @@ class PeopleController extends AbstractController
         }
 
         $students = $this->getStudents();
+        $storage = json_decode($this->getStorage(), true);
+
         switch ($element) {
             case 'name':
                 return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+            case 'team':
+                return new JsonResponse(['valid' => in_array(strtolower($input), array_keys($storage))]);
         }
 
         return new JsonResponse(['error' => 'Invalid arguments'], Response::HTTP_BAD_REQUEST);
